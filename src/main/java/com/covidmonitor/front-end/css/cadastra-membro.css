@@ -58,7 +58,8 @@
     line-height: 56px;
 }
 .container-cadastro input[type=text], input[type=date], input[type=password] {
-    margin: 16px 20px;
+    position: relative;
+    margin: 1.5% 4%;
     border: 0px;
     min-height: 2rem;
     height: auto;
@@ -131,6 +132,7 @@ input[type=text]:focus {
     font-size: 22px;
     line-height: 26px;
     text-align: center;
+    margin-left: 1rem;
     
 }
 
