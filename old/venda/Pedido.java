@@ -1,7 +1,7 @@
 package venda;
 
 import connection.ReadBD;
-import estadoSaude.EstadoSaude;
+import com.covidmonitor.repository.estadoSaude.EstadoSaude;
 import tadPilha.TADPilha;
 
 import java.sql.SQLException;

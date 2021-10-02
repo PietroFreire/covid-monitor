@@ -2,11 +2,10 @@ package com.covidmonitor.usuarios;
 
 import javax.persistence.*;
 
-@Entity
+@Entity(name = "Membros")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name = "MembroTipo")
-public class Membros {
-
+@DiscriminatorColumn(name = "TipoMembro")
+public abstract class Membros {
 
     @Id
     @Column(name = "id", updatable = false, nullable = false)

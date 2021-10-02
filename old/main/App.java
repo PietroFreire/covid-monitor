@@ -1,7 +1,7 @@
 package main;
 
 import connection.ReadBD;
-import estadoSaude.EstadoSaude;
+import com.covidmonitor.repository.estadoSaude.EstadoSaude;
 import tadArvore.Abb;
 import venda.Pedido;
 

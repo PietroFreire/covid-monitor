@@ -1,6 +1,6 @@
 package connection;
 
-import estadoSaude.EstadoSaude;
+import com.covidmonitor.repository.estadoSaude.EstadoSaude;
 import venda.Pedido;
 
 import java.sql.*;
