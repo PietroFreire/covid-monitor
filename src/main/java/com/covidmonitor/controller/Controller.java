@@ -13,7 +13,7 @@ public class Controller {
         return new ModelAndView("index");
     }
 
-    @GetMapping("/login")
+    @RequestMapping("login")
     public ModelAndView login() {
         return new ModelAndView("login");
     }
