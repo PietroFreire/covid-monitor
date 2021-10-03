@@ -15,7 +15,7 @@ public class Controller {
 
     @RequestMapping("/login")
     public ModelAndView login() {
-        return new ModelAndView("pages/login");
+        return new ModelAndView("login");
     }
         @GetMapping("/login2")
     public String login2() {
