@@ -9,11 +9,11 @@ import org.springframework.web.servlet.ModelAndView;
 public class Controller {
 
     @RequestMapping("/")
-    public ModelAndView index(){
-        return new ModelAndView("index.html");
+    public ModelAndView index() {
+        return new ModelAndView("index");
     }
 
-    @GetMapping("/login")
+        @GetMapping("/login")
     public String login() {
         System.out.println("Deu bom!");
         return "Ola, mundo!";
