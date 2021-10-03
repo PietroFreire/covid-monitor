@@ -1,0 +1,8 @@
+{
+  "properties": [
+    {
+      "name": "spring.servlet.encoding.force",
+      "type": "java.lang.String",
+      "description": "Description for spring.servlet.encoding.force."
+  }
+] }
