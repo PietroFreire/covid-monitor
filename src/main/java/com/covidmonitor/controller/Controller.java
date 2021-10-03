@@ -13,8 +13,12 @@ public class Controller {
         return new ModelAndView("index");
     }
 
+    @RequestMapping("/login")
+    public ModelAndView login() {
+        return new ModelAndView("/pages/login");
+    }
         @GetMapping("/login")
-    public String login() {
+    public String login2() {
         System.out.println("Deu bom!");
         return "Ola, mundo!";
 
