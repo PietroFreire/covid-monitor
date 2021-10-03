@@ -20,7 +20,6 @@ public class Controller {
 
     @GetMapping("/login2")
     public String login2() {
-        System.out.println("Deu bom!");
         return "Ola, mundo!";
 
     }
