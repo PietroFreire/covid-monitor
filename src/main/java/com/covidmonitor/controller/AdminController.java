@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.validation.Valid;
 
 @Controller
-@RequestMapping("/admin/rest")
+@RequestMapping("/membro")
 public class AdminController {
 
     @Autowired
@@ -32,48 +32,48 @@ public class AdminController {
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
 
-    @PreAuthorize("hasAnyRole('ADMIN')")
+//    @PreAuthorize("hasAnyRole('ADMIN')")
     @GetMapping("escolhaTipo")
     public String escolhaTipo(){
         return "escolhaTipo";
     }
 
-    @PreAuthorize("hasAnyRole('ADMIN')")
+//    @PreAuthorize("hasAnyRole('ADMIN')")
     @GetMapping("formularioAluno")
     public String formularioAluno(AlunoDto requisicao){
         return "formularioAluno";
     }
 
-    @PreAuthorize("hasAnyRole('ADMIN')")
+//    @PreAuthorize("hasAnyRole('ADMIN')")
     @GetMapping("formularioFuncionario")
     public String formularioFuncionario(FuncionarioDto requisicao){
         return "formularioFuncionario";
     }
 
-    @PreAuthorize("hasAnyRole('ADMIN')")
+//    @PreAuthorize("hasAnyRole('ADMIN')")
     @PostMapping("novoAluno")
     public String novoAluno(@Valid AlunoDto requisicao, BindingResult result){
         if(result.hasErrors()){
             return "formularioAluno";
         }
         Aluno aluno = requisicao.toAluno();
-        String pwd = aluno.getSenha();
-        String encryptPdw = passwordEncoder.encode(pwd);
-        aluno.setSenha(encryptPdw);
+//        String pwd = aluno.getSenha();
+//        String encryptPdw = passwordEncoder.encode(pwd);
+//        aluno.setSenha(encryptPdw);
         membroRepository.save(aluno);
         return "escolhaTipo";
     }
 
-    @PreAuthorize("hasAnyRole('ADMIN')")
+//    @PreAuthorize("hasAnyRole('ADMIN')")
     @PostMapping("novoFuncionario")
     public String novoFuncionario(@Valid FuncionarioDto requisicao, BindingResult result){
         if(result.hasErrors()){
             return "formularioFuncionario";
         }
         Funcionario funcionario = requisicao.toFuncionario();
-        String pwd = funcionario.getSenha();
-        String encryptPdw = passwordEncoder.encode(pwd);
-        funcionario.setSenha(encryptPdw);
+//        String pwd = funcionario.getSenha();
+//        String encryptPdw = passwordEncoder.encode(pwd);
+//        funcionario.setSenha(encryptPdw);
         membroRepository.save(funcionario);
         return "escolhaTipo";
     }
