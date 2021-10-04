@@ -1,91 +1,26 @@
 <!DOCTYPE html>
-<html lang="pt">
-
-<head>
-    <title>YourMovie - Login</title>
-    <meta charset="utf-8">
-    <meta name="author" content="Pietro Freire">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="css/style-base.css">
-    <link rel="stylesheet" href="css/login-register.css">
-</head>
-
+<html lang="en">
+<head th:replace="~{base :: head}"></head>
 <body>
+<div th:replace="~{base :: menu}"></div>
+  <div class="container">
 
-    <header>
-        <div class="center">
-            <div class="header-left">
-                <img src="imgs/logo.png" alt="">
-                <div class="menu-header">
-                    <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="genres.html">Gêneros</a></li>
-                        <li><a href="movies.html">Filmes</a></li>
-                        <li><a href="about.html">Sobre</a></li>
-                        <li><a href="contact.html">Contato</a></li>
-                    </ul>
-                </div><!--Menu-Header-->
-            </div><!--Header-Left-->
+    <div th:replace="~{base :: titulo('Login')}"></div>
 
-            <div class="header-right">
-                <button class="button-login" type="button"><a href="login.html">Login in</a></button>
-                <i class="material-icons">search</i>
-                <div class="notifications">
-                    <div class="circle-notifications">
-                        <p>15</p>
-                    </div><!--Circle-Notification-->
-                    <i class="material-icons">notification_important</i>
-                </div> <!--Notifications-->
-                </div><!--Header-Right-->
-
-            <div class="clear"></div>
-
-        </div> <!--Center-->
-    </header>
-
-    <div id="container-box">
-        <div id="title">
-            <i class="material-icons lock">lock</i> Login
-        </div>
-
-        <form action="pages/index.html">
-            <div class="input">
-                <div class="input-addon">
-                    <i class="material-icons">face</i>
-                </div>
-                <input id="username" placeholder="Username" type="text" required autocomplete="off">
+    <div class="card mb-3">
+        <form th:action="@{/login}" method="post">
+            <div class="form-group">
+                <label for="username">Usuário</label>
+                <input name="username" class="form-control" placeholder="usuário" id="username"/>
             </div>
-
-            <div class="input">
-                <div class="input-addon">
-                    <i class="material-icons">vpn_key</i>
-                </div>
-                <input id="password" placeholder="Password" type="password" required autocomplete="off">
+            <div class="form-group">
+                <label for="password">Senha:</label>
+                <input name="password" class="form-control" placeholder="senha" type="password" id="password"/>
             </div>
-
-            <div class="remember-me">
-                <input type="checkbox">
-                <span style="color: #DDD">Manter Conectado</span>
-            </div>
-
-            <input type="submit" value="Entrar" />
+            <button class="btn btn-primary" type="submit">Login</button>
         </form>
-
-        <div class="forgot-password">
-            <a href="#">Esqueci minha senha</a>
-        </div>
-
-        <div class="register">
-            <p>Ainda não é registrado?</p>
-            <a href="register.html"><button id="register-link">Registre-se no YourMovie</button></a>
-        </div>
-
     </div>
-
-    <footer>
-        <p><span style="color: #15a9c4">©Copyright</span> - 2020 | Site desenvolvido por Pietro Freire</p>
-    </footer>
+  </div>
 
 </body>
-
 </html>
