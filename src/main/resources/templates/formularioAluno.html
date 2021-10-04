@@ -1,13 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
+<head th:replace="~{base :: head}"></head>
+
 <body>
- <p>TESTE</p>
+<div th:replace="~{base :: menu}"></div>
+<div th:replace="~{base :: nav}"></div>
+
+<div class="container">
+
+    <div th:replace="~{base :: titulo('Nova série:')}"></div>
+
+    <div class="card mt-3">
+        <form th:object="${requisicaoNovaSerie}" class="card-body" action="/item/novaSerie" method="POST">
+            <div class="form-group">
+                <label>Titulo</label>
+                <input th:field="*{nomeTitulo}" th:errorclass="is-invalid" class="form-control" placeholder="Titulo da série.">
+                <small>Informe o titulo da série.</small>
+                <div class="invalid-feedback" th:errors="*{nomeTitulo}">
+                    Erros no nome do titulo
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Número de Temporadas</label>
+                <input th:field="*{numTemporadas}" th:errorclass="is-invalid" class="form-control" type="number" placeholder="Número de Temporadas">
+                <small>Informe o número de temporadas da série.</small>
+                <div class="invalid-feedback" th:errors="*{numTemporadas}">
+                    Erros no numero de temporadas
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Elenco</label>
+                <input th:field="*{elenco}" th:errorclass="is-invalid" class="form-control" placeholder="Principais atores.">
+                <small>Informe os principais atores da série, coloque seus nomes entre virgulas da seguinte forma: Adam Sandler,Scarlet Johansson</small>
+                <div class="invalid-feedback" th:errors="*{elenco}">
+                    Erros no elenco
+                </div>
+            </div>
+            <div class="form-group">
+                <label>País</label>
+                <input th:field="*{pais}" th:errorclass="is-invalid" class="form-control" placeholder="País da série.">
+                <small>Informe o país no qual a série pertence.</small>
+                <div class="invalid-feedback" th:errors="*{pais}">
+                    Erros no país
+                </div></div>
+            <div class="form-group">
+                <label>Ano de Lançamento</label>
+                <input th:field="*{anoLancamento}" th:errorclass="is-invalid" class="form-control" type="number" placeholder="Ano de lançamento.">
+                <small>Informe o ano que a série foi lançada.</small>
+                <div class="invalid-feedback" th:errors="*{anoLancamento}">
+                    Erros no ano de lançamento.
+                </div></div>
+            <div class="form-group">
+                <label>Gênero</label>
+                <input th:field="*{genero}" th:errorclass="is-invalid" class="form-control" placeholder="Gênero da série.">
+                <small>Informe o gênero do filme.</small>
+                <div th:errors="*{genero}" class="invalid-feedback">
+                    Erros no genero
+                </div></div>
+            <div class="form-group">
+                <label>Imagem</label>
+                <input th:field="*{urlImagem}"th:errorclass="is-invalid"  class="form-control" placeholder="Url da imagem da série">
+                <small>Copie a url de uma boa imagem da série.</small>
+                <div th:errors="*{urlImagem}" class="invalid-feedback">
+                    Erros na url da imagem
+                </div></div>
+            <div class="form-group">
+                <label>Sinopse</label>
+                <textarea th:field="*{sinopse}" th:errorclass="is-invalid" class="form-control" placeholder="Digite aqui a sinopse da série."></textarea>
+                <div class="invalid-feedback" th:errors="*{sinopse}">
+                    Erros na sinopse
+                </div>
+            </div>
+            <button class="btn btn-primary mt-2" type="submit">Cadastrar!</button>
+        </form>
+    </div>
+
+
+</div>
 </body>
 </html>
