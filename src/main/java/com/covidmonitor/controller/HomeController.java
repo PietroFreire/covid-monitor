@@ -28,22 +28,22 @@ public class HomeController {
 
 	@GetMapping("/home")
 	public String home(Model model){
-//		List<Membro> membros = membroRepository.findAll();
-//		model.addAttribute("Membros", membros);
+		List<Membro> membros = membroRepository.findAll();
+		model.addAttribute("membros", membros);
 		return "base";
 	}
 
 	@GetMapping("/alunos")
 	public String alunos(Model model){
 		List<Aluno> alunos = alunoRepository.findAll();
-		model.addAttribute("Alunos", alunos);
+		model.addAttribute("alunos", alunos);
 		return "alunos";
 	}
 
 	@GetMapping("/funcionarios")
 	public String funcionarios(Model model){
 		List<Funcionario> funcionario = funcionarioRepository.findAll();
-		model.addAttribute("Funcionarios", funcionario);
+		model.addAttribute("funcionarios", funcionario);
 		return "funcionarios";
 	}
 

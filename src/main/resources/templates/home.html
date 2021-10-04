@@ -1,15 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head th:replace="~{base :: head}">
-    <style>
-        .img{
-            max-width: 10rem;
-        }
-
-
-    </style>
-
-
 </head>
 <body>
 <div th:replace="~{base :: menu}"></div>
@@ -24,26 +15,12 @@
             <div class="row">
                 <div class="col-12 col-sm-8 mb-3">
                     <div class="row">
-                        <div class="col-md-5">Titulo: <span th:text="${item.titulo}"></span></div>
-                        <div class="col-md-7" >Tipo: <span th:text="${item.tipo}"></span></div>
-                        <div class="col-md-9">Genero: <span th:text="${item.genero}"></span></div>
-                        <div class="col-md-12">Ano de lançamento: <span th:text="${item.anoLancamento}"></span></div>
+                        <div class="col-md-5">Nome: <span th:text="${membro.nome}"></span></div>
+                        <div class="col-md-7" >Data de Nascimento: <span th:text="${membro.data_nascimento}"></span></div>
+                        <div class="col-md-9">Cidade: <span th:text="${membro.cidade}"></span></div>
                     </div>
-                    <div>Sinopse:</div>
-                    <div th:text="${item.sinopse}">Sinopse:</div>
-                </div>
-                <div class="col-12 col-sm-4">
-                    <div>
-                        <img class="img" th:src="${item.url}" src=""/>
-                    </div>
-
                 </div>
             </div>
-
-
-        </div>
-
-        <div>
         </div>
     </div>
   </div>
