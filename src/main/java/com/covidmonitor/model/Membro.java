@@ -1,7 +1,10 @@
 package com.covidmonitor.model;
 
+import roles.Role;
+
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Set;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -15,6 +18,10 @@ public class Membro implements Serializable {
     protected String data_nascimento;
     protected String cidade;
     protected String estado_saude;
+
+    @OneToMany(cascade=CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinTable(name = "membro_role", joinColumns = @JoinColumn(name = "idMembro"), inverseJoinColumns = @JoinColumn(name = "idRole"))
+    private Set<Role> roles;
 
     public Membro(Long idMembro, String nome, String senha, String data_nascimento, String cidade, String estado_saude){
         this.idMembro = idMembro;
@@ -77,7 +84,15 @@ public class Membro implements Serializable {
         this.estado_saude = estado_saude;
     }
 
-//    public boolean login(String senha) {
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
+    }
+
+    //    public boolean login(String senha) {
 //        if (this.senha == senha) {
 //            System.out.println("[!] Acesso Permitido!");
 //            return true;

@@ -11,7 +11,7 @@
             <div th:replace="~{base :: titulo('Novo Funcionário:')}"></div>
 
             <div class="card mt-3" >
-                <form th:object="${funcionarioDto}" class="card-body" action="/membro/novoFuncionario" method="POST">
+                <form th:object="${funcionarioDto}" class="card-body" action="/admin/rest/novoFuncionario" method="POST">
 
                     <div class="form-group">
                         <label>Nome</label>
@@ -35,6 +35,13 @@
                         </div>
                     </div>
                     <div class="form-group">
+                        <label>Tipo de Funcionário</label>
+                        <input th:field="*{roles.role}" th:errorclass="is-invalid" class="form-control" placeholder="">
+                        <div class="invalid-feedback" th:errors="*{roles.role}">
+                            Erros na no tipo de Funcionário
+                        </div>
+                    </div>
+                    <div class="form-group">
                         <label>Setor</label>
                         <input th:field="*{setor}" th:errorclass="is-invalid" class="form-control" placeholder="">
                         <div class="invalid-feedback" th:errors="*{setor}">
@@ -55,7 +62,7 @@
                             Erros na cidade do Funcionário
                         </div>
                     </div>
-                    <button class="btn btn-primary mt-2" type="submit">Cadastrar!</button>
+                    <button class="btn btn-primary mt-2" type="submit">Cadastrar</button>
                 </form>
             </div>
         </div>
