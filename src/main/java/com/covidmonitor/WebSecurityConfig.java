@@ -45,6 +45,7 @@ class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .logout(logout -> logout.logoutUrl("/login"))
         ;
     }
+
 //    @Override
 //    protected void configure(HttpSecurity http) throws Exception {
 //        http
