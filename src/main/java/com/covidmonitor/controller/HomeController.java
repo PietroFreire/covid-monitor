@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/home")
 public class HomeController {
 
 	@Autowired
@@ -27,7 +26,7 @@ public class HomeController {
 	@Autowired
 	private FuncionarioRepository funcionarioRepository;
 
-	@GetMapping("/")
+	@GetMapping("/home")
 	public String home(Model model){
 //		List<Membro> membros = membroRepository.findAll();
 //		model.addAttribute("Membros", membros);
