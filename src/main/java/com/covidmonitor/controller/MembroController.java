@@ -7,6 +7,7 @@ import com.covidmonitor.model.Aluno;
 import com.covidmonitor.model.Funcionario;
 import com.covidmonitor.repository.AlunoRepository;
 import com.covidmonitor.repository.FuncionarioRepository;
+import com.covidmonitor.repository.MembroRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -17,48 +18,46 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.validation.Valid;
 
 @Controller
-@RequestMapping("membro")
+@RequestMapping("/membro")
 public class MembroController {
 
     @Autowired
-    private AlunoRepository alunoRepository;
+    private MembroRepository membroRepository;
 
-    @Autowired
-    private FuncionarioRepository funcionarioRepository;
 
-    @GetMapping("escolhaTipo")
+    @GetMapping("/escolhaTipo")
     public String escolhaTipo(){
         return "escolhaTipo";
     }
 
-    @GetMapping("formularioAluno")
+    @GetMapping("/formularioAluno")
     public String formularioAluno(AlunoDto requisicao){
         return "formularioAluno";
     }
 
-    @GetMapping("formularioFuncionario")
+    @GetMapping("/formularioFuncionario")
     public String formularioFuncionario(FuncionarioDto requisicao){
         return "formularioFuncionario";
     }
 
 
-    @PostMapping("novoAluno")
+    @PostMapping("/novoAluno")
     public String novoAluno(@Valid AlunoDto requisicao, BindingResult result){
         if(result.hasErrors()){
             return "formularioAluno";
         }
         Aluno aluno = requisicao.toAluno();
-        alunoRepository.save(aluno);
+        membroRepository.save(aluno);
         return "escolhaTipo";
     }
 
-    @PostMapping("novoFuncionario")
+    @PostMapping("/novoFuncionario")
     public String novoFuncionario(@Valid FuncionarioDto requisicao, BindingResult result){
         if(result.hasErrors()){
             return "formularioFuncionario";
         }
         Funcionario funcionario = requisicao.toFuncionario();
-        funcionarioRepository.save(funcionario);
+        membroRepository.save(funcionario);
         return "escolhaTipo";
     }
 
