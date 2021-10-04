@@ -4,6 +4,8 @@ import java.util.List;
 
 import com.covidmonitor.model.Aluno;
 import com.covidmonitor.model.Funcionario;
+import com.covidmonitor.model.Membro;
+import com.covidmonitor.repository.MembroRepository;
 import com.covidmonitor.repository.AlunoRepository;
 import com.covidmonitor.repository.FuncionarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,10 +19,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class HomeController {
 
 	@Autowired
+	private MembroRepository membroRepository;
+
+	@Autowired
 	private AlunoRepository alunoRepository;
 
 	@Autowired
 	private FuncionarioRepository funcionarioRepository;
+
+	@GetMapping("/home")
+	public String home(Model model){
+		List<Membro> membros = membroRepository.findAll();
+		model.addAttribute("Membros", membros);
+		return "base";
+	}
 
 	@GetMapping("/alunos")
 	public String alunos(Model model){
