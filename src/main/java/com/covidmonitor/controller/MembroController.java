@@ -25,23 +25,23 @@ public class MembroController {
     private MembroRepository membroRepository;
 
 
-    @GetMapping("/escolhaTipo")
+    @GetMapping("escolhaTipo")
     public String escolhaTipo(){
         return "escolhaTipo";
     }
 
-    @GetMapping("/formularioAluno")
+    @GetMapping("formularioAluno")
     public String formularioAluno(AlunoDto requisicao){
         return "formularioAluno";
     }
 
-    @GetMapping("/formularioFuncionario")
+    @GetMapping("formularioFuncionario")
     public String formularioFuncionario(FuncionarioDto requisicao){
         return "formularioFuncionario";
     }
 
 
-    @PostMapping("/novoAluno")
+    @PostMapping("novoAluno")
     public String novoAluno(@Valid AlunoDto requisicao, BindingResult result){
         if(result.hasErrors()){
             return "formularioAluno";
@@ -51,7 +51,7 @@ public class MembroController {
         return "escolhaTipo";
     }
 
-    @PostMapping("/novoFuncionario")
+    @PostMapping("novoFuncionario")
     public String novoFuncionario(@Valid FuncionarioDto requisicao, BindingResult result){
         if(result.hasErrors()){
             return "formularioFuncionario";
