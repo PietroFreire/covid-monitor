@@ -12,4 +12,10 @@ public class HelloController {
 //		model.addAttribute("nome", "Mundo");
 		return "index";
 	}
+
+	@GetMapping("/login")
+	public String login(Model model) {
+//		model.addAttribute("nome", "Mundo");
+		return "login";
+	}
 }
