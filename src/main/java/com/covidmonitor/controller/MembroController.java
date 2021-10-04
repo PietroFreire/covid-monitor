@@ -32,12 +32,12 @@ public class MembroController {
 
     @GetMapping("formularioAluno")
     public String formularioAluno(AlunoDto requisicao){
-        return "base";
+        return "formularioAluno";
     }
 
     @GetMapping("formularioFuncionario")
     public String formularioFuncionario(FuncionarioDto requisicao){
-        return "home";
+        return "formularioFuncionario";
     }
 
 
