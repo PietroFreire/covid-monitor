@@ -27,10 +27,10 @@ public class HomeController {
 	@Autowired
 	private FuncionarioRepository funcionarioRepository;
 
-	@GetMapping("/home")
+	@GetMapping("/")
 	public String home(Model model){
-		List<Membro> membros = membroRepository.findAll();
-		model.addAttribute("Membros", membros);
+//		List<Membro> membros = membroRepository.findAll();
+//		model.addAttribute("Membros", membros);
 		return "base";
 	}
 
