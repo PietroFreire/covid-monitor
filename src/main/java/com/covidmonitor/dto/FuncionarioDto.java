@@ -11,7 +11,7 @@ public class FuncionarioDto {
     protected String cidade;
     protected String estado_saude;
     protected String num_funcional;
-    private Setor setor;
+    protected String setor;
 
     public String getNome() {
         return nome;
@@ -61,11 +61,11 @@ public class FuncionarioDto {
         this.num_funcional = num_funcional;
     }
 
-    public Setor getSetor() {
+    public String getSetor() {
         return setor;
     }
 
-    public void setSetor(Setor setor) {
+    public void setSetor(String setor) {
         this.setor = setor;
     }
 

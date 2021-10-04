@@ -8,10 +8,10 @@ public class Funcionario extends Membro {
 
     private String num_funcional;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Setor setor;
+//    @ManyToOne(fetch = FetchType.LAZY)
+    private String setor;
 
-    public Funcionario(String nome, String senha, String data_nascimento, String cidade, String estado_saude, String num_funcional, Setor setor){
+    public Funcionario(String nome, String senha, String data_nascimento, String cidade, String estado_saude, String num_funcional, String setor){
         this.num_funcional = num_funcional;
         this.nome = nome;
         this.senha = senha;
@@ -33,11 +33,11 @@ public class Funcionario extends Membro {
         this.num_funcional = num_funcional;
     }
 
-    public Setor getSetor() {
+    public String getSetor() {
         return setor;
     }
 
-    public void setSetor(Setor setor) {
+    public void setSetor(String setor) {
         this.setor = setor;
     }
 }
