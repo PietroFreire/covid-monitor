@@ -5,7 +5,7 @@ import java.io.Serializable;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-public abstract class Membro implements Serializable {
+public class Membro implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

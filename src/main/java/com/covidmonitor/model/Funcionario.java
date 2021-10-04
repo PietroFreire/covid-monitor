@@ -25,11 +25,11 @@ public class Funcionario extends Membro {
         super();
     }
 
-    public String getnum_funcional() {
+    public String getNum_funcional() {
         return num_funcional;
     }
 
-    public void setnum_funcional(String num_funcional) {
+    public void setNum_funcional(String num_funcional) {
         this.num_funcional = num_funcional;
     }
 

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head th:replace="~{base :: head}"></head>
+
+    <body>
+    <div th:replace="~{base :: menu}"></div>
+    <div th:replace="~{base :: nav}"></div>
+
+        <div class="container">
+
+            <div th:replace="~{base :: titulo('Novo Funcionário:')}"></div>
+
+            <div class="card mt-3">
+                <form th:object="${FuncionárioDto}" class="card-body" action="/membro/novoFuncionário" method="POST">
+                    <div class="form-group">
+                        <label>Nome</label>
+                        <input th:field="*{nome}" th:errorclass="is-invalid" class="form-control" placeholder="">
+                        <div class="invalid-feedback" th:errors="*{nome}">
+                            Erros no nome do nome do Funcionário
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Código Funcional</label>
+                        <input th:field="*{num_funcional}" th:errorclass="is-invalid" class="form-control" placeholder="">
+                        <div class="invalid-feedback" th:errors="*{num_funcional}">
+                            Erros no codigo funcional
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Senha</label>
+                        <input th:field="*{senha}" th:errorclass="is-invalid" class="form-control" placeholder="">
+                        <div class="invalid-feedback" th:errors="*{senha}">
+                            Erros na senha do Funcionário
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Cidade do Funcionário</label>
+                        <input th:field="*{setor}" th:errorclass="is-invalid" class="form-control" placeholder="">
+                        <div class="invalid-feedback" th:errors="*{setor}">
+                            Erros na cidade do Funcionário
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Data de Nascimento</label>
+                        <input th:field="*{data_nascimento}" th:errorclass="is-invalid" class="form-control" type="date" placeholder="">
+                        <div class="invalid-feedback" th:errors="*{data_nascimento}">
+                            Erros na data de Nascimento
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Cidade do Funcionário</label>
+                        <input th:field="*{cidade}" th:errorclass="is-invalid" class="form-control" placeholder="">
+                        <div class="invalid-feedback" th:errors="*{cidade}">
+                            Erros na cidade do Funcionário
+                        </div>
+                    </div>
+                    <button class="btn btn-primary mt-2" type="submit">Cadastrar!</button>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,5 +1,7 @@
 package com.covidmonitor.dto;
 
+import com.covidmonitor.model.Membro;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -96,4 +98,5 @@ public class MembroDto implements Serializable {
             return false;
         }
     }
+
 }

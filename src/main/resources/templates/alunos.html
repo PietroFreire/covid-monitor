@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head th:replace="~{base :: head}"></head>
+
+  <body>
+    <div th:replace="~{base :: menu}"></div>
+    <div th:replace="~{base :: nav}"></div>
+
+    <div class="container">
+
+
+      <div th:replace="~{base :: titulo('Alunos Cadastrados')}"></div>
+
+
+      <div class="card mb-3" th:each="aluno : ${alunos}">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-12 col-sm-8 mb-3">
+              <div class="row">
+                <div class="col-md-5">Nome: <span th:text="${aluno.nome}"></span></div>
+                <div class="col-md-9">Código de Matrícula: <span th:text="${aluno.num_matricula}"></span></div>
+                <div class="col-md-12">Data de Nascimento: <span th:text="${aluno.data_nascimento}"></span></div>
+                <div class="col-md-14">Senha: <span th:text="${aluno.senha}"></span></div>
+                <div class="col-md-16">Cidade: <span th:text="${aluno.cidade}"></span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
