@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/rest/auth")
 public class AuthController {
 
-    @GetMapping("/process")
-    public String process(){
-        return "processando...";
+    @GetMapping("/home")
+    public String home(){
+        return "home";
     }
 }

@@ -38,7 +38,11 @@ class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .authorizeRequests().antMatchers("/rest/**").authenticated().anyRequest().permitAll().and()
                 .authorizeRequests().antMatchers("/admin/**").authenticated().anyRequest().hasAnyRole("ADMIN").and()
-                .formLogin().permitAll()
+                .formLogin(form -> form
+                        .loginPage("/login")
+                        .defaultSuccessUrl("/home", true).permitAll()
+                )
+                .logout(logout -> logout.logoutUrl("/login"))
         ;
     }
 //    @Override
@@ -55,12 +59,12 @@ class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 //                ).csrf().disable();
 //    }
 
-//    @Bean
-//    @Override
-//    public UserDetailsService userDetailsService(){
-//        UserDetails user = User.withDefaultPasswordEncoder().username("gustavo").password("gustavo").roles("ADM").build();
-//        return new InMemoryUserDetailsManager(user);
-//    }
+    @Bean
+    @Override
+    public UserDetailsService userDetailsService(){
+        UserDetails user = User.withDefaultPasswordEncoder().username("gustavo").password("gustavo").roles("ADM").build();
+        return new InMemoryUserDetailsManager(user);
+    }
 
     @Bean
     public BCryptPasswordEncoder encodePwd(){
