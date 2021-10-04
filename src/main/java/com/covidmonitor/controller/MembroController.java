@@ -31,20 +31,15 @@ public class MembroController {
         return "escolhaTipo";
     }
 
-    @GetMapping("formularioLivro")
-    public String formularioLivro(AlunoDto requisicao){
+    @GetMapping("formularioAluno")
+    public String formularioAluno(AlunoDto requisicao){
         return "formularioAluno";
     }
 
-    @GetMapping("formularioFilme")
-    public String formularioFilme(FuncionarioDto requisicao){
+    @GetMapping("formularioFuncionario")
+    public String formularioFuncionario(FuncionarioDto requisicao){
         return "formularioFuncionario";
     }
-
-//    @GetMapping("formularioSerie")
-//    public String formularioSerie(RequisicaoNovaSerie requisicao){
-//        return "formularioSerie";
-//    }
 
 
     @PostMapping("novoAluno")
@@ -67,13 +62,4 @@ public class MembroController {
         return "escolhaTipo";
     }
 
-//    @PostMapping("novaSerie")
-//    public String novaSerie(@Valid RequisicaoNovaSerie requisicao, BindingResult result){
-//        if(result.hasErrors()){
-//            return "formularioSerie";
-//        }
-//        Serie serie = requisicao.toSerie();
-//        itemRepository.save(serie);
-//        return "escolhaTipo";
-//    }
 }

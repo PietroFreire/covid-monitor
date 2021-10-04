@@ -2,9 +2,6 @@ package com.covidmonitor.dto;
 
 import javax.validation.constraints.NotBlank;
 
-import com.covidmonitor.model.Pedido;
-import com.covidmonitor.model.StatusPedido;
-
 public class RequisicaoNovoPedido {
 
 	@NotBlank //NotBlank.requisicaoNovoPedido.nomeProduto=não pode estar em branco
