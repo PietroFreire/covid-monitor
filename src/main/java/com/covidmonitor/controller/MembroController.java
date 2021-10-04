@@ -24,6 +24,9 @@ public class MembroController {
     @Autowired
     private MembroRepository membroRepository;
 
+    @Autowired
+    private AlunoRepository alunoRepository;
+
 
     @GetMapping("escolhaTipo")
     public String escolhaTipo(){
@@ -47,7 +50,7 @@ public class MembroController {
             return "formularioAluno";
         }
         Aluno aluno = requisicao.toAluno();
-        membroRepository.save(aluno);
+        alunoRepository.save(aluno);
         return "escolhaTipo";
     }
 

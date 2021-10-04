@@ -2,13 +2,26 @@ package com.covidmonitor.dto;
 
 import com.covidmonitor.model.Aluno;
 
+import javax.validation.constraints.NotBlank;
+
 public class AlunoDto {
 
+    @NotBlank
     protected String nome;
+
+    @NotBlank
     protected String senha;
+
+    @NotBlank
     protected String data_nascimento;
+
+    @NotBlank
     protected String cidade;
+
+    @NotBlank
     protected String estado_saude;
+
+    @NotBlank
     protected String num_matricula;
 
     public String getNome() {
