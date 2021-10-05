@@ -19,12 +19,17 @@ public class CustomUserDetails implements UserDetails {
     private static final long serialVersionUID = 1256711395932122675L;
     private Membro user;
 
+//    @Override
+//    public Collection<? extends GrantedAuthority> getAuthorities() {
+//
+//        return user.getRoles().stream().map(role -> new SimpleGrantedAuthority("ROLE_" + role))
+//                .collect(Collectors.toList());
+//
+//    }
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-
-        return user.getRoles().stream().map(role -> new SimpleGrantedAuthority("ROLE_" + role))
-                .collect(Collectors.toList());
-
+        return null;
     }
 
     @Override
