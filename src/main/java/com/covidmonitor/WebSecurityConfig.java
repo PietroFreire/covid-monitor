@@ -18,7 +18,7 @@ import javax.sql.DataSource;
 
 @Configuration
 @EnableWebSecurity
-//@EnableGlobalMethodSecurity(prePostEnabled = true)
+@EnableGlobalMethodSecurity(prePostEnabled = true)
 class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
@@ -26,39 +26,39 @@ class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     private UserDetailsService userDatailsService;
 
-//    @Override
-//    protected void configure(AuthenticationManagerBuilder auth) throws Exception{
-//        auth.userDetailsService(userDatailsService).passwordEncoder(encodePwd());
-//    }
-//
-//    @Override
-//    protected void configure(HttpSecurity http) throws Exception {
-//        http.csrf().disable();
-//
-//        http
-//                .authorizeRequests().antMatchers("/rest/**").authenticated().anyRequest().permitAll().and()
-//                .authorizeRequests().antMatchers("/admin/**").authenticated().anyRequest().hasAnyRole("ADMIN").and()
-//                .formLogin(form -> form
-//                        .loginPage("/login")
-//                        .defaultSuccessUrl("/home", true).permitAll()
-//                )
-//                .logout(logout -> logout.logoutUrl("/login"))
-//        ;
-//    }
+    @Override
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception{
+        auth.userDetailsService(userDatailsService).passwordEncoder(encodePwd());
+    }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+        http.csrf().disable();
+
         http
-                .authorizeRequests()
-                .anyRequest().authenticated()
-                .and()
+                .authorizeRequests().antMatchers("/rest/**").authenticated().anyRequest().permitAll().and()
+                .authorizeRequests().antMatchers("/admin/**").authenticated().anyRequest().hasAnyRole("ADMIN").and()
                 .formLogin(form -> form
                         .loginPage("/login")
-                        .defaultSuccessUrl("/home", true)
-                        .permitAll()
-                ).logout(logout -> logout.logoutUrl("/logout")
-                ).csrf().disable();
+                        .defaultSuccessUrl("/home", true).permitAll()
+                )
+                .logout(logout -> logout.logoutUrl("/login"))
+        ;
     }
+
+//    @Override
+//    protected void configure(HttpSecurity http) throws Exception {
+//        http
+//                .authorizeRequests()
+//                .anyRequest().authenticated()
+//                .and()
+//                .formLogin(form -> form
+//                        .loginPage("/login")
+//                        .defaultSuccessUrl("/home", true)
+//                        .permitAll()
+//                ).logout(logout -> logout.logoutUrl("/logout")
+//                ).csrf().disable();
+//    }
 
     @Bean
     @Override
