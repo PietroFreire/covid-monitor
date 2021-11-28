@@ -319,7 +319,7 @@
             var p = funcionarios[i];
             linhasTabela +=
                 `<tr> ` +
-                `<td><a id="tdId" href="javascript:void(0)" onclick="selecionarFuncionario('${p.idMembro}', '${p.num_funcional}', '${p.nome}', '${p.senha}', '${p.data_nascimento}', '${p.cidade}', '${p.estado_saude}', '${p.setor})">${p.idMembro}</a></td>`
+                `<td><a id="tdId" href="javascript:void(0)" onclick="selecionarFuncionario('${p.idMembro}', '${p.num_funcional}', '${p.nome}', '${p.senha}', '${p.data_nascimento}', '${p.cidade}', '${p.estado_saude}', '${p.setor}')" >${p.idMembro}</a></td>`
                 + ` <td>${p.nome}</td> <td>${p.num_funcional}</td> <td>${p.senha}</td> <td>${p.data_nascimento}</td> <td>${p.cidade}</td> <td>${p.estado_saude}</td> <td>${p.setor}</td> </tr> \n`;
         }
         corpoTabela.innerHTML = linhasTabela;
