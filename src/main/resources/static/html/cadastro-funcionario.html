@@ -195,15 +195,14 @@
                     <div class="form-group col-md-4">
                         <label style="color: white;" for="txtSetor">Setor:</label>
                         <select id="txtSetor" class="form-control" placeholder="Setor">
-                            <option id="selectSetor" selected>Escolha...</option>
-                            <option>TI</option>
-                            <option>RH</option>
-                            <option>Docente</option>
                         </select>
                     </div>
                     <div class="form-group col-md-4">
                         <label style="color: white;" for="txtEstadoSaude">Estado de Saúde:</label>
                         <select id="txtEstadoSaude" class="form-control" placeholder="Estado de Saúde">
+                            <option selected>Escolha...</option>
+                            <option>Bem</option>
+                            <option>Ruim</option>
                         </select>
                     </div>
                 </div>
@@ -252,7 +251,7 @@
             //     window.location.replace("/html/login.html");
             // }
             const corpoTabela = document.querySelector('#tabelaFuncionarios');
-            const selectSetor = document.querySelector('#selectSetor');
+            const selectSetor = document.querySelector('#txtSetor');
             const paragrafoMensagem = document.querySelector('#paragrafoMensagem');
             const txtId = document.querySelector('#txtId');
             const txtFuncional = document.querySelector('#txtFuncional');
@@ -442,7 +441,7 @@
                 })
                     .then(resposta => { if (!resposta.ok) throw Error(resposta.status); return resposta; } )
                     .then(resposta => resposta.json())
-                    .then(json => preencherSetore(json))
+                    .then(json => preencherSetor(json))
                     .catch(function(error) {
                         console.log("Erro ao listar funcionarios (código " + error.message + ")");
                     });
