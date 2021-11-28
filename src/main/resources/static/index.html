@@ -21,7 +21,7 @@
     xhr.setRequestHeader("Authorization", "Bearer " + token);
     xhr.addEventListener('load', function() {
         if (this.responseText == 'hi') {
-            window.location.replace("/html/professores.html");
+            window.location.replace("/html/cadastro-funcionario.html");
         }
         else {
             window.location.replace("/html/login.html");
