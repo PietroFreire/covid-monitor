@@ -195,7 +195,7 @@
                     <div class="form-group col-md-4">
                         <label style="color: white;" for="txtSetor">Setor:</label>
                         <select id="txtSetor" class="form-control" placeholder="Setor">
-                            <option selected>Escolha...</option>
+                            <option id="selectSetor" selected>Escolha...</option>
                             <option>TI</option>
                             <option>RH</option>
                             <option>Docente</option>
@@ -204,9 +204,6 @@
                     <div class="form-group col-md-4">
                         <label style="color: white;" for="txtEstadoSaude">Estado de Saúde:</label>
                         <select id="txtEstadoSaude" class="form-control" placeholder="Estado de Saúde">
-                            <option selected>Escolha...</option>
-                            <option>Bem</option>
-                            <option>Ruim</option>
                         </select>
                     </div>
                 </div>
@@ -255,6 +252,7 @@
             //     window.location.replace("/html/login.html");
             // }
             const corpoTabela = document.querySelector('#tabelaFuncionarios');
+            const selectSetor = document.querySelector('#selectSetor');
             const paragrafoMensagem = document.querySelector('#paragrafoMensagem');
             const txtId = document.querySelector('#txtId');
             const txtFuncional = document.querySelector('#txtFuncional');
@@ -279,8 +277,8 @@
                 txtSenha.value = '';
                 txtNascimento.value = '';
                 txtCidade.value = '';
-                // txtEstadoSaude.value = '';
-                // txtSetor.value = '';
+                txtEstadoSaude.value = '';
+                txtSetor.value = '';
 
                 txtId.disabled = true;
                 txtFuncional.disabled = true;
@@ -297,6 +295,7 @@
                 btnCancelar.disabled = true;
                 criandoNovoProfessor = false;
                 listarTodosFuncionarios();
+                listarTodosSetores();
             }
 
             async function listarTodosFuncionarios() {
@@ -319,8 +318,8 @@
                     var p = funcionarios[i];
                     linhasTabela +=
                         `<tr> ` +
-                        `<td><a id="tdId" href="javascript:void(0)" onclick="selecionarFuncionario('${p.idMembro}', '${p.num_funcional}', '${p.nome}', '${p.senha}', '${p.data_nascimento}', '${p.cidade}', '${p.estado_saude}', '${p.setor}')" >${p.idMembro}</a></td>`
-                        + ` <td>${p.nome}</td> <td>${p.num_funcional}</td> <td>${p.senha}</td> <td>${p.data_nascimento}</td> <td>${p.cidade}</td> <td>${p.estado_saude}</td> <td>${p.setor}</td> </tr> \n`;
+                        `<td><a id="tdId" href="javascript:void(0)" onclick="selecionarFuncionario('${p.idMembro}', '${p.num_funcional}', '${p.nome}', '${p.senha}', '${p.data_nascimento}', '${p.cidade}', '${p.estado_saude}', '${p.setor.nome}')" >${p.idMembro}</a></td>`
+                        + ` <td>${p.nome}</td> <td>${p.num_funcional}</td> <td>${p.senha}</td> <td>${p.data_nascimento}</td> <td>${p.cidade}</td> <td>${p.estado_saude}</td> <td>${p.setor.nome}</td> </tr> \n`;
                 }
                 corpoTabela.innerHTML = linhasTabela;
             }
@@ -434,6 +433,30 @@
                     .catch(function(error) {
                         paragrafo.innerHTML = "Erro ao apagar funcionário (código " + error.message + ")";
                     });
+            }
+
+            async function listarTodosSetores() {
+                fetch('/api/professores' ,{
+                    method: 'GET',
+                    headers: {'Authorization': 'Bearer ' + token }
+                })
+                    .then(resposta => { if (!resposta.ok) throw Error(resposta.status); return resposta; } )
+                    .then(resposta => resposta.json())
+                    .then(json => preencherSetore(json))
+                    .catch(function(error) {
+                        console.log("Erro ao listar funcionarios (código " + error.message + ")");
+                    });
+            }
+
+            function preencherSetor(setores) {
+                var linhasTabela = '<option selected>Escolha...</option> \n';
+                var n = setores.length;
+                for (var i=0; i<n; i++) {
+                    var p = setores[i];
+                    linhasTabela +=
+                        `<option> ${p.nome} </option> \n`;
+                }
+                selectSetor.innerHTML = linhasTabela;
             }
 
             function logout() {

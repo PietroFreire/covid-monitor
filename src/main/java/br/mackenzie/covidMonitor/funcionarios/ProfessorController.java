@@ -3,6 +3,7 @@ package br.mackenzie.covidMonitor.funcionarios;
 import java.util.Optional;
 
 import br.mackenzie.covidMonitor.model.Funcionario;
+import br.mackenzie.covidMonitor.repository.FuncionarioRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -19,35 +20,32 @@ import org.springframework.web.server.ResponseStatusException;
 class ProfessorController {
 
 	@Autowired
-	private ProfessorRepo professorRepo;
-
-	@Autowired
-	private br.mackenzie.covidMonitor.repository.FuncionarioRepo funcionarioRepo;
+	private FuncionarioRepo funcionarioRepo;
 
 	public ProfessorController() {
 
 	}
 
 	@GetMapping("/api/professores")
-	Iterable<Funcionario> getfuncionarios(@RequestParam Optional<Long> faculdadeId) {
+	Iterable<Funcionario> getFuncionarios(@RequestParam Optional<Long> faculdadeId) {
 
 		return funcionarioRepo.findAll();
 
 	}
 
 	@GetMapping("/api/professores/{id}")
-	Optional<Funcionario> getProfessor(@PathVariable long id) {
+	Optional<Funcionario> getFuncionario(@PathVariable long id) {
 		return funcionarioRepo.findById(id);
 	}
 
 	@PostMapping("/api/professores")
-	Funcionario createProfessor(@RequestBody Funcionario p) {
-		Funcionario createdProf = funcionarioRepo.save(p);
-		return createdProf;
+	Funcionario createFuncionario(@RequestBody Funcionario p) {
+		Funcionario createdFunc = funcionarioRepo.save(p);
+		return createdFunc;
 	}
 
 	@PutMapping("/api/professores/{professorId}")
-	Optional<Funcionario> updateProfessor(@RequestBody Funcionario funcionarioRequest, @PathVariable long funcionarioId) {
+	Optional<Funcionario> updateFuncionario(@RequestBody Funcionario funcionarioRequest, @PathVariable long funcionarioId) {
 		Optional<Funcionario> opt = funcionarioRepo.findById(funcionarioId);
 		if (opt.isPresent()) {
 			if (funcionarioRequest.getIdMembro() == funcionarioId) {
@@ -60,7 +58,7 @@ class ProfessorController {
 	}
 
 	@DeleteMapping(value = "/api/professores/{id}")
-	void deleteProfessor(@PathVariable long id) {
+	void deleteFuncionario(@PathVariable long id) {
 		funcionarioRepo.deleteById(id);
 	}
 }

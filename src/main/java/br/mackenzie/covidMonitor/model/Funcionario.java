@@ -1,6 +1,8 @@
 package br.mackenzie.covidMonitor.model;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.ManyToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 
 @Entity
@@ -9,12 +11,13 @@ public class Funcionario extends Membro {
 
     private String num_funcional;
 
-    //    @ManyToOne(fetch = FetchType.LAZY)
-    private String setor;
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Setor setor;
 
-    public Funcionario(String nome, String senha, String data_nascimento, String cidade, String estado_saude, String num_funcional, String setor){
+    public Funcionario(String nome, String senha, String data_nascimento, String cidade, String estado_saude, String num_funcional, Setor setor){
         this.num_funcional = num_funcional;
         this.nome = nome;
+        this.username = num_funcional;
         this.senha = senha;
         this.data_nascimento = data_nascimento;
         this.cidade = cidade;
@@ -34,11 +37,11 @@ public class Funcionario extends Membro {
         this.num_funcional = num_funcional;
     }
 
-    public String getSetor() {
+    public Setor getSetor() {
         return setor;
     }
 
-    public void setSetor(String setor) {
+    public void setSetor(Setor setor) {
         this.setor = setor;
     }
 }

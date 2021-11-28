@@ -12,6 +12,7 @@ public class Aluno extends Membro{
     public Aluno(String nome, String senha, String data_nascimento, String cidade, String estado_saude, String num_matricula){
         this.num_matricula = num_matricula;
         this.nome = nome;
+        this.username = num_matricula;
         this.senha = senha;
         this.data_nascimento = data_nascimento;
         this.cidade = cidade;
