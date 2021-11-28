@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Login</title>
+        <meta charset="UTF-8">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" href="../html/style/style.css">
+        <link rel="stylesheet" href="../html/style/login.css">
+        <script src="/js/jwt-vanilla.js"></script>
+    </head>
+<body>
+
+  <div id="container-box">
+      <div id="title">
+          <i class="material-icons lock">lock</i> Login
+      </div>
+
+      <form>
+          <div class="input">
+              <div class="input-addon">
+                  <i class="material-icons">face</i>
+              </div>
+              <input id="username" placeholder="Identificação" type="text" required autocomplete="off">
+          </div>
+
+          <div class="input">
+              <div class="input-addon">
+                  <i class="material-icons">vpn_key</i>
+              </div>
+              <input id="password" placeholder="Senha" type="password" required autocomplete="off">
+          </div>
+          <input onclick="getToken()" type="button" value="Entrar"/>
+      </form>
+  </div>
+
+  <footer>
+      <p><span style="color: purple">©Copyright</span> - Covid-Monitor 2020 | Desenvolvido com 💜 por Amanda, Gustavo, Israel e Gabriel</p>
+  </footer>
+
+</body>
+</html>

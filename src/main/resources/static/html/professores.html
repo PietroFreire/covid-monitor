@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title>Professores</title>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="https://unpkg.com/sakura.css/css/sakura.css" type="text/css">
+    </head>
+    
+    <body>
+        <h1>Gerenciamento de Professores</h1>
+        
+        <table>
+            <tr> <td>ID:</td> <td><input type="text" id="txtId"></td> </tr>
+            <tr> <td>Numero Funcional:</td> <td><input type="text" id="txtFuncional"></td> </tr>
+            <tr> <td>Nome:</td> <td><input type="text" id="txtNome"></td> </tr>
+            <tr> <td>Senha:</td> <td><input type="text" id="txtSenha"></td> </tr>
+            <tr> <td>Data Nascimento:</td> <td><input type="date" id="txtNascimento"></td> </tr>
+            <tr> <td>Cidade:</td> <td><input type="text" id="txtCidade"></td> </tr>
+            <tr> <td>Estado Saude:</td> <td><input type="text" id="txtEstadoSaude"></td> </tr>
+            <tr> <td>Setor:</td> <td><input type="text" id="txtSetor"></td> </tr>
+            <tr><td></td><td>
+                <input type="button" value="Novo" onclick="novoProfessor()" id="btnNovo">
+                <input type="button" value="Salvar" onclick="salvarProfessor()" id="btnSalvar">
+                <input type="button" value="Apagar" onclick="apagarProfessor()" id="btnApagar">
+                <input type="button" value="Cancelar" onclick="cancelarEdicao()" id="btnCancelar">
+                <input type="button" value="Logout" onclick="logout()" id="btnLogout">
+            </td></tr>             
+        </table>
+
+        <p style="font-weight:bold" id="paragrafoMensagem"></p>
+
+        <table>    
+            <tr> <th>ID</th> <th>Nome</th> <th>Matrícula</th> <th>Senha</th> <th>Data Nascimento</th>  <th>Cidade</th>  <th>Estado Saude</th> <th>Setor</th></tr>
+                                           
+            <tbody id="corpoTabelaProfessores"> </tbody>
+        </table>
+        
+        
+        <script>
+        
+var token = localStorage.getItem('token');
+if (!token) {
+	window.location.replace("/html/login.html");
+}
+const corpoTabela = document.querySelector('#corpoTabelaProfessores');
+const paragrafoMensagem = document.querySelector('#paragrafoMensagem');
+const txtId = document.querySelector('#txtId');
+const txtFuncional = document.querySelector('#txtFuncional');
+const txtNome = document.querySelector('#txtNome');
+const txtSenha = document.querySelector('#txtSenha');
+const txtNascimento = document.querySelector('#txtNascimento');
+const txtCidade = document.querySelector('#txtCidade');
+const txtEstadoSaude = document.querySelector('#txtEstadoSaude');
+const txtSetor = document.querySelector('#txtSetor');
+const btnNovo = document.querySelector('#btnNovo');
+const btnSalvar = document.querySelector('#btnSalvar');
+const btnApagar = document.querySelector('#btnApagar');
+const btnCancelar = document.querySelector('#btnCancelar');
+var criandoNovoProfessor = false;
+inicializar();
+
+function inicializar() {
+    paragrafoMensagem.innerHTML =  'Pressione o botão Novo ou selecione um professor da lista:';
+    txtId.value = '';
+    txtFuncional.value = '';
+    txtNome.value = '';
+    txtSenha.value = '';
+    txtNascimento.value = '';
+    txtCidade.value = '';
+    txtEstadoSaude.value = '';
+    txtSetor.value = '';
+
+    txtId.disabled = true;
+    txtFuncional.disabled = true;
+    txtNome.disabled = true;
+    txtSenha.disabled = true;
+    txtNascimento.disabled = true;
+    txtNome.disabled = true;
+    txtEstadoSaude.disabled = true;
+    txtSetor.disabled = true;
+
+    btnNovo.disabled = false;
+    btnSalvar.disabled = true;
+    btnApagar.disabled = true;
+    btnCancelar.disabled = true;
+    criandoNovoProfessor = false;
+    listarTodosProfessores();
+}
+
+async function listarTodosProfessores() {
+	fetch('/api/professores' ,{
+        method: 'GET',
+        headers: {'Authorization': 'Bearer ' + token }
+    })
+    .then(resposta => { if (!resposta.ok) throw Error(resposta.status); return resposta; } )
+    .then(resposta => resposta.json())
+    .then(json => preencherTabela(json))
+    .catch(function(error) {
+        console.log("Erro ao listar professores (código " + error.message + ")");
+    });
+}
+
+function preencherTabela(professores) {
+	var linhasTabela = '';
+	var n = professores.length;
+	for (var i=0; i<n; i++) {
+		var p = professores[i];
+		linhasTabela +=
+			`<tr> ` +
+            `<td><a href="javascript:void(0)" onclick="selecionarProfessor('${p.idMembro}', '${p.num_funcional}', '${p.nome}', '${p.senha}', '${p.data_nascimento}', '${p.cidade}', '${p.estado_saude}', '${p.setor})">${p.idMembro}</a></td>`
+             + ` <td>${p.nome}</td> <td>${p.num_funcional}</td> <td>${p.senha}</td> <td>${p.data_nascimento}</td> <td>${p.cidade}</td> <td>${p.estado_saude}</td> <td>${p.setor}</td> </tr> \n`;
+	}
+	corpoTabela.innerHTML = linhasTabela;
+}
+
+function novoProfessor() {
+    paragrafoMensagem.innerHTML = 'Preencha os dados do novo professor...';
+    txtId.disable = true;
+    txtFuncional.disabled = false;
+    txtNome.disabled = false;
+    txtSenha.disabled = false;
+    txtNascimento.disabled = false;
+    txtNome.disabled = false;
+    txtEstadoSaude.disabled = false;
+    txtSetor.disabled = false;
+    btnNovo.disabled = true;
+    btnSalvar.disabled = false;
+    btnApagar.disabled = true;
+    btnCancelar.disabled = false;
+    criandoNovoProfessor = true;
+}
+
+async function salvarProfessor() {
+    if (criandoNovoProfessor) {
+        fetch('/api/professores', {
+            method: 'POST',
+            body: JSON.stringify({
+                'idMembro': txtId.value,
+                'num_funcional': txtFuncional.value,
+                'nome': txtNome.value,
+                'senha': txtSenha.value,
+                'data_nascimento': txtNascimento.value,
+                'cidade': txtCidade.value,
+                'estado_saude': txtEstadoSaude.value,
+                'setor': txtSetor.value
+            }),
+            headers: {
+            	'Content-type': 'application/json',
+            	'Authorization': 'Bearer ' + token
+            }
+        })
+        .then(resposta => { if (!resposta.ok) throw Error(resposta.status); return resposta; } )
+        .then(resposta => resposta.json())
+        .then(json => inicializar())
+        .catch(function(error) {
+            paragrafo.innerHTML = "Erro ao criar professor (código " + error.message + ")";
+        });
+    }
+    else {
+        fetch('/api/professores/' + txtId.value, {
+            method: 'PUT',
+            body: JSON.stringify({
+                'idMembro': txtId.value,
+                'num_funcional': txtFuncional.value,
+                'nome': txtNome.value,
+                'senha': txtSenha.value,
+                'data_nascimento': txtNascimento.value,
+                'cidade': txtCidade.value,
+                'estado_saude': txtEstadoSaude.value,
+                'setor': txtSetor.value
+            }),
+            headers: {
+            	'Content-type': 'application/json',
+            	'Authorization': 'Bearer ' + token
+            }
+        })
+        .then(resposta => { if (!resposta.ok) throw Error(resposta.status); return resposta; } )
+        .then(resposta => resposta.json())
+        .then(json => inicializar())
+        .catch(function(error) {
+            paragrafo.innerHTML = "Erro ao alterar professor (código " + error.message + ")";
+        });
+    }
+}
+
+function cancelarEdicao() {
+	inicializar();
+}
+
+function selecionarProfessor(id, funcional, nome, senha, nascimento, cidade, saude, setor) {
+    paragrafoMensagem.innerHTML = 'Altere e salve os dados do professor, ou então apague o registro do professor.'
+    txtId.value = id;
+    txtFuncional.value = funcional;
+    txtNome.value = nome;
+    txtSenha.value = senha;
+    txtNascimento.value = nascimento;
+    txtCidade.value = cidade;
+    txtEstadoSaude.value = saude;
+    txtSetor.value = setor;
+
+    txtId.disabled = true;
+    txtFuncional.disabled = false;
+    txtNome.disabled = false;
+    txtSenha.disabled = false;
+    txtNascimento.disabled = false;
+    txtCidade.disabled = false;
+    txtEstadoSaude.disabled = false;
+    txtSetor.disabled = false;
+    btnNovo.disabled = true;
+    btnSalvar.disabled = false;
+    btnApagar.disabled = false;
+    btnCancelar.disabled = false;
+}
+
+async function apagarProfessor() {
+	fetch('/api/professores/' + txtId.value, {
+        method: 'DELETE',
+        headers: {'Authorization': 'Bearer ' + token }
+    })
+    .then(resposta => { if (!resposta.ok) throw Error(resposta.status); return resposta; } )
+    .then(resposta => inicializar())
+    .catch(function(error) {
+        paragrafo.innerHTML = "Erro ao apagar professor (código " + error.message + ")";
+    });
+}
+
+function logout() {
+	localStorage.removeItem('token');
+	window.location.replace("/html/login.html");
+}
+
+        </script>
+	</body>
+</html>	        
