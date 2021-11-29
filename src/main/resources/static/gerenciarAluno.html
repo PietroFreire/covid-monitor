@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Gerenciamento de Alunos</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+  <style>
+    :root {
+      --textColorInput: #949494;
+      --backgroundColor: black;
+      --backgroundColorLogin: #1D1F20;
+      --backgroundColorLoginTitle: #1A1C1D;
+      --backgroundColorInput: #373b3d;
+      --backgroundColorButton: purple;
+    }
+
+    *{
+      margin: 0px;
+      padding: 0px;
+      box-sizing: border-box;
+      text-decoration: none;
+    }
+
+    html, body{
+      height: 100%;
+    }
+
+    html{
+      scroll-behavior: smooth;
+    }
+
+    body{
+      overflow-x: hidden;
+      background-color: var(--backgroundColor);
+      font-family: 'Roboto', sans-serif;
+    }
+
+    #form{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin-top: 8%;
+    }
+
+    form{
+      border-radius: 0.35em;
+      box-shadow: 0 3px 10px 0 rgba(255, 255, 255, 0.2);
+      width: 40%;
+      background-color: var(--backgroundColorLogin);
+      padding: 20px;
+
+    }
+
+    #table-button{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    input[type=text], input[type=email], input[type=password], input[type=date], #txtTipo{
+      background-color: var(--backgroundColorInput);
+      border: 1px solid var(--backgroundColorInput);
+    }
+
+    input[type=text]:focus, input[type=email]:focus, input[type=password]:focus, input[type=date]:focus, #txtSetor:focus, #txtTipo:focus {
+      border: 1px solid var(--backgroundColorInput);
+    }
+
+    input[type=button], input[type=button]:hover {
+      padding: 6px 25px;
+      background: var(--backgroundColorButton);
+      color: #C1C3C6;
+      font-weight: bold;
+      border: 0 none;
+      cursor: pointer;
+      border-radius: 3px;
+      margin-top: 15px;
+
+    }
+
+    input:hover, input[type=button]:hover{
+      color: white;
+      transition: color 1s;
+    }
+
+    input[type=button]:disabled{
+      background: gray;
+    }
+
+    #txtTipo:disabled{
+      background-color: white;
+    }
+
+    #form-func-container{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin-top: 2%;
+    }
+
+    #form-func{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border-radius: 0.35em;
+      box-shadow: 0 3px 10px 0 rgba(255, 255, 255, 0.2);
+      background-color: var(--backgroundColorLogin);
+      padding: 20px;
+      color: white;
+      width: 50%;
+    }
+
+    table{
+      text-align: center;
+    }
+
+    th{
+      border-left: 25px solid transparent;
+      background-clip: padding-box;
+    }
+
+    td{
+      border-left: 25px solid transparent;
+      background-clip: padding-box;
+      color: var(--backgroundColorInput);
+    }
+
+    footer{
+      margin-top: 25px;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      font-size: 14px;
+      color: white;
+      text-align: center;
+      background-color: rgb(8,8,8);
+      padding: 15px
+    }
+  </style>
+
+</head>
+<body>
+<div class="pos-f-t">
+  <div class="pos-f-t">
+    <div class="collapse" id="navbarToggleExternalContent">
+      <div style="background-color: #373b3d;" class="d-flex justify-content-center">
+        <div class="m-10">
+          <a href="gerenciarFuncionario.html">Cadastro de Funcionários</a>
+        </div>
+        <div class="m-10">
+          <a href="gerenciarAluno.html">Cadastro de Alunos</a>
+        </div>
+        <div class="m-10">
+          <a href="sintoma.html">Cadastro de Sintomas</a>
+        </div>
+        <div class="m-10">
+          <a href="relatorios.html">Relatórios</a>
+        </div>
+        <div class="m-10">
+          <a href="index.html">Sair</a>
+        </div>
+      </div>
+    </div>
+    <nav style="background-color: #373b3d;" class="navbar navbar-dark d-flex">
+      <h3 style="color: white;">Covid-Monitor</h3>
+      <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </nav>
+  </div>
+</div>
+<div id="form">
+  <form>
+    <div style="text-align: center; color: white;">
+      <h3>Gerenciamento de Alunos</h3>
+      <p style="font-weight:bold; color:purple;" id="paragrafoMensagem"></p>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <input type="text" class="form-control" id="txtId" placeholder="ID">
+      </div>
+      <div class="form-group col-md-6">
+        <input type="text" class="form-control" id="txtNome" placeholder="Nome">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <input type="text" class="form-control" id="txtUsername" placeholder="Número Funcional">
+      </div>
+      <div class="form-group col-md-6">
+        <input type="text" class="form-control" id="txtSenha" placeholder="Senha">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-4">
+        <input type="text" class="form-control" id="txtSetor" placeholder="Setor">
+      </div>
+      <div class="form-group col-md-4">
+        <input type="text" class="form-control" id="txtEstado" placeholder="Estado de Nascimento">
+      </div>
+      <div class="form-group col-md-4">
+        <input type="text" class="form-control" id="txtCidade" placeholder="Cidade de Nascimento">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label style="color: white;" for="txtNascimento">Data de Nascimento:</label>
+        <input type="date" class="form-control" id="txtNascimento" placeholder="Data de Nascimento">
+      </div>
+      <div class="form-group col-md-6">
+        <label style="color: white;" for="txtTipo">Tipo</label>
+        <select class="form-control" id="txtTipo">
+          <option value="1">Funcionario</option>
+          <option value="2">Aluno</option>
+          <option value="3">Admin</option>
+        </select>
+      </div>
+    </div>
+    <div id="table-button">
+      <input type="button" value="Novo" onclick="novoFuncionario()" id="btnNovo">
+      <input type="button" value="Salvar" onclick="salvarFuncionario()" id="btnSalvar">
+      <input type="button" value="Apagar" onclick="apagarFuncionario()" id="btnApagar">
+      <input type="button" value="Cancelar" onclick="cancelarEdicao()" id="btnCancelar">
+    </div>
+  </form>
+</div>
+
+<div id="form-func-container">
+  <div id="form-func">
+    <div style="text-align: center; color: white;">
+      <h3>Alunos Cadastrados </h3>
+    </div>
+    <table>
+      <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>Numero Funcional</th>
+        <th>Senha</th>
+        <th>Data Nascimento</th>
+        <th>Cidade</th>
+        <th>Estado</th>
+        <th>Tipo</th>
+        <th>Setor</th>
+      </tr>
+
+      <tbody id="corpoTabelaUsuario">
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<footer>
+  <p><span style="color: purple">©Copyright</span> - Covid-Monitor 2020 | Desenvolvido com 💜 por Amanda, Gustavo, Israel e Gabriel</p>
+</footer>
+
+<script>
+  const corpoTabela = document.querySelector('#corpoTabelaUsuario');
+  const paragrafoMensagem = document.querySelector('#paragrafoMensagem');
+
+  const txtId = document.querySelector('#txtId');
+  const txtUsername = document.querySelector('#txtUsername');
+  const txtNome = document.querySelector('#txtNome');
+  const txtSenha = document.querySelector('#txtSenha');
+  const txtSetor = document.querySelector('#txtSetor');
+  const txtTipo = document.querySelector('#txtTipo');
+  const txtNascimento = document.querySelector('#txtNascimento');
+  const txtEstado = document.querySelector('#txtEstado');
+  const txtCidade = document.querySelector('#txtCidade');
+
+  const btnNovo = document.querySelector('#btnNovo');
+  const btnSalvar = document.querySelector('#btnSalvar');
+  const btnApagar = document.querySelector('#btnApagar');
+  const btnCancelar = document.querySelector('#btnCancelar');
+
+  var criandoNovoUsuario = false;
+
+  inicializar();
+
+  function inicializar() {
+    criandoNovoUsuario = false;
+    paragrafoMensagem.innerHTML = 'Pressione o botão "Novo" ou selecione um membro da lista:'
+
+
+    txtId.value = '';
+    txtUsername.value = '';
+    txtNome.value = '';
+    txtSenha.value = '';
+    txtSetor.value = '';
+    txtTipo.value = '';
+    txtNascimento.value = '';
+    txtEstado.value = '';
+    txtCidade.value = '';
+
+    txtId.disabled = true;
+    txtUsername.disabled = true;
+    txtNome.disabled = true;
+    txtSenha.disabled = true;
+    txtSetor.disabled = true;
+    txtTipo.disabled = true;
+    txtNascimento.disabled = true;
+    txtEstado.disabled = true;
+    txtCidade.disabled = true;
+
+    btnNovo.disabled = false;
+    btnSalvar.disabled = true;
+    btnApagar.disabled = true;
+    btnCancelar.disabled = true;
+
+    getFuncionarios();
+  }
+
+  async function getFuncionarios() {
+    const URL = `/api/funcionarios`;
+    fetch(URL)
+            .then(resposta => { if (!resposta.ok) throw Error(resposta.status); return resposta;})
+            .then(resposta => resposta.json())
+            .then(jsonResponse => preencherTabela(jsonResponse))
+            .catch(function(error) { paragrafoMensagem.innerHTML = "Erro ao listar membros (código " + error.message + ")";});
+  }
+
+  function preencherTabela( membros ) {
+    var linhasTabela = '';
+    var n = membros.length;
+    for (var i = 0; i < n; i++) {
+      var user = membros[i];
+      let userType = user.idRole;
+      if (userType === 1){
+        userType = 'Funcionario';
+      }else if (userType === 2 ){
+        userType = 'Aluno';
+      } else {
+        userType = 'Admin';
+      }
+      let data = new Date(user.data_nascimento);
+      linhasTabela +=
+              `<tr><td><a href="javascript:void(0)" onclick="selecionarFuncionario('${user.id}','${user.username}','${user.nome}','${user.setor}','${user.idRole}','${user.senha}','${user.data_nascimento}','${user.cidade}','${user.estado}')">`
+              + user.id +' </a></td>' +
+              '<td>' + user.nome   + '</td>' +
+              '<td>' + user.username   + '</td>' +
+              '<td>' + user.senha   + '</td>' +
+              '<td>' + user.data_nascimento   + '</td>' +
+              '<td>' + user.cidade   + '</td>' +
+              '<td>' + user.estado   + '</td>' +
+              '<td>' + user.setor   + '</td>' +
+              '<td>' + userType   + '</td>' +
+              '<td>' + '</td> </tr>';
+    }
+    corpoTabela.innerHTML = linhasTabela;
+  }
+
+  function selecionarFuncionario(id, matricula, nome, setor, tipo, senha, dataNasc, cidade, estado) {
+    criandoNovoUsuario = false;
+
+    paragrafoMensagem.innerHTML = 'Altere e salve os dados do membro, ou então apague o registro do membro.'
+    txtId.value = id;
+    txtUsername.value = matricula;
+    txtNome.value = nome;
+    txtSenha.value = senha;
+    txtSetor.value = setor;
+    txtTipo.value = tipo;
+    txtNascimento.value = dataNasc;
+    txtEstado.value = estado;
+    txtCidade.value = cidade;
+
+    txtId.disabled = true;
+    txtUsername.disabled = false;
+    txtNome.disabled = false;
+    txtSenha.disabled = false;
+    txtSetor.disabled = false;
+    txtTipo.disabled = false;
+    txtNascimento.disabled = false;
+    txtEstado.disabled = false;
+    txtCidade.disabled = false;
+
+    btnNovo.disabled = true;
+    btnSalvar.disabled = false;
+    btnApagar.disabled = false;
+    btnCancelar.disabled = false;
+  }
+
+  function novoFuncionario() {
+    paragrafoMensagem.innerHTML = 'Preencha os dados do novo membro...';
+    criandoNovoUsuario = true;
+
+    txtId.value = '';
+    txtUsername.value = '';
+    txtNome.value = '';
+    txtSenha.value = '';
+    txtSetor.value = '';
+    txtTipo.value = '';
+    txtNascimento.value = '';
+    txtEstado.value = '';
+    txtCidade.value = '';
+
+    txtId.disabled = true;
+    txtUsername.disabled = false;
+    txtNome.disabled = false;
+    txtSenha.disabled = true;
+    txtSetor.disabled = false;
+    txtTipo.disabled = false;
+    txtNascimento.disabled = false;
+    txtEstado.disabled = false;
+    txtCidade.disabled = false;
+
+    btnNovo.disabled = true;
+    btnSalvar.disabled = false;
+    btnApagar.disabled = true;
+    btnCancelar.disabled = false;
+  }
+
+  function salvarFuncionario() {
+    if (criandoNovoUsuario) {
+      createFuncionario();
+    }
+    else {
+      updateFuncionario();
+    }
+  }
+
+  async function createFuncionario() {
+    const URL = `/api/alunos`;
+    const dadosUsuario = {
+      'id': null,
+      'nome': txtNome.value,
+      'num_matricula': txtUsername.value,
+      'username': txtUsername.value,
+      'setor': txtSetor.value,
+      'idRole': txtTipo.value,
+      'senha': txtSenha.value,
+      'data_nascimento': txtNascimento.value,
+      'cidade': txtCidade.value,
+      'estado': txtEstado.value
+    };
+    const postRequest = {
+      method: 'POST',
+      body: JSON.stringify(dadosUsuario),
+      headers: { 'Content-type': 'application/json' }
+    };
+    fetch(URL, postRequest)
+            .then(resposta => { if (!resposta.ok) throw Error(resposta.status); return resposta; } )
+            .then(resposta => resposta.json())
+            .then(jsonResponse => inicializar())
+            .catch(function(error) { paragrafoMensagem.innerHTML = 'Erro ao criar novo membro (código ' + error.message + ')'; } );
+  }
+
+  async function updateFuncionario() {
+    const id = txtId.value;
+    const URL = `/api/alunos/${id}`;
+    const dadosUsuario = {
+      'id': txtId.value,
+      'nome': txtNome.value,
+      'num_matricula': txtUsername.value,
+      'username': txtUsername.value,
+      'setor': txtSetor.value,
+      'idRole': txtTipo.value,
+      'senha': txtSenha.value,
+      'data_nascimento': txtNascimento.value,
+      'cidade': txtCidade.value,
+      'estado': txtEstado.value
+    };
+    const putRequest = {
+      method: 'PUT',
+      body: JSON.stringify(dadosUsuario),
+      headers: { 'Content-type': 'application/json' }
+    };
+    fetch(URL, putRequest)
+            .then(resposta => { if (!resposta.ok) throw Error(resposta.status); return resposta; } )
+            .then(resposta => resposta.json())
+            .then(jsonResponse => inicializar())
+            .catch(function(error) { paragrafoMensagem.innerHTML = 'Erro ao alterar membro (código ' + error.message + ')'; } );
+  }
+
+  function cancelarEdicao() {
+    inicializar();
+  }
+
+  async function apagarFuncionario() {
+    const id = txtId.value;
+    const URL = `/api/alunos/${id}`;
+    const deleteRequest = {
+      method: 'DELETE'
+    };
+    fetch(URL, deleteRequest)
+            .then(resposta => { if (!resposta.ok) throw Error(resposta.status); return resposta; } )
+            .then(resposta => inicializar())
+            .catch(function(error) { paragrafoMensagem.innerHTML = 'Erro ao apagar membro (código ' + error.message + ')'; } );
+  }
+
+</script>
+
+</body>
+</html>
