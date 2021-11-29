@@ -75,7 +75,7 @@ public class EstadoSaudeController {
        );
     }	
     
-    @GetMapping("/api/estado-saude/usuario/{id}")
+    @GetMapping("/api/estado-saude/membro/{id}")
     public List<EstadoSaude> getEstadoSaudeUsuario(
                 @PathVariable long id, 
                 @RequestParam("start") Optional<String> start,
