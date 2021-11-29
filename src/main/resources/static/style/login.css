@@ -65,7 +65,7 @@ body{
 
 .input {
     margin: auto;
-    width: 250px;
+    width: 300px;
     border-radius: 4px;
     background-color: var(--backgroundColorInput);
     padding: 8px 0px;
