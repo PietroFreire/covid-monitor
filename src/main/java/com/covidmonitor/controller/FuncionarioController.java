@@ -13,7 +13,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.web.multipart.MultipartFile;
-import com.covidmonitor.LerCSV_Funcionario;
 
 @RestController
 public class FuncionarioController {
@@ -64,31 +63,6 @@ public class FuncionarioController {
         return (
             "{ \"success\": true, \"usuario_id\": "+ funcionario.getId() +", \"usuario_tipo_id\": "+ funcionario.getIdRole()+ " }"
         );
-    }
-
-    @PostMapping("/api/funcionarios/csv")
-    public ArrayList<Funcionario> createFuncionario(@RequestParam("file") MultipartFile file) {
-        try {
-            LerCSV_Funcionario csv = new LerCSV_Funcionario();
-            ArrayList<Funcionario> funcionarios =  csv.lerUsuario(file.getInputStream());
-            for (Funcionario u : funcionarios) {
-                Optional<Funcionario> optionUsu = funcionarioRepo.findByUsername(u.getUsername());
-                if(optionUsu.isPresent()){
-                    continue;
-                }
-                Optional<Role> optionTipoUsuario = roleRepo.findById(u.getIdRole());
-                if (!optionTipoUsuario.isPresent()) {
-                    continue;
-                }
-                Role l = optionTipoUsuario.get();
-                u.setRole(l);
-                u.setSenha(u.getUsername() + "");
-                funcionarioRepo.save(u);
-            }
-            return funcionarios;
-        } catch (IOException e) {
-            throw new RuntimeException("fail to store csv data: " + e.getMessage());
-        }
     }
 
     @PutMapping("/api/funcionarios/{id}")

@@ -2,7 +2,6 @@ package com.covidmonitor.controller;
 
 import java.io.IOException;
 
-import com.covidmonitor.LerCSV_Aluno;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -64,31 +63,6 @@ public class AlunoController {
         return (
                 "{ \"success\": true, \"usuario_id\": "+ aluno.getId() +", \"usuario_tipo_id\": "+ aluno.getIdRole()+ " }"
         );
-    }
-
-    @PostMapping("/api/alunos/csv")
-    public ArrayList<Aluno> createUsuario(@RequestParam("file") MultipartFile file) {
-        try {
-            LerCSV_Aluno csv = new LerCSV_Aluno();
-            ArrayList<Aluno> alunos =  csv.lerUsuario(file.getInputStream());
-            for (Aluno u : alunos) {
-                Optional<Aluno> optionUsu = alunoRepo.findByUsername(u.getUsername());
-                if(optionUsu.isPresent()){
-                    continue;
-                }
-                Optional<Role> optionTipoUsuario = roleRepo.findById(u.getIdRole());
-                if (!optionTipoUsuario.isPresent()) {
-                    continue;
-                }
-                Role l = optionTipoUsuario.get();
-                u.setRole(l);
-                u.setSenha(u.getUsername() + "");
-                alunoRepo.save(u);
-            }
-            return alunos;
-        } catch (IOException e) {
-            throw new RuntimeException("fail to store csv data: " + e.getMessage());
-        }
     }
 
     @PutMapping("/api/alunos/{id}")
