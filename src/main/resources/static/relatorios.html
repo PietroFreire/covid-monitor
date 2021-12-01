@@ -26,8 +26,14 @@
                 color: white;
             }
 
-            .link{
-                width: 250px;
+            a:hover{
+                color: purple;
+                text-decoration: none;
+            }
+
+            .linha-vertical {
+                height: auto;/*Altura da linha*/
+                border-left: 1px solid;/* Adiciona borda esquerda na div como ser fosse uma linha.*/
             }
         </style>
     </head>
@@ -37,24 +43,31 @@
     <div class="pos-f-t">
         <div class="pos-f-t">
             <div class="collapse" id="navbarToggleExternalContent">
-                <div style="background-color: #373b3d;" class="d-flex justify-content-center">
-                    <div class="link">
-                        <a href="gerenciarFuncionario.html">Cadastro de Funcionários</a>
-                    </div>
-                    <div class="link">
-                        <a href="gerenciarAluno.html">Cadastro de Alunos</a>
-                    </div>
-                    <div class="link">
-                        <a href="sintoma.html">Cadastro de Sintomas</a>
-                    </div>
-                    <div class="link">
-                        <a href="relatorios.html">Relatórios</a>
-                    </div>
-                    <div class="link">
-                        <a href="historico.html">Histórico</a>
-                    </div>
-                    <div class="link">
-                        <a href="index.html">Sair</a>
+                <div style="background-color: #373b3d;">
+                    <div class="row d-flex justify-content-center align-itens-center">
+                        <div class="col md-auto" style="text-align: center;">
+                            <a href="gerenciarFuncionario.html">Cadastro de Funcionários</a>
+                        </div>
+                        <div class="box linha-vertical"></div>
+                        <div class="col md-auto" style="text-align: center;">
+                            <a href="gerenciarAluno.html">Cadastro de Alunos</a>
+                        </div>
+                        <div class="box linha-vertical"></div>
+                        <div class="col md-auto" style="text-align: center;">
+                            <a href="sintoma.html">Cadastro de Sintomas</a>
+                        </div>
+                        <div class="box linha-vertical"></div>
+                        <div class="col md-auto" style="text-align: center;">
+                            <a href="relatorios.html">Relatórios</a>
+                        </div>
+                        <div class="box linha-vertical"></div>
+                        <div class="col md-auto" style="text-align: center;">
+                            <a href="historico.html">Histórico</a>
+                        </div>
+                        <div class="box linha-vertical"></div>
+                        <div class="col md-auto" style="text-align: center;">
+                            <a href="index.html">Sair</a>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -77,14 +77,30 @@
       color: white;
     }
 
-    .link{
-      width: 250px;
+    a:hover{
+      color: purple;
+      text-decoration: none;
+    }
+
+    .linha-vertical {
+      height: auto;/*Altura da linha*/
+      border-left: 1px solid;/* Adiciona borda esquerda na div como ser fosse uma linha.*/
     }
 
     .titulo{
       margin-top: 80px;
       padding-top: 10px;
     }
+
+    .btn-primary:hover{
+      background-color: purple;
+    }
+
+    .btn-primary{
+      width: 100px;
+      border-radius: 0.25em;
+    }
+
   </style>
 
 </head>
@@ -94,24 +110,31 @@
 <div class="pos-f-t">
   <div class="pos-f-t">
     <div class="collapse" id="navbarToggleExternalContent">
-      <div style="background-color: #373b3d;" class="d-flex justify-content-center">
-        <div class="link">
-          <a href="gerenciarFuncionario.html">Cadastro de Funcionários</a>
-        </div>
-        <div class="link">
-          <a href="gerenciarAluno.html">Cadastro de Alunos</a>
-        </div>
-        <div class="link">
-          <a href="sintoma.html">Cadastro de Sintomas</a>
-        </div>
-        <div class="link">
-          <a href="relatorios.html">Relatórios</a>
-        </div>
-        <div class="link">
-          <a href="historico.html">Histórico</a>
-        </div>
-        <div class="link">
-          <a href="index.html">Sair</a>
+      <div style="background-color: #373b3d;">
+        <div class="row d-flex justify-content-center align-itens-center">
+          <div class="col md-auto" style="text-align: center;">
+            <a href="gerenciarFuncionario.html">Cadastro de Funcionários</a>
+          </div>
+          <div class="box linha-vertical"></div>
+          <div class="col md-auto" style="text-align: center;">
+            <a href="gerenciarAluno.html">Cadastro de Alunos</a>
+          </div>
+          <div class="box linha-vertical"></div>
+          <div class="col md-auto" style="text-align: center;">
+            <a href="sintoma.html">Cadastro de Sintomas</a>
+          </div>
+          <div class="box linha-vertical"></div>
+          <div class="col md-auto" style="text-align: center;">
+            <a href="relatorios.html">Relatórios</a>
+          </div>
+          <div class="box linha-vertical"></div>
+          <div class="col md-auto" style="text-align: center;">
+            <a href="historico.html">Histórico</a>
+          </div>
+          <div class="box linha-vertical"></div>
+          <div class="col md-auto" style="text-align: center;">
+            <a href="index.html">Sair</a>
+          </div>
         </div>
       </div>
     </div>
@@ -141,7 +164,7 @@
         <label for="data-fim">Data Fim</label>
         <input name="data-fim" type="date" class="form-control mx-0" placeholder="Last name" id="data-fim">
       </div>
-      <div class="col-2 form-group">
+      <div class="col-3 form-group">
         <label class="d-block" for="filtrar-registros">&nbsp;</label>
         <button type="button" class="btn-primary mt-2" onclick="getMembro()" id="filtrar-registros">Filtrar</button>
       </div>
