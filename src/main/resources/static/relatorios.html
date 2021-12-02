@@ -150,7 +150,7 @@
             dataAux.push(dataIterator); // 
         }
 
-        let URL = `/api/estado-saude/usuario/${currentUser}`;
+        let URL = `/api/estado-saude/membro/${currentUser}`;
         if(dateInicio.value && !dateFim.value){
             URL += '?start='+dateInicio.value
         } else {
