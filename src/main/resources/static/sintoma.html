@@ -90,6 +90,10 @@
             flex-direction: row;
         }
 
+        #step-sintoma{
+            margin-top: 15px;
+        }
+
         #step-sintomas{
             display: none;
         }
@@ -210,7 +214,6 @@
 <script>
 
     const todos_sintomas = document.querySelector('#step_sintoma');
-    const step_sintomas = document.querySelector('#step-sintomas');
     getSintomas();
 
     async function getSintomas() {
@@ -224,6 +227,7 @@
 
     function stepSintoma(){
         document.getElementById("step-sintomas").style.display = "block";
+        document.getElementById("step-sintoma").style.display = "none";
     }
 
     function listarSintomas(sintomas){
