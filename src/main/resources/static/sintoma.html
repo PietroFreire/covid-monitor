@@ -187,7 +187,6 @@
         <h3><b>Gerenciamento de Sintoma</b></h3>
     </div>
     <div id="step_sintoma" class="row col-md-10 mb-5"></div>
-    <input type="button" style="margin-left: 10px;" class="btn btn-primary" value="Cadastrar Novo Sintoma" onclick="stepSintoma()" id="#btnSintoma">
     <div id="step-sintomas">
         <hr>
         <div>
@@ -229,7 +228,7 @@
     function stepSintoma(){
         document.getElementById("step-sintomas").style.display = "block";
         document.getElementById("step_sintoma").style.display = "none";
-        document.getElementById("btnSintoma").style.display = "none";
+        // document.getElementById("btnSintoma").style.display = "none";
     }
 
     function listarSintomas(sintomas){
@@ -245,6 +244,7 @@
                 `<label for="sintoma-${sint.id}">${(sint.nome)}</label>` +
                 `</div>`;
         }
+        step_sintoma += `<input type="button" style="margin-left: 10px;" class="btn btn-primary" value="Cadastrar Novo Sintoma" onclick="stepSintoma()" id="#btnSintoma">`;
         todos_sintomas.innerHTML = step_sintoma;
     }
 
