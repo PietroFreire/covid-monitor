@@ -175,33 +175,70 @@
 </div>
 
 
-<div id="container-box">
-    <div id="title">
-        <h3><b>Cadastro Novo Sintoma</b></h3>
-    </div>
-    <hr>
-    <div>
-        <p class="bold" id="paragrafoMensagem"></p>
-    </div>
-    <form id="form">
-        <div class="form-row">
-            <div class="form-group">
-                <label for="nome">Nome</label>
-                <input type="text" class="form-control" id="nome">
-            </div>
-        </div>
-        <div id="buttons">
-            <input type="button" class="btn btn-outline-secondary" value="Voltar" onclick="goBack()" id="#btnVoltar">
-            <input type="button" style="margin-left: 10px;" class="btn btn-primary" value="Salvar" onclick="criarSintoma()" id="#btnSalvar">
-        </div>
-    </form>
-</div>
 
+<div id="container-box">
+    <div id="step_sintoma" class="row col-md-10 mb-5"></div>
+    <input type="button" style="margin-left: 10px;" class="btn btn-primary" value="Cadastrar Novo Sintoma" onclick="stepSintoma()" id="#btnSintoma">
+    <div id="step-sintomas">
+        <div id="title">
+            <h3><b>Cadastro Novo Sintoma</b></h3>
+        </div>
+        <hr>
+        <div>
+            <p class="bold" id="paragrafoMensagem"></p>
+        </div>
+        <form id="form">
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="nome">Nome</label>
+                    <input type="text" class="form-control" id="nome">
+                </div>
+            </div>
+            <div id="buttons">
+                <input type="button" class="btn btn-outline-secondary" value="Voltar" onclick="goBack()" id="#btnVoltar">
+                <input type="button" style="margin-left: 10px;" class="btn btn-primary" value="Salvar" onclick="criarSintoma()" id="#btnSalvar">
+            </div>
+        </form>
+    </div>
+</div>
 <footer>
     <p><span style="color: purple">©Copyright</span> - Covid-Monitor 2020 | Desenvolvido com 💜 por Amanda, Gustavo, Israel e Gabriel</p>
 </footer>
 
 <script>
+
+    const todos_sintomas = document.querySelector('#step_sintoma');
+
+    getSintomas();
+
+    async function getSintomas() {
+        const URL = `/api/sintomas`;
+        fetch(URL)
+            .then(resposta => { if (!resposta.ok) throw Error(resposta.status); return resposta;})
+            .then(resposta => resposta.json())
+            .then(jsonResponse => listarSintomas(jsonResponse))
+            .catch(function(error) { todos_sintomas.innerHTML = "Erro ao listar sintomas (código " + error.message + ")";});
+    }
+
+    function stepSintoma(){
+
+    }
+
+    function listarSintomas(sintomas){
+        let step_sintoma = '';
+        let n = sintomas.length;
+        let sintomasArray = [];
+        for (let i = 0; i < n; i++) {
+            let sint = sintomas[i];
+            sintomasArray.push(sintomas[i]);
+            step_sintoma +=
+                `<div class="col-md-4 text-nowrap">` +
+                `<input id="sintoma-${sint.id}" type="checkbox" value="${sint.id}" class="check-sintoma">` +
+                `<label for="sintoma-${sint.id}">${(sint.nome)}</label>` +
+                `</div>`;
+        }
+        todos_sintomas.innerHTML = step_sintoma;
+    }
 
     const capitalize = (str) => {
         if(typeof str === 'string') {
@@ -238,6 +275,27 @@
                 paragrafoMensagem.innerHTML = `Erro ao criar sintoma. + ${error.message}`;
                 alert('Erro ao criar sintoma. Erro: ' + error.message);
             });
+    }
+
+    async function excluirSintoma(sint){
+        let confirmation = confirm('Tem certeza de que deseja excluir este sintoma?');
+        if (confirmation == true){
+            const URL = `/api/sintomas/${sint}`;
+            const postRequest = {
+                method: 'DELETE',
+            };
+            fetch(URL, postRequest)
+                .then(resposta => { if (!resposta.ok) throw Error(resposta.status); return resposta; } )
+                .then(resposta => resposta.json())
+                .then(goBack)
+                .catch(function(error) {
+                    paragrafoMensagem.innerHTML = `Erro ao excluir sintoma. + ${error.message}`;
+                    alert('Erro ao excluir sintoma. Erro: ' + error.message);
+                });
+        } else {
+            goBack();
+        }
+
     }
 </script>
 </body>

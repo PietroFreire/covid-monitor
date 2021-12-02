@@ -211,8 +211,8 @@
         <h3 style="margin-top: 15px">Como você está se sentindo hoje?</h3>
 
         <div id="buttons">
-            <input id="bb" type="button" onclick="selectState(1)" value="Bem">
-            <input id="bm" type="button" onclick="selectState(2)" value="Mal">
+            <input id="bb" type="button" onclick="divBem()" value="Bem">
+            <input id="bm" type="button" onclick="divMal()" value="Mal">
         </div>
         <div class="tracker-card centralize">
             <div id="box_bem" class="col-md-12 centralize flex-column hide">
@@ -221,7 +221,7 @@
                 </div>
                 <div>
                     <button type="button" class="btn btn-secondary" onclick="location.reload()">Cancelar</button>
-                    <button type="button" class="btn btn-primary" onclick="submitState(1)">Confirmar</button>
+                    <button type="button" class="btn btn-primary" onclick="registroBem()">Confirmar</button>
                 </div>
             </div>
             <div id="box_mal" class="col-md-6 centralize flex-column hide">
@@ -230,19 +230,19 @@
                 <button type="button" class="btn btn-secondary" onclick="location.reload()">Voltar</button>
             </div>
 
-            <div id="txtStep1" class="col-md-12 centralize flex-column hide">
+            <div id="div_bem" class="col-md-12 centralize flex-column hide">
                 <div class="mb-5">
                     <h2>Você está se sentindo: Ruim</h2>
                 </div>
 
-                <div id="sintomasList" class="row col-md-10 mb-5"></div>
+                <div id="step_sintoma" class="row col-md-10 mb-5"></div>
 
                 <div>
                     <button type="button" class="btn btn-secondary" onclick="location.reload()">Cancelar</button>
-                    <button type="button" class="btn btn-primary" onclick="submitState(2)">Confirmar</button>
+                    <button type="button" class="btn btn-primary" onclick="registroMal()">Confirmar</button>
                 </div>
             </div>
-            <div id="txtStep2" class="col-md-10 centralize flex-column hide">
+            <div id="div_mal" class="col-md-10 centralize flex-column hide">
                 <div class="mb-2 text-center">
                     <p>Registro foi cadastrado!</p>
                     <p>Caso os sintomas persistirem busque auxílio medico.</p>
@@ -260,9 +260,9 @@
 <script>
     const box_bem = document.getElementById('box_bem');
     const box_mal = document.getElementById('box_mal');
-    const txtStep1 = document.getElementById('txtStep1');
-    const txtStep2 = document.getElementById('txtStep2');
-    const listaSintomas = document.querySelector('#sintomasList');
+    const div_bem = document.getElementById('div_bem');
+    const div_mal = document.getElementById('div_mal');
+    const todos_sintomas = document.querySelector('#step_sintoma');
     const currentTime = document.querySelector('#currentTime');
     const username = document.querySelector('#username');
     username.innerText = localStorage.getItem('username');
@@ -275,102 +275,96 @@
             .then(resposta => { if (!resposta.ok) throw Error(resposta.status); return resposta;})
             .then(resposta => resposta.json())
             .then(jsonResponse => listarSintomas(jsonResponse))
-            .catch(function(error) { listaSintomas.innerHTML = "Erro ao listar sintomas (código " + error.message + ")";});
+            .catch(function(error) { todos_sintomas.innerHTML = "Erro ao listar sintomas (código " + error.message + ")";});
     }
 
     function listarSintomas(sintomas){
-        let sintomasList = '';
+        let step_sintoma = '';
         let n = sintomas.length;
         let sintomasArray = [];
         for (let i = 0; i < n; i++) {
             let sint = sintomas[i];
             sintomasArray.push(sintomas[i]);
-            sintomasList +=
+            step_sintoma +=
                 `<div class="col-md-4 text-nowrap">` +
                 `<input id="sintoma-${sint.id}" type="checkbox" value="${sint.id}" class="check-sintoma">` +
                 `<label for="sintoma-${sint.id}">${(sint.nome)}</label>` +
                 `</div>`;
         }
-        listaSintomas.innerHTML = sintomasList;
+        todos_sintomas.innerHTML = step_sintoma;
     }
 
-    function selectState(state){
+    function divBem(){
+        div_bem.classList.add('hide');
+        box_bem.classList.remove('hide');
 
-        if(state === 1){
-
-            box_bem.classList.remove('hide');
-
-        } else if (state === 2){
-
-            txtStep1.classList.remove('hide');
-        }
     }
 
-    function submitState(state){
+    function divMal(){
+        box_bem.classList.add('hide');
+        div_bem.classList.remove('hide');
+    }
+
+    function registroBem(){
         const currentUser = localStorage.getItem('userID');
-        if(state === 1){
-            let today = new Date();
+        let today = new Date();
 
-            fetch("/api/estado-saude", {
-                "method": "POST",
-                "headers": {
-                    "Content-Type": "application/json"
-                },
-                "body": JSON.stringify({
-                    "isBem": 1,
-                    "idUsuario": currentUser,
-                    "sintomas": []
-                })
+        fetch("/api/estado-saude", {
+            "method": "POST",
+            "headers": {
+                "Content-Type": "application/json"
+            },
+            "body": JSON.stringify({
+                "isBem": 1,
+                "idUsuario": currentUser,
+                "sintomas": []
             })
-                .then((response) => {
-                    response.json();
-                    box_bem.classList.add('hide');
-                    box_mal.classList.remove('hide');
-                })
-                .catch(error => {
-                    alertSwallFalha('Um erro inesperado aconteceu, por favor tente novamente');
-                });
-            currentTime.innerHTML = today;
-
-        } else if (state === 2){
-            const sintomas = [];
-            document.querySelectorAll('.check-sintoma:checked').forEach(function(s){
-                sintomas.push(parseInt(s.value));
+        })
+            .then((response) => {
+                response.json();
+                box_bem.classList.add('hide');
+                box_mal.classList.remove('hide');
+                document.getElementById('bb').disabled = true;
+                document.getElementById('bm').disabled = true;
+            })
+            .catch(error => {
+                alert('Erro no registro, tente novamente mais tarde');
             });
-            if(sintomas.length <= 0){
-                alertSwallFalha('Necessário informar ao menos um sintoma');
-                return false;
-            }
-
-            fetch("/api/estado-saude", {
-                "method": "POST",
-                "headers": {
-                    "Content-Type": "application/json"
-                },
-                "body": JSON.stringify({
-                    "isBem": 0,
-                    "idUsuario": currentUser,
-                    "sintomas": sintomas
-                })
-            })
-                .then((response) => {
-                    response.json();
-                    txtStep1.classList.add('hide');
-                    txtStep2.classList.remove('hide');
-                })
-                .catch(error => {
-                    alertSwallFalha('Um erro inesperado aconteceu, por favor tente novamente');
-                });
-        }
+        currentTime.innerHTML = today;
     }
 
-    function alertSwallFalha(text){
-        Swal.fire({
-            title: 'Ops!',
-            text: text,
-            icon: 'error',
-            confirmButtonText: 'Ok',
-            confirmButtonColor: '#d33'
+    function registroMal(){
+        const currentUser = localStorage.getItem('userID');
+        let today = new Date();
+        const sintomas = [];
+        document.querySelectorAll('.check-sintoma:checked').forEach(function(s){
+            sintomas.push(parseInt(s.value));
+        });
+        if(sintomas.length <= 0){
+            alert('Necessário informar ao menos um sintoma');
+            return false;
+        }
+
+        fetch("/api/estado-saude", {
+            "method": "POST",
+            "headers": {
+                "Content-Type": "application/json"
+            },
+            "body": JSON.stringify({
+                "isBem": 0,
+                "idUsuario": currentUser,
+                "sintomas": sintomas
+            })
         })
+            .then((response) => {
+                response.json();
+                div_bem.classList.add('hide');
+                div_mal.classList.remove('hide');
+                document.getElementById('bb').disabled = true;
+                document.getElementById('bm').disabled = true;
+            })
+            .catch(error => {
+                alert('Um erro inesperado aconteceu, por favor tente novamente');
+            });
     }
 </script>
