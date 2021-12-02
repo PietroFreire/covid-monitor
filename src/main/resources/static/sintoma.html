@@ -63,7 +63,7 @@
             top: 15%;
             margin: auto;
             width: 600px;
-            height: 450px;;
+            height: 600px;
             border-radius: 0.35em;
             box-shadow: 0 3px 10px 0 rgba(255, 255, 255, 0.2);
             text-align: center;
@@ -88,6 +88,10 @@
         #buttons{
             display: flex;
             flex-direction: row;
+        }
+
+        #step-sintomas{
+            display: none;
         }
 
         input[type=button] {
@@ -128,8 +132,8 @@
         }
 
         .linha-vertical {
-            height: auto;/*Altura da linha*/
-            border-left: 1px solid;/* Adiciona borda esquerda na div como ser fosse uma linha.*/
+            height: auto;
+            border-left: 1px solid;
         }
     </style>
 </head>
@@ -174,15 +178,13 @@
     </div>
 </div>
 
-
-
 <div id="container-box">
+    <div id="title">
+        <h3><b>Gerenciamento de Sintoma</b></h3>
+    </div>
     <div id="step_sintoma" class="row col-md-10 mb-5"></div>
     <input type="button" style="margin-left: 10px;" class="btn btn-primary" value="Cadastrar Novo Sintoma" onclick="stepSintoma()" id="#btnSintoma">
     <div id="step-sintomas">
-        <div id="title">
-            <h3><b>Cadastro Novo Sintoma</b></h3>
-        </div>
         <hr>
         <div>
             <p class="bold" id="paragrafoMensagem"></p>
@@ -208,7 +210,7 @@
 <script>
 
     const todos_sintomas = document.querySelector('#step_sintoma');
-
+    const step_sintomas = document.querySelector('#step-sintomas');
     getSintomas();
 
     async function getSintomas() {
@@ -221,7 +223,7 @@
     }
 
     function stepSintoma(){
-
+        document.getElementById("step-sintomas").style.display = "block";
     }
 
     function listarSintomas(sintomas){
