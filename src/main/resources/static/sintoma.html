@@ -244,7 +244,10 @@
                 `<label for="sintoma-${sint.id}">${(sint.nome)}</label>` +
                 `</div>`;
         }
-        step_sintoma += `<input type="button" style="margin-left: 10px;" class="btn btn-primary" value="Cadastrar Novo Sintoma" onclick="stepSintoma()" id="#btnSintoma">`;
+        step_sintoma +=
+            `<div class="row">` +
+            `<input type="button" style="margin-left: 10px;" class="btn btn-primary" value="Cadastrar Novo Sintoma" onclick="stepSintoma()" id="#btnSintoma">`+
+            `</div>`;
         todos_sintomas.innerHTML = step_sintoma;
     }
 
