@@ -530,7 +530,7 @@
                     .then(resposta => resposta.json())
                     .then(json => inicializar())
                     .catch(function(error) {
-                        paragrafo.innerHTML = "Erro ao alterar professor (código " + error.message + ")";
+                        paragrafoMensagem.innerHTML = "Erro ao alterar professor (código " + error.message + ")";
                     });
 
                     // const id = txtId.value;
