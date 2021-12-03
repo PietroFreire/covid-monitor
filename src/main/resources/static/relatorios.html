@@ -166,7 +166,6 @@
     function getReg( registros ) {
         
         let n = registros.length;
-        console.log(dataAux);
         for (let i = 0; i < n; i++) {
             let dado = registros[i];
             let registroSaude = dado.isBem;
@@ -174,14 +173,13 @@
             checkAno = data.getUTCFullYear();
             checkMes = data.getUTCMonth();
             checkDia = data.getUTCDate();
-            console.log(checkAno);
-            console.log(checkMes);
-            console.log(checkDia);
             for(j = 0; j < diaDif; j++){
+                console.log(dataAux[j].getUTCFullYear());
                 if (checkAno == dataAux[j].getUTCFullYear() && 
                 checkMes == dataAux[j].getUTCMonth() && 
                 checkDia == dataAux[j].getUTCDate()) { dados[j]++; } // Adiciona mais um registro no dia
             }
+            console.log(dados);
         }
     }
 
