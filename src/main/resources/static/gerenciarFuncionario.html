@@ -243,7 +243,7 @@
                     <div class="form-group col-md-6">
                         <label style="color: white;" for="txtTipo">Tipo</label>
                         <select class="form-control" id="txtTipo">
-                            <option selected>Escolha...</option>
+                            <option select>Escolha...</option>
                             <option value="1">Membro</option>
                             <option value="2">Gestor</option>
                             <option value="3">Admin</option>
@@ -283,6 +283,12 @@
             const corpoTabela = document.querySelector('#corpoTabelaUsuario');
             const paragrafoMensagem = document.querySelector('#paragrafoMensagem');
 
+            const divCadFunc = document.querySelector('#divCadFuncs');
+            const divCadAluno = document.querySelector('#divCadAlunos');
+            const divCadSintoma = document.querySelector('#divCadSintomas');
+            const divRelatorios = document.querySelector('#divRelatorios');
+            const todos_sintomas = document.querySelector('#step_sintoma');
+
             const txtId = document.querySelector('#txtId');
             const txtUsername = document.querySelector('#txtUsername');
             const txtNome = document.querySelector('#txtNome');
@@ -305,14 +311,14 @@
 
             function targets(){
                 const currentRole = localStorage.getItem('role');
-                if(currentRole == 3) {
+                if(currentRole == 2) {
+                    divRelatorios.classList.remove('hide');
+                }else if(currentRole == 3){
                     divCadFunc.classList.remove('hide');
                     divCadAluno.classList.remove('hide');
                     divCadSintoma.classList.remove('hide');
                     divRelatorios.classList.remove('hide');
                     divCadSintoma.classList.remove('hide');
-                }else if(currentRole == 4){
-                    divRelatorios.classList.remove('hide');
                 }
             }
 

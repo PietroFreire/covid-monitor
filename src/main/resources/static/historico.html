@@ -200,19 +200,25 @@
       const corpoTabela = document.querySelector('#corpoTabelaHistorico');
       const paragrafoMensagem = document.querySelector('#paragrafoMensagem');
 
+      const divCadFunc = document.querySelector('#divCadFuncs');
+      const divCadAluno = document.querySelector('#divCadAlunos');
+      const divCadSintoma = document.querySelector('#divCadSintomas');
+      const divRelatorios = document.querySelector('#divRelatorios');
+      const todos_sintomas = document.querySelector('#step_sintoma');
+
       getMembro();
       targets();
 
       function targets(){
         const currentRole = localStorage.getItem('role');
-        if(currentRole == 3) {
+        if(currentRole == 2) {
+          divRelatorios.classList.remove('hide');
+        }else if(currentRole == 3){
           divCadFunc.classList.remove('hide');
           divCadAluno.classList.remove('hide');
           divCadSintoma.classList.remove('hide');
           divRelatorios.classList.remove('hide');
           divCadSintoma.classList.remove('hide');
-        }else if(currentRole == 4){
-          divRelatorios.classList.remove('hide');
         }
       }
 
