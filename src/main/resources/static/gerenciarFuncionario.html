@@ -479,7 +479,7 @@
                     .then(resposta => resposta.json())
                     .then(json => inicializar())
                     .catch(function(error) {
-                        paragrafo.innerHTML = "Erro ao criar professor (código " + error.message + ")";
+                        paragrafoMensagem.innerHTML = "Erro ao criar professor (código " + error.message + ")";
                     });
 
 
