@@ -166,7 +166,6 @@
     function getReg( registros ) {
         
         let n = registros.length;
-        console.log(registros.length)
         for (let i = 0; i < n; i++) {
             let dado = registros[i];
             let registroSaude = dado.isBem;
@@ -174,6 +173,8 @@
             checkAno = data.getUTCFullYear();
             checkMes = data.getUTCMonth();
             checkDia = data.getUTCDate();
+            console.log(registroSaude)
+            console.log(data)
             for(let j = 0; j < diaDif; j++){
                 if (checkAno == dataAux[j].getUTCFullYear() && 
                 checkMes == dataAux[j].getUTCMonth() && 
