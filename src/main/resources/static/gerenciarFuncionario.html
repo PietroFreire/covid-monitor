@@ -457,64 +457,107 @@
 
             function salvarFuncionario() {
                 if (criandoNovoUsuario) {
-                    createFuncionario();
+                    fetch('/api/funcionarios', {
+                        method: 'POST',
+                        body: JSON.stringify({
+                            'id': null,
+                            'nome': txtNome.value,
+                            'num_funcional': txtUsername.value,
+                            'username': txtUsername.value,
+                            'setor': txtSetor.value,
+                            'idRole': txtTipo.value,
+                            'senha': txtSenha.value,
+                            'data_nascimento': txtNascimento.value,
+                            'cidade': txtCidade.value,
+                            'estado': txtEstado.value
+                        }),
+                        headers: {
+                            'Content-type': 'application/json',
+                        }
+                    })
+                    .then(resposta => { if (!resposta.ok) throw Error(resposta.status); return resposta; } )
+                    .then(resposta => resposta.json())
+                    .then(json => inicializar())
+                    .catch(function(error) {
+                        paragrafo.innerHTML = "Erro ao criar professor (código " + error.message + ")";
+                    });
+
+
+                //     const URL = `/api/funcionarios`;
+                //     const dadosUsuario = {
+                //         'id': null,
+                //         'nome': txtNome.value,
+                //         'num_funcional': txtUsername.value,
+                //         'username': txtUsername.value,
+                //         'setor': txtSetor.value,
+                //         'idRole': txtTipo.value,
+                //         'senha': txtSenha.value,
+                //         'data_nascimento': txtNascimento.value,
+                //         'cidade': txtCidade.value,
+                //         'estado': txtEstado.value
+                //     };
+                //     const postRequest = {
+                //         method: 'POST',
+                //         body: JSON.stringify(dadosUsuario),
+                //         headers: { 'Content-type': 'application/json' }
+                //     };
+                //     fetch(URL, postRequest)
+                //         .then(resposta => { if (!resposta.ok) throw Error(resposta.status); return resposta; } )
+                //         .then(resposta => resposta.json())
+                //         .then(jsonResponse => inicializar())
+                //         .catch(function(error) { paragrafoMensagem.innerHTML = 'Erro ao criar novo membro (código ' + error.message + ')'; } );
                 }
                 else {
-                   updateFuncionario();
+                    fetch('/api/funcionarios/' + txtId.value, {
+                        method: 'PUT',
+                        body: JSON.stringify({
+                            'id': txtId.value,
+                            'nome': txtNome.value,
+                            'num_funcional': txtUsername.value,
+                            'username': txtUsername.value,
+                            'setor': txtSetor.value,
+                            'idRole': txtTipo.value,
+                            'senha': txtSenha.value,
+                            'data_nascimento': txtNascimento.value,
+                            'cidade': txtCidade.value,
+                            'estado': txtEstado.value
+                        }),
+                        headers: {
+                            'Content-type': 'application/json',
+                        }
+                    })
+                    .then(resposta => { if (!resposta.ok) throw Error(resposta.status); return resposta; } )
+                    .then(resposta => resposta.json())
+                    .then(json => inicializar())
+                    .catch(function(error) {
+                        paragrafo.innerHTML = "Erro ao alterar professor (código " + error.message + ")";
+                    });
+
+                    // const id = txtId.value;
+                    // const URL = `/api/funcionarios/${id}`;
+                    // const dadosUsuario = {
+                    //     'id': txtId.value,
+                    //     'nome': txtNome.value,
+                    //     'num_funcional': txtUsername.value,
+                    //     'username': txtUsername.value,
+                    //     'setor': txtSetor.value,
+                    //     'idRole': txtTipo.value,
+                    //     'senha': txtSenha.value,
+                    //     'data_nascimento': txtNascimento.value,
+                    //     'cidade': txtCidade.value,
+                    //     'estado': txtEstado.value
+                    // };
+                    // const putRequest = {
+                    //     method: 'PUT',
+                    //     body: JSON.stringify(dadosUsuario),
+                    //     headers: { 'Content-type': 'application/json' }
+                    // };
+                    // fetch(URL, putRequest)
+                    //     .then(resposta => { if (!resposta.ok) throw Error(resposta.status); return resposta; } )
+                    //     .then(resposta => resposta.json())
+                    //     .then(jsonResponse => inicializar())
+                    //     .catch(function(error) { paragrafoMensagem.innerHTML = 'Erro ao alterar membro (código ' + error.message + ')'; } );
                 }
-            }
-
-            async function createFuncionario() {
-                const URL = `/api/funcionarios`;
-                const dadosUsuario = {
-                    'id': null,
-                    'nome': txtNome.value,
-                    'num_funcional': txtUsername.value,
-                    'username': txtUsername.value,
-                    'setor': txtSetor.value,
-                    'idRole': txtTipo.value,
-                    'senha': txtSenha.value,
-                    'data_nascimento': txtNascimento.value,
-                    'cidade': txtCidade.value,
-                    'estado': txtEstado.value
-                };
-                const postRequest = {
-                    method: 'POST',
-                    body: JSON.stringify(dadosUsuario),
-                    headers: { 'Content-type': 'application/json' }
-                };
-                fetch(URL, postRequest)
-                    .then(resposta => { if (!resposta.ok) throw Error(resposta.status); return resposta; } )
-                    .then(resposta => resposta.json())
-                    .then(jsonResponse => inicializar())
-                    .catch(function(error) { paragrafoMensagem.innerHTML = 'Erro ao criar novo membro (código ' + error.message + ')'; } );
-            }
-
-            async function updateFuncionario() {
-                const id = txtId.value;
-                const URL = `/api/funcionarios/${id}`;
-                const dadosUsuario = {
-                    'id': txtId.value,
-                    'nome': txtNome.value,
-                    'num_funcional': txtUsername.value,
-                    'username': txtUsername.value,
-                    'setor': txtSetor.value,
-                    'idRole': txtTipo.value,
-                    'senha': txtSenha.value,
-                    'data_nascimento': txtNascimento.value,
-                    'cidade': txtCidade.value,
-                    'estado': txtEstado.value
-                };
-                const putRequest = {
-                    method: 'PUT',
-                    body: JSON.stringify(dadosUsuario),
-                    headers: { 'Content-type': 'application/json' }
-                };
-                fetch(URL, putRequest)
-                    .then(resposta => { if (!resposta.ok) throw Error(resposta.status); return resposta; } )
-                    .then(resposta => resposta.json())
-                    .then(jsonResponse => inicializar())
-                    .catch(function(error) { paragrafoMensagem.innerHTML = 'Erro ao alterar membro (código ' + error.message + ')'; } );
             }
 
             function cancelarEdicao() {
