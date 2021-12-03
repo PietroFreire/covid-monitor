@@ -167,7 +167,7 @@
                                 <a href="gerenciarFuncionario.html">Cadastro de Funcionários</a>
                                 <div class="box linha-vertical hide "> </div>
                             </div>
-                            <div class="col md-auto" id="divCadAlunos" style="text-align: center;">
+                            <div class="col md-auto hide" id="divCadAlunos" style="text-align: center;">
                                 <a href="gerenciarAluno.html">Cadastro de Alunos</a>
                                 <div class="box linha-vertical hide "> </div>
                             </div>
@@ -277,8 +277,6 @@
                     divCadSintoma.classList.remove('hide');
                 }else if(currentRole == 4){
                     divRelatorios.classList.remove('hide');
-                } else if(currentRole != 1 || currentRole != 2){
-                    alert("Você não tem acesso a essa página!");
                 }
             }
 
