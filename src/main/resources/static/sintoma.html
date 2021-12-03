@@ -147,26 +147,26 @@
             <div class="collapse" id="navbarToggleExternalContent">
                 <div style="background-color: #373b3d;">
                     <div class="row d-flex justify-content-center align-itens-center">
-                        <div class="col md-auto" style="text-align: center;">
+                        <div class="col md-auto hide" id="divCadFuncs" style="text-align: center;">
                             <a href="gerenciarFuncionario.html">Cadastro de Funcionários</a>
+                            <div class="box linha-vertical hide "> </div>
                         </div>
-                        <div class="box linha-vertical"></div>
-                        <div class="col md-auto" style="text-align: center;">
+                        <div class="col md-auto hide" id="divCadAlunos" style="text-align: center;">
                             <a href="gerenciarAluno.html">Cadastro de Alunos</a>
+                            <div class="box linha-vertical hide "> </div>
                         </div>
-                        <div class="box linha-vertical"></div>
-                        <div class="col md-auto" style="text-align: center;">
+                        <div class="col md-auto hide" id="divCadSintomas" style="text-align: center;">
                             <a href="sintoma.html">Cadastro de Sintomas</a>
+                            <div class="box linha-vertical hide "> </div>
                         </div>
-                        <div class="box linha-vertical"></div>
-                        <div class="col md-auto" style="text-align: center;">
+                        <div class="col md-auto hide" id="divRelatorios" style="text-align: center;">
                             <a href="relatorios.html">Relatórios</a>
+                            <div class="box linha-vertical hide "> </div>
                         </div>
-                        <div class="box linha-vertical"></div>
-                        <div class="col md-auto" style="text-align: center;">
+                        <div class="col md-auto" id="divHistorico" style="text-align: center;">
                             <a href="historico.html">Histórico</a>
+                            <div class="box linha-vertical hide "> </div>
                         </div>
-                        <div class="box linha-vertical"></div>
                         <div class="col md-auto" style="text-align: center;">
                             <a href="index.html">Sair</a>
                         </div>
@@ -214,7 +214,20 @@
 
         const todos_sintomas = document.querySelector('#step_sintoma');
         getSintomas();
+        targets();
 
+        function targets(){
+            const currentRole = localStorage.getItem('role');
+            if(currentRole == 3) {
+                divCadFunc.classList.remove('hide');
+                divCadAluno.classList.remove('hide');
+                divCadSintoma.classList.remove('hide');
+                divRelatorios.classList.remove('hide');
+                divCadSintoma.classList.remove('hide');
+            }else if(currentRole == 4){
+                divRelatorios.classList.remove('hide');
+            }
+        }
 
         async function getSintomas() {
             const URL = `/api/sintomas`;

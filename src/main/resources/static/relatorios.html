@@ -46,26 +46,26 @@
                 <div class="collapse" id="navbarToggleExternalContent">
                     <div style="background-color: #373b3d;">
                         <div class="row d-flex justify-content-center align-itens-center">
-                            <div class="col md-auto" style="text-align: center;">
+                            <div class="col md-auto hide" id="divCadFuncs" style="text-align: center;">
                                 <a href="gerenciarFuncionario.html">Cadastro de Funcionários</a>
+                                <div class="box linha-vertical hide "> </div>
                             </div>
-                            <div class="box linha-vertical"></div>
-                            <div class="col md-auto" style="text-align: center;">
+                            <div class="col md-auto hide" id="divCadAlunos" style="text-align: center;">
                                 <a href="gerenciarAluno.html">Cadastro de Alunos</a>
+                                <div class="box linha-vertical hide "> </div>
                             </div>
-                            <div class="box linha-vertical"></div>
-                            <div class="col md-auto" style="text-align: center;">
+                            <div class="col md-auto hide" id="divCadSintomas" style="text-align: center;">
                                 <a href="sintoma.html">Cadastro de Sintomas</a>
+                                <div class="box linha-vertical hide "> </div>
                             </div>
-                            <div class="box linha-vertical"></div>
-                            <div class="col md-auto" style="text-align: center;">
+                            <div class="col md-auto hide" id="divRelatorios" style="text-align: center;">
                                 <a href="relatorios.html">Relatórios</a>
+                                <div class="box linha-vertical hide "> </div>
                             </div>
-                            <div class="box linha-vertical"></div>
-                            <div class="col md-auto" style="text-align: center;">
+                            <div class="col md-auto" id="divHistorico" style="text-align: center;">
                                 <a href="historico.html">Histórico</a>
+                                <div class="box linha-vertical hide "> </div>
                             </div>
-                            <div class="box linha-vertical"></div>
                             <div class="col md-auto" style="text-align: center;">
                                 <a href="index.html">Sair</a>
                             </div>
@@ -80,39 +80,39 @@
                 </nav>
             </div>
         </div>
-            <header class="container mt-5">
-                <div class="row">
-                    <div class="col-md-12">
-                        <h3><b>Relatório</b></h3>
-                        <hr>
-                    </div>
-                    <div class="col-md-9">
-                        <form>
-                            <div class="row">
-                                <div class="col form-group">
-                                  <label for="data-inicio">Data Início</label>
-                                  <input name="data-inicio" type="date" class="form-control mx-0" placeholder="First name" id="data-inicio" value="2021-11-01">
-                                </div>
-                                <div class="col form-group">
-                                  <label for="data-fim">Data Fim</label>
-                                  <input name="data-fim" type="date" class="form-control mx-0" placeholder="Last name" id="data-fim">
-                                </div>
-                                <div class="col-2 form-group">
-                                    <label class="d-block" for="filtrar-registros">&nbsp;</label>
-                                    <button type="button" class="btn-primary mt-2" onclick="getUsuarios()" id="filtrar-registros">Filtrar</button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
+        <header class="container mt-5">
+            <div class="row">
+                <div class="col-md-12">
+                    <h3><b>Relatório</b></h3>
+                    <hr>
                 </div>
-            </header>
-
-
-            <div class="container d-flex w-100 h-100 p-3 mx-auto justify-content-center flex-column">
-                <div class="pt-5 mx-auto clean-table w-100"> <!-- ================================== -->
-                    <center><canvas id="myChart" style="text-align: center;"></canvas></center>
+                <div class="col-md-9">
+                    <form>
+                        <div class="row">
+                            <div class="col form-group">
+                              <label for="data-inicio">Data Início</label>
+                              <input name="data-inicio" type="date" class="form-control mx-0" placeholder="First name" id="data-inicio" value="2021-11-01">
+                            </div>
+                            <div class="col form-group">
+                              <label for="data-fim">Data Fim</label>
+                              <input name="data-fim" type="date" class="form-control mx-0" placeholder="Last name" id="data-fim">
+                            </div>
+                            <div class="col-2 form-group">
+                                <label class="d-block" for="filtrar-registros">&nbsp;</label>
+                                <button type="button" class="btn-primary mt-2" onclick="getUsuarios()" id="filtrar-registros">Filtrar</button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
+        </header>
+
+
+        <div class="container d-flex w-100 h-100 p-3 mx-auto justify-content-center flex-column">
+            <div class="pt-5 mx-auto clean-table w-100"> <!-- ================================== -->
+                <center><canvas id="myChart" style="text-align: center;"></canvas></center>
+            </div>
+        </div>
 
         <footer>
             <p><span style="color: purple">©Copyright</span> - Covid-Monitor 2020 | Desenvolvido com 💜 por Amanda, Gustavo, Israel e Gabriel</p>
@@ -123,6 +123,21 @@
             // Encontra dados
 
             getUsuarios();
+            targets();
+
+            function targets(){
+                const currentRole = localStorage.getItem('role');
+                if(currentRole == 3) {
+                    divCadFunc.classList.remove('hide');
+                    divCadAluno.classList.remove('hide');
+                    divCadSintoma.classList.remove('hide');
+                    divRelatorios.classList.remove('hide');
+                    divCadSintoma.classList.remove('hide');
+                }else if(currentRole == 4){
+                    divRelatorios.classList.remove('hide');
+                }
+            }
+
             async function getUsuarios() {
                 labels = [];
                 dados = [];
