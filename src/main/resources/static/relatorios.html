@@ -161,7 +161,6 @@
             .then(resposta => resposta.json())
             .then(jsonResponse => getReg(jsonResponse))
             .catch(function(error) { console.log("Erro ao listar usuários (código " + error.message + ")");});
-        chart()
     }
     function getReg( registros ) {
         
@@ -174,13 +173,13 @@
             checkMes = data.getUTCMonth();
             checkDia = data.getUTCDate();
             for(j = 0; j < diaDif; j++){
-                console.log(dataAux[j].getUTCFullYear());
                 if (checkAno == dataAux[j].getUTCFullYear() && 
                 checkMes == dataAux[j].getUTCMonth() && 
                 checkDia == dataAux[j].getUTCDate()) { dados[j]++; } // Adiciona mais um registro no dia
             }
-            console.log(dados);
         }
+        //console.log(dados);
+        chart();
     }
 
     function chart(){
