@@ -212,7 +212,9 @@
 
     <script>
 
-        const todos_sintomas = document.querySelector('#step_sintoma');
+        // const todos_sintomas = document.querySelector('#step_sintoma');
+        const paragrafoMensagem = document.querySelector('#paragrafoMensagem');
+        const nome = document.querySelector('#nome');
 
         const divCadFunc = document.querySelector('#divCadFuncs');
         const divCadAluno = document.querySelector('#divCadAlunos');
@@ -271,8 +273,6 @@
             todos_sintomas.innerHTML = step_sintoma;
         }
 
-        const paragrafoMensagem = document.querySelector('#paragrafoMensagem');
-        const nome = document.querySelector('#nome');
 
         function goBack() {
             window.location.href = "sintoma.html"
