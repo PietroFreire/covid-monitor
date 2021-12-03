@@ -1,18 +1,13 @@
 package com.covidmonitor.controller;
-
-import java.io.IOException;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
-import org.springframework.web.multipart.MultipartFile;
 import com.covidmonitor.model.Aluno;
 import com.covidmonitor.model.Role;
 import com.covidmonitor.repository.AlunoRepo;
 import com.covidmonitor.repository.RoleRepo;
+import org.springframework.web.server.ResponseStatusException;
 
 @RestController
 public class AlunoController {
@@ -23,68 +18,58 @@ public class AlunoController {
     private RoleRepo roleRepo;
 
     @GetMapping("/api/alunos")
-    public List<Aluno> getalunos(){
-        List<Aluno> alunos = new ArrayList<>();
-        alunoRepo.findAll().forEach(alunos::add);
-        return alunos;
+    Iterable<Aluno> getAluno(@RequestParam Optional<Long> id) {
+
+        return alunoRepo.findAll();
+
     }
 
     @GetMapping("/api/alunos/{id}")
-    public Aluno getUsuario(@PathVariable long id) {
-        Optional<Aluno> retorno = alunoRepo.findById(id);
-        Aluno aluno = null;
-        if(retorno.isPresent()) {
-            aluno = retorno.get();
-        }
-        return aluno;
+    Optional<Aluno> getAluno(@PathVariable long id) {
+        return alunoRepo.findById(id);
     }
 
     @PostMapping("/api/alunos")
-    public String createUsuario(@RequestBody Aluno aluno) {
-        Optional<Role> optionTipoUsuario = roleRepo.findById(aluno.getIdRole());
-        if (!optionTipoUsuario.isPresent()) {
+    public String createAluno(@RequestBody Aluno aluno) {
+        Optional<Role> optionTipoAluno = roleRepo.findById(aluno.getIdRole());
+        if (!optionTipoAluno.isPresent()) {
             return (
-                    "{ \"success\": false, \"usuario_id\": 0, \"usuario_tipo_id\": 0 }"
+                    "Falha na"
             );
         }
-        Optional<Aluno> optionUsu = alunoRepo.findByUsername(aluno.getUsername());
+        Optional<Aluno> optionAluno = alunoRepo.findByUsername(aluno.getUsername());
 
-        if(optionUsu.isPresent()){
-            Aluno u = optionUsu.get();
+        if(optionAluno.isPresent()){
+            Aluno aluno_ = optionAluno.get();
             return (
-                    "{ \"success\": false, \"usuario_id\": "+ u.getId() +", \"usuario_tipo_id\": "+ u.getIdRole()+ " }"
+                    "{ \"success\": false, \"aluno_id\": "+ aluno_.getId() +", \"aluno_tipo_id\": "+ aluno_.getIdRole()+ " }"
             );
         }
 
-        Role l = optionTipoUsuario.get();
-        aluno.setRole(l);
+        Role role = optionTipoAluno.get();
+        aluno.setRole(role);
         aluno.setSenha(aluno.getUsername() + "");
         alunoRepo.save(aluno);
         return (
-                "{ \"success\": true, \"usuario_id\": "+ aluno.getId() +", \"usuario_tipo_id\": "+ aluno.getIdRole()+ " }"
+                "{ \"success\": true, \"aluno_id\": "+ aluno.getId() +", \"aluno_tipo_id\": "+ aluno.getIdRole()+ " }"
         );
     }
 
     @PutMapping("/api/alunos/{id}")
-    public Aluno updateUsuario(@RequestBody Aluno a, @PathVariable long id) {
-        Aluno aluno = null;
-        aluno = this.getUsuario(id);
-        if(aluno != null) {
-            alunoRepo.save(a);
-            aluno = a;
+    Optional<Aluno> updateAluno(@RequestBody Aluno alunoRequest, @PathVariable long id) {
+        Optional<Aluno> opt = alunoRepo.findById(id);
+        if (opt.isPresent()) {
+            if (alunoRequest.getId() == id) {
+                alunoRepo.save(alunoRequest);
+                return opt;
+            }
         }
-        return a;
+        throw new ResponseStatusException(HttpStatus.NOT_FOUND,
+                "Erro ao alterar dados do aluno com id " + id);
     }
 
-    @DeleteMapping(value = "/api/alunos/{id}", produces = "application/json")
-    public String deleteUsuario(@PathVariable long id) {
-        Aluno aluno = this.getUsuario(id);
-        boolean result = false;
-        if(aluno != null) {
-            alunoRepo.delete(aluno);
-            result = true;
-        }
-        return "{ \"sucess\" : " + (result ? "true" : "false" ) + " }";
+    @DeleteMapping(value = "/api/alunos/{id}")
+    void deleteAluno(@PathVariable long id) {
+        alunoRepo.deleteById(id);
     }
-
 }

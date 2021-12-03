@@ -8,6 +8,4 @@ public class RelatorioGerencial {
     
     public RelatorioGerencial() {
     }
-    
-    
 }

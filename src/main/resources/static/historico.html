@@ -1,256 +1,255 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-  <title>Histórico</title>
-  <meta charset="UTF-8">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="style/login.css">
-  <script src="js/script.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  <style>
-    /* VARIAVEIS */
-    :root {
-      --textColorInput: #949494;
-      --backgroundColor: black;
-      --backgroundColorLogin: #1D1F20;
-      --backgroundColorLoginTitle: #1A1C1D;
-      --backgroundColorInput: #373b3d;
-      --backgroundColorButton: purple;
-    }
+  <head>
+    <title>Histórico</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="style/login.css">
+    <script src="js/script.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <style>
+      /* VARIAVEIS */
+      :root {
+        --textColorInput: #949494;
+        --backgroundColor: black;
+        --backgroundColorLogin: #1D1F20;
+        --backgroundColorLoginTitle: #1A1C1D;
+        --backgroundColorInput: #373b3d;
+        --backgroundColorButton: purple;
+      }
 
-    /* RESET */
-    *{
-      margin: 0px;
-      padding: 0px;
-      box-sizing: border-box;
-      text-decoration: none;
-      color: white;
-      font-family: Roboto;
-    }
+      /* RESET */
+      *{
+        margin: 0px;
+        padding: 0px;
+        box-sizing: border-box;
+        text-decoration: none;
+        color: white;
+        font-family: Roboto;
+      }
 
-    *:focus{
-      outline: none;
-    }
+      *:focus{
+        outline: none;
+      }
 
-    html, body{
-      height: 100%;
-    }
+      html, body{
+        height: 100%;
+      }
 
-    html{
-      scroll-behavior: smooth;
-    }
+      html{
+        scroll-behavior: smooth;
+      }
 
-    /* ESTILOS BÁSICOS */
-    body{
-      overflow-x: hidden;
-      background-color: var(--backgroundColor);
-      margin: 0;
-      padding: 0;
-      font-family: 'Raleway', sans-serif;
-      color: #F2F2F2;
-    }
+      /* ESTILOS BÁSICOS */
+      body{
+        overflow-x: hidden;
+        background-color: var(--backgroundColor);
+        margin: 0;
+        padding: 0;
+        font-family: 'Raleway', sans-serif;
+        color: #F2F2F2;
+      }
 
-    h1, h3{
-      font-weight: lighter;
-    }
+      h1, h3{
+        font-weight: lighter;
+      }
 
-    #container {
-      background-color: var(--backgroundColorLogin);
-      margin: auto;
-      width: 800px;
-      height: auto;
-      border-radius: 0.35em;
-      box-shadow: 0 3px 10px 0 rgba(255, 255, 255, 0.2);
-      text-align: center;
-    }
+      #container {
+        background-color: var(--backgroundColorLogin);
+        margin: auto;
+        width: 800px;
+        height: auto;
+        border-radius: 0.35em;
+        box-shadow: 0 3px 10px 0 rgba(255, 255, 255, 0.2);
+        text-align: center;
+      }
 
-    .clean-table{
-      background-color: var(--backgroundColorLogin);
-    }
+      .clean-table{
+        background-color: var(--backgroundColorLogin);
+      }
 
-    a{
-      color: white;
-    }
+      a{
+        color: white;
+      }
 
-    a:hover{
-      color: purple;
-      text-decoration: none;
-    }
+      a:hover{
+        color: purple;
+        text-decoration: none;
+      }
 
-    .linha-vertical {
-      height: auto;/*Altura da linha*/
-      border-left: 1px solid;/* Adiciona borda esquerda na div como ser fosse uma linha.*/
-    }
+      .linha-vertical {
+        height: auto;/*Altura da linha*/
+        border-left: 1px solid;/* Adiciona borda esquerda na div como ser fosse uma linha.*/
+      }
 
-    .titulo{
-      margin-top: 80px;
-      padding-top: 10px;
-    }
+      .titulo{
+        margin-top: 80px;
+        padding-top: 10px;
+      }
 
-    .btn-primary:hover{
-      background-color: purple;
-    }
+      .btn-primary:hover{
+        background-color: purple;
+      }
 
-    .btn-primary{
-      width: 100px;
-      border-radius: 0.25em;
-    }
+      .btn-primary{
+        width: 100px;
+        border-radius: 0.25em;
+      }
 
-  </style>
+    </style>
 
-</head>
+  </head>
 
-<body>
+  <body>
 
-<div class="pos-f-t">
-  <div class="pos-f-t">
-    <div class="collapse" id="navbarToggleExternalContent">
-      <div style="background-color: #373b3d;">
-        <div class="row d-flex justify-content-center align-itens-center">
-          <div class="col md-auto" style="text-align: center;">
-            <a href="gerenciarFuncionario.html">Cadastro de Funcionários</a>
+    <div class="pos-f-t">
+      <div class="pos-f-t">
+        <div class="collapse" id="navbarToggleExternalContent">
+          <div style="background-color: #373b3d;">
+            <div class="row d-flex justify-content-center align-itens-center">
+              <div class="col md-auto" style="text-align: center;">
+                <a href="gerenciarFuncionario.html">Cadastro de Funcionários</a>
+              </div>
+              <div class="box linha-vertical"></div>
+              <div class="col md-auto" style="text-align: center;">
+                <a href="gerenciarAluno.html">Cadastro de Alunos</a>
+              </div>
+              <div class="box linha-vertical"></div>
+              <div class="col md-auto" style="text-align: center;">
+                <a href="sintoma.html">Cadastro de Sintomas</a>
+              </div>
+              <div class="box linha-vertical"></div>
+              <div class="col md-auto" style="text-align: center;">
+                <a href="relatorios.html">Relatórios</a>
+              </div>
+              <div class="box linha-vertical"></div>
+              <div class="col md-auto" style="text-align: center;">
+                <a href="historico.html">Histórico</a>
+              </div>
+              <div class="box linha-vertical"></div>
+              <div class="col md-auto" style="text-align: center;">
+                <a href="index.html">Sair</a>
+              </div>
+            </div>
           </div>
-          <div class="box linha-vertical"></div>
-          <div class="col md-auto" style="text-align: center;">
-            <a href="gerenciarAluno.html">Cadastro de Alunos</a>
+        </div>
+        <nav style="background-color: #373b3d;" class="navbar navbar-dark d-flex">
+          <h3 style="color: white;">Covid-Monitor</h3>
+          <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </nav>
+      </div>
+    </div>
+
+    <div id="container">
+      <div class="row d-flex justify-content-center align-itens-center titulo">
+          <h3><b>Histórico</b></h3>
+          <hr>
+      </div>
+      <form>
+        <div class="row justify-content-center">
+          <div class="col-1"></div>
+          <div class="col form-group">
+            <label for="data-inicio">Data Início</label>
+            <input name="data-inicio" type="date" class="form-control mx-0" placeholder="First name" id="data-inicio" value="2021-10-01">
           </div>
-          <div class="box linha-vertical"></div>
-          <div class="col md-auto" style="text-align: center;">
-            <a href="sintoma.html">Cadastro de Sintomas</a>
+          <div class="col-1"></div>
+          <div class="col form-group">
+            <label for="data-fim">Data Fim</label>
+            <input name="data-fim" type="date" class="form-control mx-0" placeholder="Last name" id="data-fim">
           </div>
-          <div class="box linha-vertical"></div>
-          <div class="col md-auto" style="text-align: center;">
-            <a href="relatorios.html">Relatórios</a>
+          <div class="col-3 form-group">
+            <label class="d-block" for="filtrar-registros">&nbsp;</label>
+            <button type="button" class="btn-primary mt-2" onclick="getMembro()" id="filtrar-registros">Filtrar</button>
           </div>
-          <div class="box linha-vertical"></div>
-          <div class="col md-auto" style="text-align: center;">
-            <a href="historico.html">Histórico</a>
-          </div>
-          <div class="box linha-vertical"></div>
-          <div class="col md-auto" style="text-align: center;">
-            <a href="index.html">Sair</a>
-          </div>
+        </div>
+      </form>
+      <div class="container d-flex w-100 p-3 mx-auto justify-content-center flex-column">
+        <div class="pt-5 mx-auto clean-table w-100">
+          <table class="table table-striped table-hove" id="registros">
+            <thead>
+            <tr>
+              <th scope="col">NOME</th>
+              <th scope="col">REGISTRO</th>
+              <th scope="col">DATA</th>
+              <th scope="col">SINTOMAS</th>
+            </tr>
+            </thead>
+            <tbody id="corpoTabelaHistorico"></tbody>
+          </table>
+          <p id="paragrafoMensagem"></p>
         </div>
       </div>
     </div>
-    <nav style="background-color: #373b3d;" class="navbar navbar-dark d-flex">
-      <h3 style="color: white;">Covid-Monitor</h3>
-      <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-    </nav>
-  </div>
-</div>
 
-<div id="container">
-  <div class="row d-flex justify-content-center align-itens-center titulo">
-      <h3><b>Histórico</b></h3>
-      <hr>
-  </div>
-  <form>
-    <div class="row justify-content-center">
-      <div class="col-1"></div>
-      <div class="col form-group">
-        <label for="data-inicio">Data Início</label>
-        <input name="data-inicio" type="date" class="form-control mx-0" placeholder="First name" id="data-inicio" value="2021-10-01">
-      </div>
-      <div class="col-1"></div>
-      <div class="col form-group">
-        <label for="data-fim">Data Fim</label>
-        <input name="data-fim" type="date" class="form-control mx-0" placeholder="Last name" id="data-fim">
-      </div>
-      <div class="col-3 form-group">
-        <label class="d-block" for="filtrar-registros">&nbsp;</label>
-        <button type="button" class="btn-primary mt-2" onclick="getMembro()" id="filtrar-registros">Filtrar</button>
-      </div>
-    </div>
-  </form>
-  <div class="container d-flex w-100 p-3 mx-auto justify-content-center flex-column">
-    <div class="pt-5 mx-auto clean-table w-100">
-      <table class="table table-striped table-hove" id="registros">
-        <thead>
-        <tr>
-          <th scope="col">NOME</th>
-          <th scope="col">REGISTRO</th>
-          <th scope="col">DATA</th>
-          <th scope="col">SINTOMAS</th>
-        </tr>
-        </thead>
-        <tbody id="corpoTabelaHistorico"></tbody>
-      </table>
-      <p id="paragrafoMensagem"></p>
-    </div>
-  </div>
-</div>
+    <footer>
+      <p><span style="color: purple">©Copyright</span> - Covid-Monitor 2020 | Desenvolvido com 💜 por Amanda, Gustavo, Israel e Gabriel</p>
+    </footer>
 
-<footer>
-  <p><span style="color: purple">©Copyright</span> - Covid-Monitor 2020 | Desenvolvido com 💜 por Amanda, Gustavo, Israel e Gabriel</p>
-</footer>
-</body>
+    <script>
+      $(document).ready( function () {
+        $('#registros').DataTable();
+      } );
 
-</html>
+      const corpoTabela = document.querySelector('#corpoTabelaHistorico');
+      const paragrafoMensagem = document.querySelector('#paragrafoMensagem');
 
-<script>
-  $(document).ready( function () {
-    $('#registros').DataTable();
-  } );
+      getMembro();
 
-  const corpoTabela = document.querySelector('#corpoTabelaHistorico');
-  const paragrafoMensagem = document.querySelector('#paragrafoMensagem');
-
-  getMembro();
-
-  async function getMembro() {
-    const dateInicio = document.querySelector('#data-inicio');
-    const dateFim = document.querySelector('#data-fim');
-    const currentUser = localStorage.getItem('userID');
-    let URL = `/api/estado-saude/membro/${currentUser}`;
-    if(dateInicio.value && !dateFim.value){
-      URL += '?start='+dateInicio.value
-    } else {
-      URL += '?start='+dateInicio.value+"&end="+dateFim.value
-    }
-    fetch(URL)
-            .then(resposta => { if (!resposta.ok) throw Error(resposta.status); return resposta;})
-            .then(resposta => resposta.json())
-            .then(jsonResponse => fillTable(jsonResponse))
-            .catch(function(error) { paragrafoMensagem.innerHTML = "Erro ao listar usuários (código " + error.message + ")";});
-  }
-
-  function fillTable( registros ) {
-    let linhasTabela = '';
-    let n = registros.length;
-    for (let i = 0; i < n; i++) {
-      let dado = registros[i];
-      let registroSaude = dado.isBem;
-      if (registroSaude === false){
-        registroSaude = '<span class="text-danger">NÃO MUITO BEM</span>';
-      } else {
-        registroSaude = '<span class="text-success">BEM</span>';
+      async function getMembro() {
+        const dateInicio = document.querySelector('#data-inicio');
+        const dateFim = document.querySelector('#data-fim');
+        const currentUser = localStorage.getItem('userID');
+        let URL = `/api/estadoSaude/membro/${currentUser}`;
+        if(dateInicio.value && !dateFim.value){
+          URL += '?start='+dateInicio.value
+        } else {
+          URL += '?start='+dateInicio.value+"&end="+dateFim.value
+        }
+        fetch(URL)
+                .then(resposta => { if (!resposta.ok) throw Error(resposta.status); return resposta;})
+                .then(resposta => resposta.json())
+                .then(jsonResponse => fillTable(jsonResponse))
+                .catch(function(error) { paragrafoMensagem.innerHTML = "Erro ao listar usuários (código " + error.message + ")";});
       }
-      let data = new Date(dado.dtCriacao);
-      let sintomasHtml = Array.prototype.reduce.call(dado.sintomas, (acu, item) => {
-        return acu + htmlListSintomas(item);
-      }, '');
-      linhasTabela +=
-              '<tr>' +
-              '<td>' + dado.usuario.nome + '</td>' +
-              '<td>' + registroSaude + '</td>' +
-              '<td>' + data.toLocaleDateString() + '</td>' +
-              '<td><ul>' + sintomasHtml + '</ul></td>' +
-              '</tr>';
-    }
-    corpoTabela.innerHTML = linhasTabela;
-  }
 
-  function htmlListSintomas(item){
-    return "<li>"+item.nome+"</li>";
-  }
+      function fillTable( registros ) {
+        let linhasTabela = '';
+        let n = registros.length;
+        for (let i = 0; i < n; i++) {
+          let dado = registros[i];
+          let registroSaude = dado.isBem;
+          if (registroSaude === false){
+            registroSaude = '<span>Mal</span>';
+          } else {
+            registroSaude = '<span>Bem</span>';
+          }
+          let data = new Date(dado.dtCriacao);
+          let sintomasHtml = Array.prototype.reduce.call(dado.sintomas, (acu, item) => {
+            return acu + htmlListSintomas(item);
+          }, '');
+          linhasTabela +=
+                  '<tr>' +
+                  '<td>' + dado.usuario.nome + '</td>' +
+                  '<td>' + registroSaude + '</td>' +
+                  '<td>' + data.toLocaleDateString() + '</td>' +
+                  '<td><ul>' + sintomasHtml + '</ul></td>' +
+                  '</tr>';
+        }
+        corpoTabela.innerHTML = linhasTabela;
+      }
 
-</script>
+      function htmlListSintomas(item){
+        return "<li>"+item.nome+"</li>";
+      }
+
+    </script>
+  </body>
+</html>

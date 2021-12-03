@@ -1,314 +1,306 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-    <title>Cadastro de Sintomas</title>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
-    <link rel="stylesheet" href="style/login.css">
-    <style>
-        /* VARIAVEIS */
-        :root {
-            --textColorInput: #949494;
-            --backgroundColor: black;
-            --backgroundColorLogin: #1D1F20;
-            --backgroundColorLoginTitle: #1A1C1D;
-            --backgroundColorInput: #373b3d;
-            --backgroundColorButton: purple;
-        }
+    <head>
+        <title>Cadastro de Sintomas</title>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+        <link rel="stylesheet" href="style/login.css">
+        <style>
+            /* VARIAVEIS */
+            :root {
+                --textColorInput: #949494;
+                --backgroundColor: black;
+                --backgroundColorLogin: #1D1F20;
+                --backgroundColorLoginTitle: #1A1C1D;
+                --backgroundColorInput: #373b3d;
+                --backgroundColorButton: purple;
+            }
 
-        /* RESET */
-        *{
-            margin: 0px;
-            padding: 0px;
-            box-sizing: border-box;
-            text-decoration: none;
-            color: white;
-            font-family: Roboto;
-        }
+            /* RESET */
+            *{
+                margin: 0px;
+                padding: 0px;
+                box-sizing: border-box;
+                text-decoration: none;
+                color: white;
+                font-family: Roboto;
+            }
 
-        *:focus{
-            outline: none;
-        }
+            *:focus{
+                outline: none;
+            }
 
-        html, body{
-            height: 100%;
-        }
+            html, body{
+                height: 100%;
+            }
 
-        html{
-            scroll-behavior: smooth;
-        }
+            html{
+                scroll-behavior: smooth;
+            }
 
-        /* ESTILOS BÁSICOS */
-        body{
-            overflow-x: hidden;
-            background-color: var(--backgroundColor);
-            margin: 0;
-            padding: 0;
-            font-family: 'Raleway', sans-serif;
-            color: #F2F2F2;
-        }
+            /* ESTILOS BÁSICOS */
+            body{
+                overflow-x: hidden;
+                background-color: var(--backgroundColor);
+                margin: 0;
+                padding: 0;
+                font-family: 'Raleway', sans-serif;
+                color: #F2F2F2;
+            }
 
-        h1, h3{
-            font-weight: lighter;
-        }
+            h1, h3{
+                font-weight: lighter;
+            }
 
-        #container-box {
-            background-color: var(--backgroundColorLogin);
-            position: relative;
-            top: 15%;
-            margin: auto;
-            width: 600px;
-            height: auto;
-            border-radius: 0.35em;
-            box-shadow: 0 3px 10px 0 rgba(255, 255, 255, 0.2);
-            text-align: center;
-        }
+            #container-box {
+                background-color: var(--backgroundColorLogin);
+                position: relative;
+                top: 15%;
+                margin: auto;
+                width: 600px;
+                height: auto;
+                border-radius: 0.35em;
+                box-shadow: 0 3px 10px 0 rgba(255, 255, 255, 0.2);
+                text-align: center;
+            }
 
-        #title {
-            position: relative;
-            background-color: var(--backgroundColorLoginTitle);
-            width: 100%;
-            padding: 20px 0px;
-            border-radius: 0.35em;
-            font-size: 22px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-        }
+            #title {
+                position: relative;
+                background-color: var(--backgroundColorLoginTitle);
+                width: 100%;
+                padding: 20px 0px;
+                border-radius: 0.35em;
+                font-size: 22px;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            }
 
-        #form{
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
+            #form{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
 
-        #buttons{
-            display: flex;
-            flex-direction: row;
-        }
+            #buttons{
+                display: flex;
+                flex-direction: row;
+            }
 
-        #step_sintoma{
-            margin-top: 15px;
-        }
+            #step_sintoma{
+                margin-top: 15px;
+            }
 
-        #step-sintomas{
-            display: none;
-        }
+            #step-sintomas{
+                display: none;
+            }
 
-        input[type=button] {
-            padding: 6px 25px;
-            color: #C1C3C6;
-            font-weight: bold;
-            border: 0 none;
-            cursor: pointer;
-            border-radius: 3px;
-        }
-        input:hover{
-            color: white;
-            transition: color 1s;
-        }
+            input[type=button] {
+                padding: 6px 25px;
+                color: #C1C3C6;
+                font-weight: bold;
+                border: 0 none;
+                cursor: pointer;
+                border-radius: 3px;
+            }
+            input:hover{
+                color: white;
+                transition: color 1s;
+            }
 
-        .btn-primary{
-            color: #C1C3C6;
-            background: var(--backgroundColorButton);
-        }
+            .btn-primary{
+                color: #C1C3C6;
+                background: var(--backgroundColorButton);
+            }
 
-        .btn-primary:hover, btn-primary:focus{
-            color: white;
-            background: var(--backgroundColorButton);
-            transition: color 2s;
-            border-color: var(--backgroundColorButton);
-        }
-        input{
-            margin: .4rem;
-        }
+            .btn-primary:hover, btn-primary:focus{
+                color: white;
+                background: var(--backgroundColorButton);
+                transition: color 2s;
+                border-color: var(--backgroundColorButton);
+            }
+            input{
+                margin: .4rem;
+            }
 
-        a{
-            color: white;
-        }
+            a{
+                color: white;
+            }
 
-        a:hover{
-            color: purple;
-            text-decoration: none;
-        }
+            a:hover{
+                color: purple;
+                text-decoration: none;
+            }
 
-        .linha-vertical {
-            height: auto;
-            border-left: 1px solid;
-        }
-    </style>
-</head>
-<body>
-<div class="pos-f-t">
+            .linha-vertical {
+                height: auto;
+                border-left: 1px solid;
+            }
+        </style>
+    </head>
+    <body>
     <div class="pos-f-t">
-        <div class="collapse" id="navbarToggleExternalContent">
-            <div style="background-color: #373b3d;">
-                <div class="row d-flex justify-content-center align-itens-center">
-                    <div class="col md-auto" style="text-align: center;">
-                        <a href="gerenciarFuncionario.html">Cadastro de Funcionários</a>
-                    </div>
-                    <div class="box linha-vertical"></div>
-                    <div class="col md-auto" style="text-align: center;">
-                        <a href="gerenciarAluno.html">Cadastro de Alunos</a>
-                    </div>
-                    <div class="box linha-vertical"></div>
-                    <div class="col md-auto" style="text-align: center;">
-                        <a href="sintoma.html">Cadastro de Sintomas</a>
-                    </div>
-                    <div class="box linha-vertical"></div>
-                    <div class="col md-auto" style="text-align: center;">
-                        <a href="relatorios.html">Relatórios</a>
-                    </div>
-                    <div class="box linha-vertical"></div>
-                    <div class="col md-auto" style="text-align: center;">
-                        <a href="historico.html">Histórico</a>
-                    </div>
-                    <div class="box linha-vertical"></div>
-                    <div class="col md-auto" style="text-align: center;">
-                        <a href="index.html">Sair</a>
+        <div class="pos-f-t">
+            <div class="collapse" id="navbarToggleExternalContent">
+                <div style="background-color: #373b3d;">
+                    <div class="row d-flex justify-content-center align-itens-center">
+                        <div class="col md-auto" style="text-align: center;">
+                            <a href="gerenciarFuncionario.html">Cadastro de Funcionários</a>
+                        </div>
+                        <div class="box linha-vertical"></div>
+                        <div class="col md-auto" style="text-align: center;">
+                            <a href="gerenciarAluno.html">Cadastro de Alunos</a>
+                        </div>
+                        <div class="box linha-vertical"></div>
+                        <div class="col md-auto" style="text-align: center;">
+                            <a href="sintoma.html">Cadastro de Sintomas</a>
+                        </div>
+                        <div class="box linha-vertical"></div>
+                        <div class="col md-auto" style="text-align: center;">
+                            <a href="relatorios.html">Relatórios</a>
+                        </div>
+                        <div class="box linha-vertical"></div>
+                        <div class="col md-auto" style="text-align: center;">
+                            <a href="historico.html">Histórico</a>
+                        </div>
+                        <div class="box linha-vertical"></div>
+                        <div class="col md-auto" style="text-align: center;">
+                            <a href="index.html">Sair</a>
+                        </div>
                     </div>
                 </div>
             </div>
+            <nav style="background-color: #373b3d;" class="navbar navbar-dark d-flex">
+                <h3 style="color: white;">Covid-Monitor</h3>
+                <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </nav>
         </div>
-        <nav style="background-color: #373b3d;" class="navbar navbar-dark d-flex">
-            <h3 style="color: white;">Covid-Monitor</h3>
-            <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-        </nav>
     </div>
-</div>
 
-<div id="container-box">
-    <div id="title">
-        <h3><b>Gerenciamento de Sintoma</b></h3>
-    </div>
-    <div id="step_sintoma" class="row col-md-12 mb-5"></div>
-    <div id="step-sintomas">
-        <hr>
-        <div>
-            <p class="bold" id="paragrafoMensagem"></p>
+    <div id="container-box">
+        <div id="title">
+            <h3><b>Gerenciamento de Sintoma</b></h3>
         </div>
-        <form id="form">
-            <div class="form-row">
-                <div class="form-group">
-                    <label for="nome">Nome</label>
-                    <input type="text" class="form-control" id="nome">
+        <div id="step_sintoma" class="row col-md-12 mb-5"></div>
+        <div id="step-sintomas">
+            <hr>
+            <div>
+                <p class="bold" id="paragrafoMensagem"></p>
+            </div>
+            <form id="form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="nome">Nome</label>
+                        <input type="text" class="form-control" id="nome">
+                    </div>
                 </div>
-            </div>
-            <div id="buttons">
-                <input type="button" class="btn btn-outline-secondary" value="Voltar" onclick="goBack()" id="#btnVoltar">
-                <input type="button" style="margin-left: 10px;" class="btn btn-primary" value="Salvar" onclick="criarSintoma()" id="#btnSalvar">
-            </div>
-        </form>
+                <div id="buttons">
+                    <input type="button" class="btn btn-outline-secondary" value="Voltar" onclick="goBack()" id="#btnVoltar">
+                    <input type="button" style="margin-left: 10px;" class="btn btn-primary" value="Salvar" onclick="criarSintoma()" id="#btnSalvar">
+                </div>
+            </form>
+        </div>
     </div>
-</div>
-<footer>
-    <p><span style="color: purple">©Copyright</span> - Covid-Monitor 2020 | Desenvolvido com 💜 por Amanda, Gustavo, Israel e Gabriel</p>
-</footer>
+    <footer>
+        <p><span style="color: purple">©Copyright</span> - Covid-Monitor 2020 | Desenvolvido com 💜 por Amanda, Gustavo, Israel e Gabriel</p>
+    </footer>
 
-<script>
+    <script>
 
-    const todos_sintomas = document.querySelector('#step_sintoma');
-    getSintomas();
+        const todos_sintomas = document.querySelector('#step_sintoma');
+        getSintomas();
 
 
-    async function getSintomas() {
-        const URL = `/api/sintomas`;
-        fetch(URL)
-            .then(resposta => { if (!resposta.ok) throw Error(resposta.status); return resposta;})
-            .then(resposta => resposta.json())
-            .then(jsonResponse => listarSintomas(jsonResponse))
-            .catch(function(error) { todos_sintomas.innerHTML = "Erro ao listar sintomas (código " + error.message + ")";});
-    }
+        async function getSintomas() {
+            const URL = `/api/sintomas`;
+            fetch(URL)
+                .then(resposta => { if (!resposta.ok) throw Error(resposta.status); return resposta;})
+                .then(resposta => resposta.json())
+                .then(jsonResponse => listarSintomas(jsonResponse))
+                .catch(function(error) { todos_sintomas.innerHTML = "Erro ao listar sintomas (código " + error.message + ")";});
+        }
 
-    function stepSintoma(){
-        document.getElementById("step-sintomas").style.display = "block";
-        document.getElementById("step_sintoma").style.display = "none";
-        // document.getElementById("btnSintoma").style.display = "none";
-    }
+        function stepSintoma(){
+            document.getElementById("step-sintomas").style.display = "block";
+            document.getElementById("step_sintoma").style.display = "none";
+            // document.getElementById("btnSintoma").style.display = "none";
+        }
 
-    function listarSintomas(sintomas){
-        let step_sintoma = '';
-        let n = sintomas.length;
-        let sintomasArray = [];
-        for (let i = 0; i < n; i++) {
-            let sint = sintomas[i];
-            sintomasArray.push(sintomas[i]);
+        function listarSintomas(sintomas){
+            let step_sintoma = '';
+            let x = sintomas.length;
+            let sintomasA = [];
+            for (let i = 0; i < x; i++) {
+                let sint = sintomas[i];
+                sintomasA.push(sintomas[i]);
+                step_sintoma +=
+                    `<div class="col-md-4 text-nowrap">` +
+                    `<input id="sintoma-${sint.id}" type="checkbox" value="${sint.id}" class="check-sintoma">` +
+                    `<label for="sintoma-${sint.id}">${(sint.nome)}</label>` +
+                    `</div>`;
+            }
             step_sintoma +=
-                `<div class="col-md-4 text-nowrap">` +
-                `<input id="sintoma-${sint.id}" type="checkbox" value="${sint.id}" class="check-sintoma">` +
-                `<label for="sintoma-${sint.id}">${(sint.nome)}</label>` +
+                `<div class="col-md-12">` +
+                `<input type="button" style="margin-left: 10px;" class="btn btn-primary" value="Cadastrar Novo Sintoma" onclick="stepSintoma()" id="#btnSintoma">`+
                 `</div>`;
+            todos_sintomas.innerHTML = step_sintoma;
         }
-        step_sintoma +=
-            `<div class="col-md-12">` +
-            `<input type="button" style="margin-left: 10px;" class="btn btn-primary" value="Cadastrar Novo Sintoma" onclick="stepSintoma()" id="#btnSintoma">`+
-            `</div>`;
-        todos_sintomas.innerHTML = step_sintoma;
-    }
 
-    const capitalize = (str) => {
-        if(typeof str === 'string') {
-            return str.replace(/^\w/, c => c.toUpperCase());
-        } else {
-            return '';
+        const paragrafoMensagem = document.querySelector('#paragrafoMensagem');
+        const nome = document.querySelector('#nome');
+
+        function goBack() {
+            window.location.href = "sintoma.html"
         }
-    };
 
-    const paragrafoMensagem = document.querySelector('#paragrafoMensagem');
-    const nome = document.querySelector('#nome');
+        paragrafoMensagem.innerHTML = 'Após preencher os dados solicitados, clique em "Salvar"'
 
-    function goBack() {
-        window.location.href = "sintoma.html"
-    }
-
-    paragrafoMensagem.innerHTML = 'Após preencher os dados solicitados, clique em "Salvar"'
-
-    async function criarSintoma() {
-        const URL = `/api/sintomas`;
-        const membro = {
-            'nome': nome.value
-        };
-        const postRequest = {
-            method: 'POST',
-            body: JSON.stringify(membro),
-            headers: { 'Content-type': 'application/json' }
-        };
-        fetch(URL, postRequest)
-            .then(resposta => { if (!resposta.ok) throw Error(resposta.status); return resposta; } )
-            .then(resposta => resposta.json())
-            .then(goBack)
-            .catch(function(error) {
-                paragrafoMensagem.innerHTML = `Erro ao criar sintoma. + ${error.message}`;
-                alert('Erro ao criar sintoma. Erro: ' + error.message);
-            });
-    }
-
-    async function excluirSintoma(sint){
-        let confirmation = confirm('Tem certeza de que deseja excluir este sintoma?');
-        if (confirmation == true){
-            const URL = `/api/sintomas/${sint}`;
+        async function criarSintoma() {
+            const URL = `/api/sintomas`;
+            const membro = {
+                'nome': nome.value
+            };
             const postRequest = {
-                method: 'DELETE',
+                method: 'POST',
+                body: JSON.stringify(membro),
+                headers: { 'Content-type': 'application/json' }
             };
             fetch(URL, postRequest)
                 .then(resposta => { if (!resposta.ok) throw Error(resposta.status); return resposta; } )
                 .then(resposta => resposta.json())
                 .then(goBack)
                 .catch(function(error) {
-                    paragrafoMensagem.innerHTML = `Erro ao excluir sintoma. + ${error.message}`;
-                    alert('Erro ao excluir sintoma. Erro: ' + error.message);
+                    paragrafoMensagem.innerHTML = `Erro ao criar sintoma. + ${error.message}`;
+                    alert('Erro ao criar sintoma. Erro: ' + error.message);
                 });
-        } else {
-            goBack();
         }
 
-    }
-</script>
+        async function excluirSintoma(sint){
+            let confirmation = confirm('Tem certeza de que deseja excluir este sintoma?');
+            if (confirmation == true){
+                const URL = `/api/sintomas/${sint}`;
+                const postRequest = {
+                    method: 'DELETE',
+                };
+                fetch(URL, postRequest)
+                    .then(resposta => { if (!resposta.ok) throw Error(resposta.status); return resposta; } )
+                    .then(resposta => resposta.json())
+                    .then(goBack)
+                    .catch(function(error) {
+                        paragrafoMensagem.innerHTML = `Erro ao excluir sintoma. + ${error.message}`;
+                        alert('Erro ao excluir sintoma. Erro: ' + error.message);
+                    });
+            } else {
+                goBack();
+            }
+
+        }
+    </script>
 </body>
 
 </html>

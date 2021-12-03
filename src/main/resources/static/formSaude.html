@@ -1,370 +1,393 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-    <title>Formulário de Saúde</title>
-    <meta charset="UTF-8">
+    <head>
+        <title>Formulário de Saúde</title>
+        <meta charset="UTF-8">
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
-    <link rel="stylesheet" href="style/login.css">
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+        <link rel="stylesheet" href="style/login.css">
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-    <style>
-        /* VARIAVEIS */
-        :root {
-            --textColorInput: #949494;
-            --backgroundColor: black;
-            --backgroundColorLogin: #1D1F20;
-            --backgroundColorLoginTitle: #1A1C1D;
-            --backgroundColorInput: #373b3d;
-            --backgroundColorButton: purple;
-        }
+        <style>
+            /* VARIAVEIS */
+            :root {
+                --textColorInput: #949494;
+                --backgroundColor: black;
+                --backgroundColorLogin: #1D1F20;
+                --backgroundColorLoginTitle: #1A1C1D;
+                --backgroundColorInput: #373b3d;
+                --backgroundColorButton: purple;
+            }
 
-        /* RESET */
-        *{
-            margin: 0px;
-            padding: 0px;
-            box-sizing: border-box;
-            text-decoration: none;
-            color: white;
-            font-family: Roboto;
-        }
+            /* RESET */
+            *{
+                margin: 0px;
+                padding: 0px;
+                box-sizing: border-box;
+                text-decoration: none;
+                color: white;
+                font-family: Roboto;
+            }
 
-        *:focus{
-            outline: none;
-        }
+            *:focus{
+                outline: none;
+            }
 
-        html, body{
-            height: 100%;
-        }
+            html, body{
+                height: 100%;
+            }
 
-        html{
-            scroll-behavior: smooth;
-        }
+            html{
+                scroll-behavior: smooth;
+            }
 
-        /* ESTILOS BÁSICOS */
-        body{
-            overflow-x: hidden;
-            background-color: var(--backgroundColor);
-            margin: 0;
-            padding: 0;
-            font-family: 'Raleway', sans-serif;
-            color: #F2F2F2;
-        }
+            /* ESTILOS BÁSICOS */
+            body{
+                overflow-x: hidden;
+                background-color: var(--backgroundColor);
+                margin: 0;
+                padding: 0;
+                font-family: 'Raleway', sans-serif;
+                color: #F2F2F2;
+            }
 
-        h1, h3{
-            font-weight: lighter;
-        }
+            h1, h3{
+                font-weight: lighter;
+            }
 
-        /* -----[ESTILOS]----- */
-        #container-box {
-            background-color: var(--backgroundColorLogin);
-            position: relative;
-            top: 15%;
-            margin: auto;
-            width: 600px;
-            height: 500px;;
-            border-radius: 0.35em;
-            box-shadow: 0 3px 10px 0 rgba(255, 255, 255, 0.2);
-            text-align: center;
-        }
+            /* -----[ESTILOS]----- */
+            #container-box {
+                background-color: var(--backgroundColorLogin);
+                position: relative;
+                top: 15%;
+                margin: auto;
+                width: 600px;
+                height: 500px;;
+                border-radius: 0.35em;
+                box-shadow: 0 3px 10px 0 rgba(255, 255, 255, 0.2);
+                text-align: center;
+            }
 
-        #title {
-            position: relative;
-            background-color: var(--backgroundColorLoginTitle);
-            width: 100%;
-            padding: 20px 0px;
-            border-radius: 0.35em;
-            font-size: 22px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-        }
+            #title {
+                position: relative;
+                background-color: var(--backgroundColorLoginTitle);
+                width: 100%;
+                padding: 20px 0px;
+                border-radius: 0.35em;
+                font-size: 22px;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            }
 
-        input[type=button] {
-            padding: 6px 25px;
-            color: #C1C3C6;
-            font-weight: bold;
-            border: 0 none;
-            cursor: pointer;
-            border-radius: 3px;
-        }
-        input:hover{
-            color: white;
-            transition: color 1s;
-        }
+            input[type=button] {
+                padding: 6px 25px;
+                color: #C1C3C6;
+                font-weight: bold;
+                border: 0 none;
+                cursor: pointer;
+                border-radius: 3px;
+            }
+            input:hover{
+                color: white;
+                transition: color 1s;
+            }
 
-        #bb{
-            background-color: green;
-        }
+            #bb{
+                background-color: var(--backgroundColorButton);
+            }
 
-        #bm{
-            background-color: red;
-        }
+            #bm{
+                background-color: #C1C3C6;
+            }
 
-        .btn-primary{
-            background-color: #343a40;
-            border-color: #2b3035;
-        }
+            .btn-primary{
+                background-color: #343a40;
+                border-color: #2b3035;
+            }
 
-        .tracker-card{
-            height: 12em;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 500px;
-            margin-left: 8%;
-            margin-top: 8%;
-        }
+            .tracker-card{
+                height: 12em;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 500px;
+                margin-left: 8%;
+                margin-top: 8%;
+            }
 
-        .centralize{
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
+            .centralize{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
 
-        .hide{
-            display: none;
-        }
 
-        .btn-primary{
-            color: #C1C3C6;
-        }
+            .hide{
+                display: none;
+            }
 
-        .btn-primary:hover, btn-primary:focus{
-            color: white;
-            background: var(--backgroundColorButton);
-            transition: color 2s;
-            border-color: var(--backgroundColorButton);
-        }
+            .btn-primary{
+                color: #C1C3C6;
+            }
 
-        a{
-            color: white;
-        }
+            .btn-primary:hover, btn-primary:focus{
+                color: white;
+                background: var(--backgroundColorButton);
+                transition: color 2s;
+                border-color: var(--backgroundColorButton);
+            }
 
-        a:hover{
-            color: purple;
-            text-decoration: none;
-        }
+            a{
+                color: white;
+            }
 
-        .linha-vertical {
-            height: auto;/*Altura da linha*/
-            border-left: 1px solid;/* Adiciona borda esquerda na div como ser fosse uma linha.*/
-        }
-    </style>
-</head>
+            a:hover{
+                color: purple;
+                text-decoration: none;
+            }
 
-<body>
-<div class="pos-f-t">
-    <div class="pos-f-t">
-        <div class="collapse" id="navbarToggleExternalContent">
-            <div style="background-color: #373b3d;">
-                <div class="row d-flex justify-content-center align-itens-center">
-                    <div class="col md-auto" style="text-align: center;">
-                        <a href="gerenciarFuncionario.html">Cadastro de Funcionários</a>
-                    </div>
-                    <div class="box linha-vertical"></div>
-                    <div class="col md-auto" style="text-align: center;">
-                        <a href="gerenciarAluno.html">Cadastro de Alunos</a>
-                    </div>
-                    <div class="box linha-vertical"></div>
-                    <div class="col md-auto" style="text-align: center;">
-                        <a href="sintoma.html">Cadastro de Sintomas</a>
-                    </div>
-                    <div class="box linha-vertical"></div>
-                    <div class="col md-auto" style="text-align: center;">
-                        <a href="relatorios.html">Relatórios</a>
-                    </div>
-                    <div class="box linha-vertical"></div>
-                    <div class="col md-auto" style="text-align: center;">
-                        <a href="historico.html">Histórico</a>
-                    </div>
-                    <div class="box linha-vertical"></div>
-                    <div class="col md-auto" style="text-align: center;">
-                        <a href="index.html">Sair</a>
+            .linha-vertical {
+                height: auto;/*Altura da linha*/
+                border-left: 1px solid;/* Adiciona borda esquerda na div como ser fosse uma linha.*/
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="pos-f-t">
+            <div class="pos-f-t">
+                <div class="collapse" id="navbarToggleExternalContent">
+                    <div style="background-color: #373b3d;">
+                        <div class="row d-flex justify-content-center align-itens-center">
+                            <div class="col md-auto hide" id="divCadFuncs" style="text-align: center;">
+                                <a href="gerenciarFuncionario.html">Cadastro de Funcionários</a>
+                            </div>
+                            <div class="box linha-vertical hide "> </div>
+                            <div class="col md-auto" id="divCadAlunos" style="text-align: center;">
+                                <a href="gerenciarAluno.html">Cadastro de Alunos</a>
+                            </div>
+                            <div class="box linha-vertical"></div>
+                            <div class="col md-auto hide" id="divCadSintomas" style="text-align: center;">
+                                <a href="sintoma.html">Cadastro de Sintomas</a>
+                            </div>
+                            <div class="box linha-vertical"></div>
+                            <div class="col md-auto hide" id="divRelatorios" style="text-align: center;">
+                                <a href="relatorios.html">Relatórios</a>
+                            </div>
+                            <div class="box linha-vertical"></div>
+                            <div class="col md-auto hide"id="divHistorico" style="text-align: center;">
+                                <a href="historico.html">Histórico</a>
+                            </div>
+                            <div class="box linha-vertical"></div>
+                            <div class="col md-auto" style="text-align: center;">
+                                <a href="index.html">Sair</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        <nav style="background-color: #373b3d;" class="navbar navbar-dark d-flex">
-            <h3 style="color: white;">Covid-Monitor</h3>
-            <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-        </nav>
-    </div>
-</div>
-
-    <div id="container-box">
-        <div id="title">
-            <div >
-                <h2>Olá, <span style="color:purple" ><b id="username"></b></span>!</h2>
-            </div>
-        </div>
-        <h3 style="margin-top: 15px">Como você está se sentindo hoje?</h3>
-
-        <div id="buttons">
-            <input id="bb" type="button" onclick="divBem()" value="Bem">
-            <input id="bm" type="button" onclick="divMal()" value="Mal">
-        </div>
-        <div class="tracker-card centralize">
-            <div id="box_bem" class="col-md-12 centralize flex-column hide">
-                <div class="mb-5">
-                    <h2>Você está se sentindo: Bem</h2>
-                </div>
-                <div>
-                    <button type="button" class="btn btn-secondary" onclick="location.reload()">Cancelar</button>
-                    <button type="button" class="btn btn-primary" onclick="registroBem()">Confirmar</button>
-                </div>
-            </div>
-            <div id="box_mal" class="col-md-6 centralize flex-column hide">
-                <p>Obrigado pelo seu registro!</p>
-                <p id="currentTime"></p>
-                <button type="button" class="btn btn-secondary" onclick="location.reload()">Voltar</button>
-            </div>
-
-            <div id="div_bem" class="col-md-12 centralize flex-column hide">
-                <div class="mb-5">
-                    <h2>Você está se sentindo: Ruim</h2>
-                </div>
-
-                <div id="step_sintoma" class="row col-md-10 mb-5"></div>
-
-                <div>
-                    <button type="button" class="btn btn-secondary" onclick="location.reload()">Cancelar</button>
-                    <button type="button" class="btn btn-primary" onclick="registroMal()">Confirmar</button>
-                </div>
-            </div>
-            <div id="div_mal" class="col-md-10 centralize flex-column hide">
-                <div class="mb-2 text-center">
-                    <p>Registro foi cadastrado!</p>
-                    <p>Caso os sintomas persistirem busque auxílio medico.</p>
-                    <p>Para mais informações, acesse: <a href="https://aps.saude.gov.br/ape/corona/telesus">https://aps.saude.gov.br/ape/corona/telesus</a></p>
-                </div>
-                <button type="button" class="btn btn-secondary" onclick="location.reload()">Voltar</button>
+                <nav style="background-color: #373b3d;" class="navbar navbar-dark d-flex">
+                    <h3 style="color: white;">Covid-Monitor</h3>
+                    <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                </nav>
             </div>
         </div>
 
-    </div>
-</body>
+            <div id="container-box">
+                <div id="title">
+                    <div >
+                        <h2>Olá, <span style="color:purple" ><b id="username"></b></span>!</h2>
+                    </div>
+                </div>
+                <h3 style="margin-top: 15px">Como você está se sentindo hoje?</h3>
 
-</html>
+                <div id="buttons">
+                    <input id="bb" type="button" onclick="divBem()" value="Bem">
+                    <input id="bm" type="button" onclick="divMal()" value="Mal">
+                </div>
+                <div class="tracker-card centralize">
+                    <div id="box_bem" class="col-md-12 centralize flex-column hide">
+                        <div class="mb-5">
+                            <h2>Você está se sentindo: Bem</h2>
+                        </div>
+                        <div>
+                            <button type="button" class="btn btn-secondary" onclick="location.reload()">Cancelar</button>
+                            <button type="button" class="btn btn-primary" onclick="registroBem()">Confirmar</button>
+                        </div>
+                    </div>
+                    <div id="box_mal" class="col-md-6 centralize flex-column hide">
+                        <p>Obrigado pelo seu registro!</p>
+                        <p id="currentTime"></p>
+                        <button type="button" class="btn btn-secondary" onclick="location.reload()">Voltar</button>
+                    </div>
 
-<script>
-    const box_bem = document.getElementById('box_bem');
-    const box_mal = document.getElementById('box_mal');
-    const div_bem = document.getElementById('div_bem');
-    const div_mal = document.getElementById('div_mal');
-    const todos_sintomas = document.querySelector('#step_sintoma');
-    const currentTime = document.querySelector('#currentTime');
-    const username = document.querySelector('#username');
-    username.innerText = localStorage.getItem('username');
+                    <div id="div_bem" class="col-md-12 centralize flex-column hide">
+                        <div class="mb-5">
+                            <h2>Você está se sentindo: Ruim</h2>
+                        </div>
 
-    getSintomas();
+                        <div id="step_sintoma" class="row col-md-10 mb-5"></div>
 
-    async function getSintomas() {
-        const URL = `/api/sintomas`;
-        fetch(URL)
-            .then(resposta => { if (!resposta.ok) throw Error(resposta.status); return resposta;})
-            .then(resposta => resposta.json())
-            .then(jsonResponse => listarSintomas(jsonResponse))
-            .catch(function(error) { todos_sintomas.innerHTML = "Erro ao listar sintomas (código " + error.message + ")";});
-    }
+                        <div>
+                            <button type="button" class="btn btn-secondary" onclick="location.reload()">Cancelar</button>
+                            <button type="button" class="btn btn-primary" onclick="registroMal()">Confirmar</button>
+                        </div>
+                    </div>
+                    <div id="div_mal" class="col-md-10 centralize flex-column hide">
+                        <div class="mb-2 text-center">
+                            <p>Registro foi cadastrado!</p>
+                            <p>Caso os sintomas persistirem busque auxílio medico.</p>
+                            <p>Para mais informações, acesse: <a href="https://aps.saude.gov.br/ape/corona/telesus">https://aps.saude.gov.br/ape/corona/telesus</a></p>
+                        </div>
+                        <button type="button" class="btn btn-secondary" onclick="location.reload()">Voltar</button>
+                    </div>
+                </div>
 
-    function listarSintomas(sintomas){
-        let step_sintoma = '';
-        let n = sintomas.length;
-        let sintomasArray = [];
-        for (let i = 0; i < n; i++) {
-            let sint = sintomas[i];
-            sintomasArray.push(sintomas[i]);
-            step_sintoma +=
-                `<div class="col-md-4 text-nowrap">` +
-                `<input id="sintoma-${sint.id}" type="checkbox" value="${sint.id}" class="check-sintoma">` +
-                `<label for="sintoma-${sint.id}">${(sint.nome)}</label>` +
-                `</div>`;
-        }
-        todos_sintomas.innerHTML = step_sintoma;
-    }
+            </div>
 
-    function divBem(){
-        div_bem.classList.add('hide');
-        box_bem.classList.remove('hide');
+        <script>
+            const box_bem = document.getElementById('box_bem');
+            const box_mal = document.getElementById('box_mal');
+            const div_bem = document.getElementById('div_bem');
+            const div_mal = document.getElementById('div_mal');
+            const divCadFunc = document.querySelector('#divCadFuncs');
+            const divCadAluno = document.querySelector('#divCadAlunos');
+            const divCadSintoma = document.querySelector('#divCadSintomas');
+            const divCadRelatorios = document.querySelector('#divCadRelatorios');
+            const divCadHistorico = document.querySelector('#divCadHistorico');
+            const todos_sintomas = document.querySelector('#step_sintoma');
+            const currentTime = document.querySelector('#currentTime');
+            const username = document.querySelector('#username');
+            username.innerText = localStorage.getItem('username');
 
-    }
+            getSintomas();
+            targets();
 
-    function divMal(){
-        box_bem.classList.add('hide');
-        div_bem.classList.remove('hide');
-    }
+            function targets(){
+                const currentRole = localStorage.getItem('role');
+                if(currentRole === 1){
+                    divCadHistorico.classList.remove('hide');
+                } else if(currentRole === 2){
+                    divCadHistorico.classList.remove('hide');
+                } else if(currentRole === 3){
+                    divCadFunc.classList.remove('hide');
+                    divCadAluno.classList.remove('hide');
+                    divCadSintoma.classList.remove('hide');
+                    divCadHistorico.classList.remove('hide');
+                    divCadRelatorios.classList.remove('hide');
+                    divCadSintoma.classList.remove('hide');
+                } else if(currentRole === 4){
+                    divCadRelatorios.classList.remove('hide');
+                    divCadHistorico.classList.remove('hide');
+                } else{
+                    alert("Você não tem acesso a essa página!");
+                }
+            }
 
-    function registroBem(){
-        const currentUser = localStorage.getItem('userID');
-        let today = new Date();
 
-        fetch("/api/estado-saude", {
-            "method": "POST",
-            "headers": {
-                "Content-Type": "application/json"
-            },
-            "body": JSON.stringify({
-                "isBem": 1,
-                "idUsuario": currentUser,
-                "sintomas": []
-            })
-        })
-            .then((response) => {
-                response.json();
-                box_bem.classList.add('hide');
-                box_mal.classList.remove('hide');
-                document.getElementById('bb').disabled = true;
-                document.getElementById('bm').disabled = true;
-            })
-            .catch(error => {
-                alert('Erro no registro, tente novamente mais tarde');
-            });
-        currentTime.innerHTML = today;
-    }
+            async function getSintomas() {
+                const URL = `/api/sintomas`;
+                fetch(URL)
+                    .then(resposta => { if (!resposta.ok) throw Error(resposta.status); return resposta;})
+                    .then(resposta => resposta.json())
+                    .then(jsonResponse => listarSintomas(jsonResponse))
+                    .catch(function(error) { todos_sintomas.innerHTML = "Erro ao listar sintomas (código " + error.message + ")";});
+            }
 
-    function registroMal(){
-        const currentUser = localStorage.getItem('userID');
-        let today = new Date();
-        const sintomas = [];
-        document.querySelectorAll('.check-sintoma:checked').forEach(function(s){
-            sintomas.push(parseInt(s.value));
-        });
-        if(sintomas.length <= 0){
-            alert('Necessário informar ao menos um sintoma');
-            return false;
-        }
+            function listarSintomas(sintomas){
+                let step_sintoma = '';
+                let n = sintomas.length;
+                let sintomasArray = [];
+                for (let i = 0; i < n; i++) {
+                    let sint = sintomas[i];
+                    sintomasArray.push(sintomas[i]);
+                    step_sintoma +=
+                        `<div class="col-md-4 text-nowrap">` +
+                        `<input id="sintoma-${sint.id}" type="checkbox" value="${sint.id}" class="check-sintoma">` +
+                        `<label for="sintoma-${sint.id}">${(sint.nome)}</label>` +
+                        `</div>`;
+                }
+                todos_sintomas.innerHTML = step_sintoma;
+            }
 
-        fetch("/api/estado-saude", {
-            "method": "POST",
-            "headers": {
-                "Content-Type": "application/json"
-            },
-            "body": JSON.stringify({
-                "isBem": 0,
-                "idUsuario": currentUser,
-                "sintomas": sintomas
-            })
-        })
-            .then((response) => {
-                response.json();
+            function divBem(){
                 div_bem.classList.add('hide');
-                div_mal.classList.remove('hide');
-                document.getElementById('bb').disabled = true;
-                document.getElementById('bm').disabled = true;
-            })
-            .catch(error => {
-                alert('Um erro inesperado aconteceu, por favor tente novamente');
-            });
-    }
-</script>
+                box_bem.classList.remove('hide');
+
+            }
+
+            function divMal(){
+                box_bem.classList.add('hide');
+                div_bem.classList.remove('hide');
+            }
+
+            function registroBem(){
+                const currentUser = localStorage.getItem('userID');
+                let today = new Date();
+
+                fetch("/api/estadoSaude", {
+                    "method": "POST",
+                    "headers": {
+                        "Content-Type": "application/json"
+                    },
+                    "body": JSON.stringify({
+                        "isBem": 1,
+                        "idUsuario": currentUser,
+                        "sintomas": []
+                    })
+                })
+                    .then((response) => {
+                        response.json();
+                        box_bem.classList.add('hide');
+                        box_mal.classList.remove('hide');
+                        document.getElementById('bb').disabled = true;
+                        document.getElementById('bm').disabled = true;
+                    })
+                    .catch(error => {
+                        alert('Erro no registro, tente novamente mais tarde');
+                    });
+                currentTime.innerHTML = today;
+            }
+
+            function registroMal(){
+                const currentUser = localStorage.getItem('userID');
+                let today = new Date();
+                const sintomas = [];
+                document.querySelectorAll('.check-sintoma:checked').forEach(function(s){
+                    sintomas.push(parseInt(s.value));
+                });
+                if(sintomas.length <= 0){
+                    alert('Necessário informar ao menos um sintoma');
+                    return false;
+                }
+
+                fetch("/api/estadoSaude", {
+                    "method": "POST",
+                    "headers": {
+                        "Content-Type": "application/json"
+                    },
+                    "body": JSON.stringify({
+                        "isBem": 0,
+                        "idUsuario": currentUser,
+                        "sintomas": sintomas
+                    })
+                })
+                    .then((response) => {
+                        response.json();
+                        div_bem.classList.add('hide');
+                        div_mal.classList.remove('hide');
+                        document.getElementById('bb').disabled = true;
+                        document.getElementById('bm').disabled = true;
+                    })
+                    .catch(error => {
+                        alert('Um erro inesperado aconteceu, por favor tente novamente');
+                    });
+            }
+        </script>
+    </body>
+</html>

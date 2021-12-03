@@ -41,179 +41,180 @@
 
     <body>
 
-    <div class="pos-f-t">
         <div class="pos-f-t">
-            <div class="collapse" id="navbarToggleExternalContent">
-                <div style="background-color: #373b3d;">
-                    <div class="row d-flex justify-content-center align-itens-center">
-                        <div class="col md-auto" style="text-align: center;">
-                            <a href="gerenciarFuncionario.html">Cadastro de Funcionários</a>
-                        </div>
-                        <div class="box linha-vertical"></div>
-                        <div class="col md-auto" style="text-align: center;">
-                            <a href="gerenciarAluno.html">Cadastro de Alunos</a>
-                        </div>
-                        <div class="box linha-vertical"></div>
-                        <div class="col md-auto" style="text-align: center;">
-                            <a href="sintoma.html">Cadastro de Sintomas</a>
-                        </div>
-                        <div class="box linha-vertical"></div>
-                        <div class="col md-auto" style="text-align: center;">
-                            <a href="relatorios.html">Relatórios</a>
-                        </div>
-                        <div class="box linha-vertical"></div>
-                        <div class="col md-auto" style="text-align: center;">
-                            <a href="historico.html">Histórico</a>
-                        </div>
-                        <div class="box linha-vertical"></div>
-                        <div class="col md-auto" style="text-align: center;">
-                            <a href="index.html">Sair</a>
+            <div class="pos-f-t">
+                <div class="collapse" id="navbarToggleExternalContent">
+                    <div style="background-color: #373b3d;">
+                        <div class="row d-flex justify-content-center align-itens-center">
+                            <div class="col md-auto" style="text-align: center;">
+                                <a href="gerenciarFuncionario.html">Cadastro de Funcionários</a>
+                            </div>
+                            <div class="box linha-vertical"></div>
+                            <div class="col md-auto" style="text-align: center;">
+                                <a href="gerenciarAluno.html">Cadastro de Alunos</a>
+                            </div>
+                            <div class="box linha-vertical"></div>
+                            <div class="col md-auto" style="text-align: center;">
+                                <a href="sintoma.html">Cadastro de Sintomas</a>
+                            </div>
+                            <div class="box linha-vertical"></div>
+                            <div class="col md-auto" style="text-align: center;">
+                                <a href="relatorios.html">Relatórios</a>
+                            </div>
+                            <div class="box linha-vertical"></div>
+                            <div class="col md-auto" style="text-align: center;">
+                                <a href="historico.html">Histórico</a>
+                            </div>
+                            <div class="box linha-vertical"></div>
+                            <div class="col md-auto" style="text-align: center;">
+                                <a href="index.html">Sair</a>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <nav style="background-color: #373b3d;" class="navbar navbar-dark d-flex">
-                <h3 style="color: white;">Covid-Monitor</h3>
-                <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-            </nav>
-        </div>
-    </div>
-        <header class="container mt-5">
-            <div class="row">
-                <div class="col-md-12">                    
-                    <h3><b>Relatório</b></h3>                    
-                    <hr>
-                </div>
-                <div class="col-md-9">                    
-                    <form>
-                        <div class="row">
-                            <div class="col form-group">
-                              <label for="data-inicio">Data Início</label>
-                              <input name="data-inicio" type="date" class="form-control mx-0" placeholder="First name" id="data-inicio" value="2021-11-01">
-                            </div>
-                            <div class="col form-group">
-                              <label for="data-fim">Data Fim</label>
-                              <input name="data-fim" type="date" class="form-control mx-0" placeholder="Last name" id="data-fim">
-                            </div>
-                            <div class="col-2 form-group">
-                                <label class="d-block" for="filtrar-registros">&nbsp;</label>
-                                <button type="button" class="btn-primary mt-2" onclick="getUsuarios()" id="filtrar-registros">Filtrar</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </header>
-
-
-        <div class="container d-flex w-100 h-100 p-3 mx-auto justify-content-center flex-column">
-            <div class="pt-5 mx-auto clean-table w-100"> <!-- ================================== -->
-                <center><canvas id="myChart" style="text-align: center;"></canvas></center>
+                <nav style="background-color: #373b3d;" class="navbar navbar-dark d-flex">
+                    <h3 style="color: white;">Covid-Monitor</h3>
+                    <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                </nav>
             </div>
         </div>
+            <header class="container mt-5">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h3><b>Relatório</b></h3>
+                        <hr>
+                    </div>
+                    <div class="col-md-9">
+                        <form>
+                            <div class="row">
+                                <div class="col form-group">
+                                  <label for="data-inicio">Data Início</label>
+                                  <input name="data-inicio" type="date" class="form-control mx-0" placeholder="First name" id="data-inicio" value="2021-11-01">
+                                </div>
+                                <div class="col form-group">
+                                  <label for="data-fim">Data Fim</label>
+                                  <input name="data-fim" type="date" class="form-control mx-0" placeholder="Last name" id="data-fim">
+                                </div>
+                                <div class="col-2 form-group">
+                                    <label class="d-block" for="filtrar-registros">&nbsp;</label>
+                                    <button type="button" class="btn-primary mt-2" onclick="getUsuarios()" id="filtrar-registros">Filtrar</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </header>
 
-    <footer>
-        <p><span style="color: purple">©Copyright</span> - Covid-Monitor 2020 | Desenvolvido com 💜 por Amanda, Gustavo, Israel e Gabriel</p>
-    </footer>
+
+            <div class="container d-flex w-100 h-100 p-3 mx-auto justify-content-center flex-column">
+                <div class="pt-5 mx-auto clean-table w-100"> <!-- ================================== -->
+                    <center><canvas id="myChart" style="text-align: center;"></canvas></center>
+                </div>
+            </div>
+
+        <footer>
+            <p><span style="color: purple">©Copyright</span> - Covid-Monitor 2020 | Desenvolvido com 💜 por Amanda, Gustavo, Israel e Gabriel</p>
+        </footer>
+
+        <script>
+
+            // Encontra dados
+
+            getUsuarios();
+            async function getUsuarios() {
+                labels = [];
+                dados = [];
+                dataAux = []
+
+                const dateInicio = document.querySelector('#data-inicio');
+                const dateFim = document.querySelector('#data-fim');
+                const currentUser = localStorage.getItem('userID');
+
+                diaInicio = new Date(dateInicio.value);
+                if (dateFim.value == ""){
+                    diaFim = new Date(Date.now());
+                } else {
+                    diaFim = new Date(dateFim.value);
+                }
+                dataDif = diaFim - diaInicio;
+                diaDif = (dataDif-dataDif%86400000)/86400000;
+                for (i=1; i <= diaDif; i++){
+                    dados.push(0); // Cria array de dados com 0
+                    dataIterator = new Date(diaFim - (diaFim%86400000) - (diaDif-i+1)*86400000);
+                    labels.push(dataIterator.getUTCDate()+"-"+(dataIterator.getUTCMonth()+1)+"-"+dataIterator.getUTCFullYear()); // Cria array de labels
+                    dataAux.push(dataIterator); //
+                }
+
+                let URL = `/api/estadoSaude/membro/${currentUser}`;
+                if(dateInicio.value && !dateFim.value){
+                    URL += '?start='+dateInicio.value
+                } else {
+                    URL += '?start='+dateInicio.value+"&end="+dateFim.value
+                }
+                fetch(URL)
+                    .then(resposta => { if (!resposta.ok) throw Error(resposta.status); return resposta;})
+                    .then(resposta => resposta.json())
+                    .then(jsonResponse => getReg(jsonResponse))
+                    .catch(function(error) { console.log("Erro ao listar usuários (código " + error.message + ")");});
+            }
+            function getReg( registros ) {
+
+                let n = registros.length;
+                for (let i = 0; i < n; i++) {
+                    let dado = registros[i];
+                    let registroSaude = dado.isBem;
+                    let data = new Date(dado.dtCriacao);
+                    checkAno = data.getUTCFullYear();
+                    checkMes = data.getUTCMonth();
+                    checkDia = data.getUTCDate();
+                    for(j = 0; j < diaDif; j++){
+                        if (checkAno == dataAux[j].getUTCFullYear() &&
+                            checkMes == dataAux[j].getUTCMonth() &&
+                            checkDia == dataAux[j].getUTCDate()) { dados[j]++; } // Adiciona mais um registro no dia
+                    }
+                }
+                //console.log(dados);
+                chart();
+            }
+
+            function chart(){
+                // Tratamento do gráfico
+                //labels = ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho']; // exemplos
+                //dados = [65, 59, 80, 81, 56, 55, 40];
+
+                const data = {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Registros por dia',
+                        data: dados,
+                        backgroundColor: 'rgba(0, 0, 200, 0.7)'
+                    }]
+                };
+
+                // Configuração do gráfico
+                const config = {
+                    type: 'bar',
+                    data: data,
+                    options: {
+                        scales: {
+                            yAxes: [{
+                                ticks: {
+                                    beginAtZero: true
+                                }
+                            }]
+                        }
+                    }
+                };
+
+                myChart = new Chart(
+                    document.getElementById('myChart'),
+                    config
+                );
+            }
+
+        </script>
     </body>
 
 </html>
-
-
-<script>
-    // Encontra dados
-
-    getUsuarios();
-    async function getUsuarios() {
-        labels = [];
-        dados = [];
-        dataAux = []
-
-        const dateInicio = document.querySelector('#data-inicio');
-        const dateFim = document.querySelector('#data-fim');
-        const currentUser = localStorage.getItem('userID');
-
-        diaInicio = new Date(dateInicio.value);
-        if (dateFim.value == ""){
-            diaFim = new Date(Date.now());
-        } else {
-            diaFim = new Date(dateFim.value);
-        }
-        dataDif = diaFim - diaInicio;
-        diaDif = (dataDif-dataDif%86400000)/86400000;
-        for (i=1; i <= diaDif; i++){
-            dados.push(0); // Cria array de dados com 0
-            dataIterator = new Date(diaFim - (diaFim%86400000) - (diaDif-i+1)*86400000);
-            labels.push(dataIterator.getUTCDate()+"-"+(dataIterator.getUTCMonth()+1)+"-"+dataIterator.getUTCFullYear()); // Cria array de labels
-            dataAux.push(dataIterator); // 
-        }
-
-        let URL = `/api/estado-saude/membro/${currentUser}`;
-        if(dateInicio.value && !dateFim.value){
-            URL += '?start='+dateInicio.value
-        } else {
-            URL += '?start='+dateInicio.value+"&end="+dateFim.value
-        }
-        fetch(URL)
-            .then(resposta => { if (!resposta.ok) throw Error(resposta.status); return resposta;})
-            .then(resposta => resposta.json())
-            .then(jsonResponse => getReg(jsonResponse))
-            .catch(function(error) { console.log("Erro ao listar usuários (código " + error.message + ")");});
-    }
-    function getReg( registros ) {
-        
-        let n = registros.length;
-        for (let i = 0; i < n; i++) {
-            let dado = registros[i];
-            let registroSaude = dado.isBem;
-            let data = new Date(dado.dtCriacao);
-            checkAno = data.getUTCFullYear();
-            checkMes = data.getUTCMonth();
-            checkDia = data.getUTCDate();
-            for(j = 0; j < diaDif; j++){
-                if (checkAno == dataAux[j].getUTCFullYear() && 
-                checkMes == dataAux[j].getUTCMonth() && 
-                checkDia == dataAux[j].getUTCDate()) { dados[j]++; } // Adiciona mais um registro no dia
-            }
-        }
-        //console.log(dados);
-        chart();
-    }
-
-    function chart(){
-        // Tratamento do gráfico
-        //labels = ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho']; // exemplos
-        //dados = [65, 59, 80, 81, 56, 55, 40];
-
-        const data = {
-        labels: labels,
-        datasets: [{
-            label: 'Registros por dia',
-            data: dados,
-            backgroundColor: 'rgba(0, 0, 200, 0.7)'
-        }]
-        };
-
-        // Configuração do gráfico
-        const config = {
-            type: 'bar',
-            data: data,
-            options: {
-                scales: {
-                    yAxes: [{
-                        ticks: {
-                            beginAtZero: true
-                        }
-                    }]
-                }
-            }
-        };
-    
-        myChart = new Chart(
-        document.getElementById('myChart'),
-        config
-        );
-    }
-</script>

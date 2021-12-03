@@ -4,6 +4,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
 import com.covidmonitor.model.EstadoSaude;
+import com.covidmonitor.model.Funcionario;
 import com.covidmonitor.model.Membro;
 import com.covidmonitor.repository.EstadoSaudeRepo;
 import com.covidmonitor.repository.MembroRepo;
@@ -29,24 +30,36 @@ public class EstadoSaudeController {
     @Autowired
     protected SintomaRepo sintomaRepo;
 
-    @GetMapping("/api/estado-saude")
-    public List<EstadoSaude> getEstadosSaude(){
-        List<EstadoSaude> estados = new ArrayList<>();
-        estadoSaudeRepo.findAll().forEach(estados::add);
-        return estados;
+//    @GetMapping("/api/estadoSaude")
+//    public List<EstadoSaude> getEstadosSaude(){
+//        List<EstadoSaude> estados = new ArrayList<>();
+//        estadoSaudeRepo.findAll().forEach(estados::add);
+//        return estados;
+//    }
+//
+//    @GetMapping("/api/estadoSaude/{id}")
+//    public EstadoSaude getEstadoSaude(@PathVariable long id) {
+//        Optional<EstadoSaude> retorno = estadoSaudeRepo.findById(id);
+//        EstadoSaude estado = null;
+//        if(retorno.isPresent()) {
+//            estado = retorno.get();
+//        }
+//        return estado;
+//    }
+
+    @GetMapping("/api/estadoSaude/")
+    Iterable<EstadoSaude> getEstadoSaude(@RequestParam Optional<Long> id) {
+
+        return estadoSaudeRepo.findAll();
+
     }
 
-    @GetMapping("/api/estado-saude/{id}")
-    public EstadoSaude getEstadoSaude(@PathVariable long id) {
-        Optional<EstadoSaude> retorno = estadoSaudeRepo.findById(id);
-        EstadoSaude estado = null;
-        if(retorno.isPresent()) {
-            estado = retorno.get();
-        }
-        return estado;
+    @GetMapping("/api/estadoSaude/{id}")
+    Optional<EstadoSaude> getEstadoSaude(@PathVariable long id) {
+        return estadoSaudeRepo.findById(id);
     }
 
-    @PostMapping("/api/estado-saude")
+    @PostMapping("/api/estadoSaude")
     public String createEstadoSaude(@RequestBody EstadoSaude estado) {   
         
         Optional<Membro> optionUsuario = membroRepo.findById(estado.getIdUsuario());
@@ -75,7 +88,7 @@ public class EstadoSaudeController {
        );
     }	
     
-    @GetMapping("/api/estado-saude/membro/{id}")
+    @GetMapping("/api/estadoSaude/membro/{id}")
     public List<EstadoSaude> getEstadoSaudeUsuario(
                 @PathVariable long id, 
                 @RequestParam("start") Optional<String> start,

@@ -43,15 +43,6 @@
 
 
         <script>
-            function alertaCredenciasInvalidas(){
-                Swal.fire({
-                    title: 'Ops!',
-                    text: 'Usuário ou senha inválidas',
-                    icon: 'error',
-                    confirmButtonText: 'Ok',
-                    confirmButtonColor: '#d33'
-                })
-            }
             function logar(){
                 const formLogin = document.getElementById('form-login');
                 formData = new FormData(formLogin);
@@ -71,13 +62,14 @@
                         if(data.id !== undefined){
                             localStorage.setItem('userID', data.id);
                             localStorage.setItem('username', data.nome);
+                            localStorage.setItem('role', data.idRole);
                             window.location.href = "formSaude.html";
                         } else {
-                            alertaCredenciasInvalidas();
+                            alert("Usuário de senha inválido");
                         }
                     })
                     .catch(err => {
-                        alertaCredenciasInvalidas();
+                        alert("Usuário de senha inválido");
                     });
             }
         </script>

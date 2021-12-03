@@ -1,12 +1,11 @@
 package com.covidmonitor.controller;
-
 import com.covidmonitor.repository.SintomaRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import com.covidmonitor.model.Sintoma;
+import org.springframework.web.server.ResponseStatusException;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -14,49 +13,40 @@ public class SintomaController {
     @Autowired
     private SintomaRepo sintomaRepo;
 
+    @PostMapping("/api/sintomas")
+    Sintoma createProfessor(@RequestBody Sintoma sintoma) {
+        Sintoma createSintoma = sintomaRepo.save(sintoma);
+        return createSintoma;
+    }
+
     @GetMapping("/api/sintomas")
-    public List<Sintoma> getSintoma(){
-        List<Sintoma> sintomas = new ArrayList<>();
-        sintomaRepo.findAll().forEach(sintomas::add);
-        return sintomas;
+    Iterable<Sintoma> getSintomaes(@RequestParam Optional<Long> id) {
+
+        return sintomaRepo.findAll();
+
     }
 
     @GetMapping("/api/sintomas/{id}")
-    public Sintoma getSintoma(@PathVariable long id) {
-        Optional<Sintoma> retorno = sintomaRepo.findById(id);
-        Sintoma sintoma = null;
-        if(retorno.isPresent()) {
-            sintoma = retorno.get();
-        }
-        return sintoma;
-    }
-
-    @PostMapping("/api/sintomas")
-    public Sintoma createSintoma(@RequestBody Sintoma sintoma) {
-    	sintomaRepo.save(sintoma);
-        return sintoma;
+    Optional<Sintoma> getSintoma(@PathVariable long id) {
+        return sintomaRepo.findById(id);
     }
 
     @PutMapping("/api/sintomas/{id}")
-    public Sintoma updateSintoma(@RequestBody Sintoma a, @PathVariable long id) {
-        Sintoma sintoma = null;
-    	sintoma = this.getSintoma(id);
-        if(sintoma != null) {
-            sintomaRepo.save(a);
-            sintoma = a;
+    Optional<Sintoma> updateSintoma(@RequestBody Sintoma sintomaRequest, @PathVariable long id) {
+        Optional<Sintoma> opt = sintomaRepo.findById(id);
+        if (opt.isPresent()) {
+            if (sintomaRequest.getId() == id) {
+                sintomaRepo.save(sintomaRequest);
+                return opt;
+            }
         }
-        return a;
+        throw new ResponseStatusException(HttpStatus.NOT_FOUND,
+                "Erro ao alterar dados do sintoma com id " + id);
     }
 
-    @DeleteMapping(value = "/api/sintomas/{id}", produces = "application/json")
-    public String deleteSintoma(@PathVariable long id) {
-        Sintoma sintoma = this.getSintoma(id);
-        boolean result = false;
-        if(sintoma != null) {
-        	sintomaRepo.delete(sintoma);
-            result = true;
-        }
-        return "{ \"sucess\" : " + (result ? "true" : "false" ) + " }";
+    @DeleteMapping(value = "/api/sintomas/{id}")
+    void deleteSintoma(@PathVariable long id) {
+        sintomaRepo.deleteById(id);
     }
 	
 }
