@@ -165,24 +165,24 @@
                         <div class="row d-flex justify-content-center align-itens-center">
                             <div class="col md-auto hide" id="divCadFuncs" style="text-align: center;">
                                 <a href="gerenciarFuncionario.html">Cadastro de Funcionários</a>
+                                <div class="box linha-vertical hide "> </div>
                             </div>
-                            <div class="box linha-vertical hide "> </div>
                             <div class="col md-auto" id="divCadAlunos" style="text-align: center;">
                                 <a href="gerenciarAluno.html">Cadastro de Alunos</a>
+                                <div class="box linha-vertical hide "> </div>
                             </div>
-                            <div class="box linha-vertical"></div>
                             <div class="col md-auto hide" id="divCadSintomas" style="text-align: center;">
                                 <a href="sintoma.html">Cadastro de Sintomas</a>
+                                <div class="box linha-vertical hide "> </div>
                             </div>
-                            <div class="box linha-vertical"></div>
                             <div class="col md-auto hide" id="divRelatorios" style="text-align: center;">
                                 <a href="relatorios.html">Relatórios</a>
+                                <div class="box linha-vertical hide "> </div>
                             </div>
-                            <div class="box linha-vertical"></div>
                             <div class="col md-auto" id="divHistorico" style="text-align: center;">
                                 <a href="historico.html">Histórico</a>
+                                <div class="box linha-vertical hide "> </div>
                             </div>
-                            <div class="box linha-vertical"></div>
                             <div class="col md-auto" style="text-align: center;">
                                 <a href="index.html">Sair</a>
                             </div>
@@ -258,8 +258,7 @@
             const divCadFunc = document.querySelector('#divCadFuncs');
             const divCadAluno = document.querySelector('#divCadAlunos');
             const divCadSintoma = document.querySelector('#divCadSintomas');
-            const divCadRelatorios = document.querySelector('#divCadRelatorios');
-            const divCadHistorico = document.querySelector('#divCadHistorico');
+            const divRelatorios = document.querySelector('#divRelatorios');
             const todos_sintomas = document.querySelector('#step_sintoma');
             const currentTime = document.querySelector('#currentTime');
             const username = document.querySelector('#username');
@@ -274,10 +273,10 @@
                     divCadFunc.classList.remove('hide');
                     divCadAluno.classList.remove('hide');
                     divCadSintoma.classList.remove('hide');
-                    divCadRelatorios.classList.remove('hide');
+                    divRelatorios.classList.remove('hide');
                     divCadSintoma.classList.remove('hide');
                 }else if(currentRole == 4){
-                    divCadRelatorios.classList.remove('hide');
+                    divRelatorios.classList.remove('hide');
                 } else if(currentRole != 1 || currentRole != 2){
                     alert("Você não tem acesso a essa página!");
                 }
