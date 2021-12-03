@@ -173,13 +173,13 @@
             checkAno = data.getUTCFullYear();
             checkMes = data.getUTCMonth();
             checkDia = data.getUTCDate();
-            console.log(registroSaude)
-            console.log(data)
+            console.log(diaDif)
             for(let j = 0; j < diaDif; j++){
                 if (checkAno == dataAux[j].getUTCFullYear() && 
                 checkMes == dataAux[j].getUTCMonth() && 
                 checkDia == dataAux[j].getUTCDate()) { dados[j]++; } // Adiciona mais um registro no dia
             }
+            console.log(j)
         }
     }
 
