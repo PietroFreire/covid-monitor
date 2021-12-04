@@ -156,7 +156,7 @@
                 border-left: 1px solid;/* Adiciona borda esquerda na div como ser fosse uma linha.*/
             }
 
-            .check-sintoma{
+            .checkbox-sintomas{
                 margin-left: 3px;
             }
         </style>
@@ -243,7 +243,7 @@
                             <button type="button" class="btn btn-primary" onclick="registroMal()">Confirmar</button>
                         </div>
                     </div>
-                    <div id="div_mal" class="col-md-10 centralize flex-column hide">
+                    <div id="div_mal" class="col-md-12 centralize flex-column hide">
                         <div class="mb-2 text-center">
                             <p>Registro foi cadastrado!</p>
                             <p>Caso os sintomas persistirem busque auxílio medico.</p>
@@ -302,7 +302,7 @@
                     let sint = sintomas[i];
                     sintomasArray.push(sintomas[i]);
                     step_sintoma +=
-                        `<div class="col-md-4 text-nowrap">` +
+                        `<div class="col-md-4 text-nowrap checkbox-sintomas">` +
                         `<input id="sintoma-${sint.id}" type="checkbox" value="${sint.id}" class="check-sintoma">` +
                         `<label for="sintoma-${sint.id}">${(sint.nome)}</label>` +
                         `</div>`;
