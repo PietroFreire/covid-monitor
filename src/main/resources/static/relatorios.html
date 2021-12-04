@@ -192,11 +192,11 @@
                     checkMes = data.getMonth();
                     checkDia = data.getDate();
                     for(j = 0; j < diaDif; j++){
-                        dataAuxDia = new Date(dataAux[j-1]);
+                        dataAuxDia = new Date(dataAux[j]);
                         if (checkAno == dataAuxDia.getUTCFullYear() &&
                             checkMes == dataAuxDia.getUTCMonth() &&
                             checkDia == dataAuxDia.getUTCDate()) { 
-                            dados[j-1]++;
+                            dados[j]++;
                         } // Adiciona mais um registro no dia
                     }
                 }
