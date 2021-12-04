@@ -164,7 +164,7 @@
                 diaDif = (dataDif-dataDif%86400000)/86400000;
                 for (i=1; i <= diaDif; i++){
                     dados.push(0); // Cria array de dados com 0
-                    dataIterator = new Date(diaFim - (diaFim%86400000) - (diaDif-i+1)*86400000);
+                    dataIterator = new Date(diaFim - (diaFim%86400000) - (diaDif-i+1)*86400000 + 10800000);
                     labels.push(dataIterator.getUTCDate()+"-"+(dataIterator.getUTCMonth()+1)+"-"+dataIterator.getUTCFullYear()); // Cria array de labels
                     dataAux.push(dataIterator); //
                 }
@@ -192,9 +192,9 @@
                     checkMes = data.getUTCMonth();
                     checkDia = data.getUTCDate();
                     for(j = 0; j < diaDif; j++){
-                        if (checkAno == dataAux[j].getFullYear() &&
-                            checkMes == dataAux[j].getMonth() &&
-                            checkDia == dataAux[j].getDate()) { dados[j]++; } // Adiciona mais um registro no dia
+                        if (checkAno == dataAux[j].getUTCFullYear() &&
+                            checkMes == dataAux[j].getUTCMonth() &&
+                            checkDia == dataAux[j].getUTCDate()) { dados[j]++; } // Adiciona mais um registro no dia
                     }
                 }
                 //console.log(dados);
