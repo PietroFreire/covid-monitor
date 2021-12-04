@@ -193,9 +193,11 @@
                     checkDia = data.getUTCDate();
                     for(j = 0; j < diaDif; j++){
                         dataAuxDia = new Date(dataAux[j] - 10800000);
-                        if (checkAno == dataAuxDia.getUTCFullYear() &&
-                            checkMes == dataAuxDia.getUTCMonth() &&
-                            checkDia == dataAuxDia.getUTCDate()) { dados[j]++; } // Adiciona mais um registro no dia
+                        if (checkAno == dataAuxDia.getFullYear() &&
+                            checkMes == dataAuxDia.getMonth() &&
+                            checkDia == dataAuxDia.getDate()) { 
+                            dados[j-1]++;
+                        } // Adiciona mais um registro no dia
                     }
                 }
                 //console.log(dados);
