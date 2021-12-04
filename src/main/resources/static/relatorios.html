@@ -169,7 +169,7 @@
                     dataAux.push(dataIterator); //
                 }
 
-                let URL = `/api/estadoSaude/membro/`;
+                let URL = `/api/estadoSaude/membro/${currentUser}`;
                 if(dateInicio.value && !dateFim.value){
                     URL += '?start='+dateInicio.value
                 } else {
@@ -182,7 +182,8 @@
                     .catch(function(error) { console.log("Erro ao listar usuários (código " + error.message + ")");});
             }
             function getReg( registros ) {
-
+                console.log(registros);
+                
                 let n = registros.length;
                 for (let i = 0; i < n; i++) {
                     let dado = registros[i];
