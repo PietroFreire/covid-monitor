@@ -156,7 +156,7 @@
 
                 diaInicio = new Date(dateInicio.value);
                 if (dateFim.value == ""){
-                    diaFim = new Date(Date.now());
+                    diaFim = new Date(Date.now()+86400000);
                 } else {
                     diaFim = new Date(dateFim.value);
                 }
@@ -192,11 +192,11 @@
                     checkMes = data.getMonth();
                     checkDia = data.getDate();
                     for(j = 0; j < diaDif; j++){
-                        dataAuxDia = new Date(dataAux[j] - 10800000);
+                        dataAuxDia = new Date(dataAux[j-1]);
                         if (checkAno == dataAuxDia.getUTCFullYear() &&
                             checkMes == dataAuxDia.getUTCMonth() &&
                             checkDia == dataAuxDia.getUTCDate()) { 
-                            dados[j-1]++;
+                            dados[j]++;
                         } // Adiciona mais um registro no dia
                     }
                 }
