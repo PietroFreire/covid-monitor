@@ -160,9 +160,6 @@
                 max-width: none;
             }
 
-            .checkbox-sintomas{
-                margin-left: 3px;
-            }
         </style>
     </head>
 
@@ -306,7 +303,7 @@
                     let sint = sintomas[i];
                     sintomasArray.push(sintomas[i]);
                     step_sintoma +=
-                        `<div class="col-md-4 text-nowrap checkbox-sintomas">` +
+                        `<div class="col-md-4 text-nowrap">` +
                         `<input id="sintoma-${sint.id}" type="checkbox" value="${sint.id}" class="check-sintoma">` +
                         `<label for="sintoma-${sint.id}">${(sint.nome)}</label>` +
                         `</div>`;
