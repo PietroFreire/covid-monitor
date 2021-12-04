@@ -169,7 +169,7 @@
                     dataAux.push(dataIterator); //
                 }
 
-                let URL = `/api/estadoSaude/membro/`;
+                let URL = `/api/estadoSaude/membro/${currentUser}`;
                 if(dateInicio.value && !dateFim.value){
                     URL += '?start='+dateInicio.value
                 } else {
