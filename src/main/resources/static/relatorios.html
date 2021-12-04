@@ -193,9 +193,9 @@
                     checkMes = data.getUTCMonth();
                     checkDia = data.getUTCDate();
                     for(j = 0; j < diaDif; j++){
-                        if (checkAno == dataAux[j].getFullYear() &&
-                            checkMes == dataAux[j].getMonth() &&
-                            checkDia == dataAux[j].getDate()) { dados[j]++; } // Adiciona mais um registro no dia
+                        if (checkAno == dataAux[j].getUTCFullYear() &&
+                            checkMes == dataAux[j].getUTCMonth() &&
+                            checkDia == dataAux[j].getUTCDate()) { dados[j]++; } // Adiciona mais um registro no dia
                     }
                 }
                 //console.log(dados);
